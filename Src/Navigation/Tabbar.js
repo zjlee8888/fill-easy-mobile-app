@@ -1,0 +1,59 @@
+import React from 'react'
+import { View, Text, Image, TouchableOpacity, TouchableWithoutFeedback } from 'react-native'
+
+import { Icon } from 'react-native-elements';
+import { Backgroundcolor ,Shadowcolor} from '../Utility/Colors'
+
+export const Tabbar = () => {
+    return (
+        <View style={{
+            width: "98%",
+            height: 78,
+            backgroundColor: Backgroundcolor.whiteback,
+            borderRadius: 78,
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "space-around",
+            alignSelf: "center"
+        }}>
+            <TouchableOpacity >
+                <Image source={require("../../assets/Image/home.png")}
+                    style={{ width: 24, height: 24 }} />
+            </TouchableOpacity>
+
+            <TouchableOpacity >
+                <Image source={require("../../assets/Image/flag.png")}
+                    style={{ width: 24, height: 24 }} />
+            </TouchableOpacity>
+
+            <TouchableOpacity style={{
+                width:64,
+                height:64,
+                backgroundColor:Backgroundcolor.yelloback,
+                borderRadius:64/2,
+                alignItems:"center",
+                justifyContent:"center",
+                shadowOffset:{width:0 , height:3},
+                shadowRadius:3,
+                shadowColor:Shadowcolor.shadow2,
+                shadowOpacity:1,
+                marginBottom:45
+                }}>
+                    <Image source={require("../../assets/Image/Scan.png")}
+                    style={{ width: 44, height: 44 }} />
+                </TouchableOpacity>
+
+            <TouchableOpacity >
+                <Image source={require("../../assets/Image/clipboard.png")}
+                    style={{ width: 24, height: 24 }} />
+            </TouchableOpacity>
+
+            <TouchableOpacity >
+                <Image source={require("../../assets/Image/user.png")}
+                    style={{ width: 24, height: 24 }} />
+            </TouchableOpacity>
+
+
+        </View>
+    );
+}
