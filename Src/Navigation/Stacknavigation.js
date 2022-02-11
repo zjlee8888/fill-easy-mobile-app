@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, TextInput } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -9,21 +9,51 @@ import LoginScreen from '../Screens/Login/Login'
 import OtpVerification from '../Screens/Login/OtpVerification'
 import Tabnavigation from './Tabnavigation'
 import Home from '../Screens/Home/Home'
+import Tasklist from '../Screens/Home/Tasklist'
+import TodoScreen from '../Screens/Home/Todo'
 
 
 const Stack = createNativeStackNavigator();
 
+const Preauth = () => {
+  return (
+    <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName="LoginScreen">
+      <Stack.Screen name="LoginScreen" component={LoginScreen} />
+      <Stack.Screen name="OtpScreen" component={OtpVerification} />
+    </Stack.Navigator>
+  );
+}
+
+const Postauth = () => {
+  return (
+    <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName="TabScreen">
+      <Stack.Screen name="TabScreen" component={Tabnavigation} />
+      <Stack.Screen name="Tasklist" component={Tasklist} />
+      <Stack.Screen name="TodoScreen" component={TodoScreen} />
+
+    </Stack.Navigator>
+  );
+}
+
 const Stacknavigation = () => {
+  const [authtoken, SetAuthtoken] = useState("")
+
   return (
     <NavigationContainer>
-      <Stack.Navigator screenOptions={{headerShown:false}} initialRouteName="TabScreen">
-      <Stack.Screen name="TabScreen" component={Tabnavigation} />
-        <Stack.Screen name="LoginScreen" component={LoginScreen} />
-        <Stack.Screen name="OtpScreen" component={OtpVerification} />
+      <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName="Auth">
+        {authtoken == "" ?
+          <>
+            <Stack.Screen name="Auth" component={Preauth} />
+            <Stack.Screen name="TabScreen" component={Postauth} />
+          </>
+          :
+          <Stack.Screen name="Auth" component={Postauth} />
+        }
+
       </Stack.Navigator>
     </NavigationContainer>
-    
-   
+
+
   );
 }
 

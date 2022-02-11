@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
-import { View, Text, TextInput, StyleSheet, Image, TouchableOpacity,SafeAreaView, Modal, ScrollView, TouchableWithoutFeedback,StatusBar } from 'react-native'
+import { View, Text, TextInput, StyleSheet, Image, TouchableOpacity,Keyboard, SafeAreaView, KeyboardAvoidingView,Modal, Alert, ScrollView, TouchableWithoutFeedback, StatusBar } from 'react-native'
 import OTPTextView from 'react-native-otp-textinput';
+import { useNavigation } from '@react-navigation/native';
 
 import { Background } from './Component/background'
 import { Logo } from './Component/Logo'
@@ -9,21 +10,16 @@ import { TEXT } from '../../Component/Text'
 import { BUTTON } from '../../Component/Button'
 import { Signin, Login, Signup } from './Component/SLS'
 
-import { Textcolor, Buttoncolor, Bordercolor, Shadowcolor,Backgroundcolor } from '../../Utility/Colors'
+import { Textcolor, Buttoncolor, Bordercolor, Shadowcolor, Backgroundcolor } from '../../Utility/Colors'
 
 
 
 const LoginScreen = () => {
+    const navigation = useNavigation();
 
-
-
-
-
-
-
-   // const [type, setType] = useState(1)
-  //  const [type, setType] = useState(2)
-const [type, setType] = useState(3)
+     const [type, setType] = useState(1)
+    // const [type, setType] = useState(2)
+ //   const [type, setType] = useState(3)
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
@@ -32,11 +28,6 @@ const [type, setType] = useState(3)
     const [lname, setLname] = useState("")
     const [code, setCode] = useState("")
     const [visible, setVisible] = useState(false)
-
-
-    console.log("$$$$$", email)
-
-
 
     const MyStatusBar = ({ backgroundColor, ...props }) => (
         <View style={{}}>
@@ -47,26 +38,119 @@ const [type, setType] = useState(3)
     );
 
     const signin = () => {
-        console.log("HEllo", signin)
+        // let emailval = false
+        // let passval = false
+        // if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+        //     emailval = true
+        // }
+        // if (password !== "") {
+        //     passval = true
+        // }
+
+        // if (emailval && passval) {
+        //     // navigation.navigate("TabScreen")
+        //     setType(2)
+        // } else {
+        //     Alert.alert("Please enter email and password Proper")
+        // }
+
+        setType(2)
+
+
+
     }
 
-    const next = () => {
-        console.log("HEllo", signin)
+    const loginsign = () => {
+        navigation.navigate("TabScreen")
+    }
+
+    const signup = () => {
+        setType(3)
+
     }
     return (
-        <View style={styles.container}>
-             <MyStatusBar backgroundColor={Backgroundcolor.whiteback} barStyle="light-content" />
+        <TouchableWithoutFeedback style={{flex:1}} onPress={() =>Keyboard.dismiss()}>
+        <View style={styles.container} >
+            <MyStatusBar backgroundColor={Backgroundcolor.whiteback} barStyle="light-content" />
             <Background />
 
+            <View style={{
+                flex: 1,
+                width: "100%",
+                height: "100%",
+                position: "absolute",
+                alignItems: "center",
+                justifyContent: "center"
+            }}>
+                <Logo />
 
-            <View style={styles.subcontainer}>
-                <View style={{ height: "25%", width: "100%" ,justifyContent:"flex-end"}}>
-                    <Logo />
-                </View>
 
-                <View style={styles.bottomview}>
-                    <View style={styles.cord}>
-                        <View style={{ width: "100%", flex: 1 }}>
+
+                {type == 3 ?
+                    <View style={{
+                        width: "90%",
+                        backgroundColor: "#ffffff",
+                        maxHeight: "50%",
+                        marginTop: "10%",
+                        paddingVertical: 15,
+                        alignItems: "center", justifyContent: "space-between",
+                        borderRadius: 16,
+                        shadowOffset: { width: 0, height: 3 },
+                        shadowColor: "rgba(0,0,0,0.2)",
+                        shadowOpacity: 1,
+                        elevation: 5,
+                    }}>
+                        {/* <View style={{ width: "100%", alignItems: "center", height: "100%" }}> */}
+                        <TEXT title="SignUp"
+                            size={32}
+                            color={Textcolor.blacktext}
+                            textAlign="center"
+                            family="Roboto-Bold"
+                        />
+
+                        <ScrollView style={{ width: "100%", marginTop: 15, }} showsVerticalScrollIndicator={true} >
+                            <Signup
+                                fname={fname}
+                                setfname={setFname}
+                                lname={lname}
+                                setlname={setLname}
+                                email={email}
+                                setemail={setEmail}
+                                password={password}
+                                setpassword={setPassword}
+                                number={number}
+                                setnumber={setNumber}
+                                code={code}
+                                setcode={setCode}
+                                signin={signin}
+                            />
+
+                        </ScrollView>
+
+                        <BUTTON width="80%"
+                            height={56}
+                            background={Buttoncolor.yellowbutton}
+                            bwidth={1}
+                            bcolor={Bordercolor.grayborder}
+                            bradius={25}
+                            shight={3}
+                            swidth={0}
+                            scolor={Shadowcolor.shadow1}
+                            sopacity={1}
+                            elevation={5}
+                            title="SIGN IN"
+                            size={17}
+                            family="Roboto-Bold"
+                            style={{ marginTop: 15 }}
+                            color={Textcolor.whitetext}
+                            weight="bold"
+                            press={signin}
+                        />
+                        {/* </View> */}
+                    </View>
+                    :
+                    <View style={styles.card}>
+                        <>
                             {type == 1 &&
                                 <Signin
                                     email={email}
@@ -82,102 +166,55 @@ const [type, setType] = useState(3)
                                     setemail={setEmail}
                                     number={number}
                                     setnumber={setNumber}
-                                    signin={next}
+                                    signin={loginsign}
                                 />}
 
-                            {type == 3 &&
-                                <View style={{ flex: 1, alignItems: "center" }}>
-                                    <TEXT title="SignUp"
-                                        size={32}
-                                        color={Textcolor.blacktext}
-                                        textAlign="center"
-                                        family="Roboto-Bold"
-                                    />
-                                    <ScrollView style={{ maxHeight: "100%", marginTop: 15, width: "100%" }} showsVerticalScrollIndicator={true} >
-                                        <Signup
-                                            fname={fname}
-                                            setfname={setFname}
-                                            lname={lname}
-                                            setlname={setLname}
-                                            email={email}
-                                            setemail={setEmail}
-                                            password={password}
-                                            setpassword={setPassword}
-                                            number={number}
-                                            setnumber={setNumber}
-                                            code={code}
-                                            setcode={setCode}
-                                            signin={signin}
-                                        />
+                            {type == 3 ? null :
+                                <View style={{ width: "100%", flexDirection: "row", justifyContent: "center", marginTop: 15 }}>
+                                    {type == 2 ?
+                                        <TouchableOpacity onPress={() => setType(1)}>
+                                            <TEXT title="LOGN WITH EMAIL"
+                                                size={14}
+                                                color={Textcolor.bluetext}
+                                                family="Roboto-Regular"
+                                            />
+                                        </TouchableOpacity>
+                                        :
+                                        <>
+                                            <TouchableOpacity>
+                                                <TEXT title="Forgot  Password  "
+                                                    size={14}
+                                                    color={Textcolor.bluetext}
+                                                    family="Roboto-Regular"
+                                                />
+                                            </TouchableOpacity>
+                                            <Text style={styles.text}>|</Text>
+                                            <TouchableOpacity onPress={() => setVisible(true)}>
+                                                <TEXT title="OTP LOGIN"
+                                                    size={14}
+                                                    color={Textcolor.bluetext}
+                                                    style={{ marginLeft: 15 }}
+                                                    family="Roboto-Regular"
+                                                />
+                                            </TouchableOpacity>
+                                        </>
+                                    }
 
-                                    </ScrollView>
-
-                                    <BUTTON width="80%"
-                                        height={56}
-                                        background={Buttoncolor.yellowbutton}
-                                        bwidth={1}
-                                        bcolor={Bordercolor.grayborder}
-                                        bradius={25}
-                                        shight={3}
-                                        swidth={0}
-                                        scolor={Shadowcolor.shadow1}
-                                        sopacity={1}
-                                        elevation={5}
-                                        title="SIGN IN"
-                                        size={17}
-                                        family="Roboto-Bold"
-                                        color={Textcolor.whitetext}
-                                        weight="bold"
-                                        press={signin}
-                                    />
                                 </View>
                             }
-                        </View>
-
-                        {type == 3 ? null :
-                            <View style={{ width: "100%", flexDirection: "row", justifyContent: "center", marginTop: 15 }}>
-                                {type == 2 ?
-                                    <TouchableOpacity onPress={() => console.log("pressed")}>
-                                        <TEXT title="LOGN WITH EMAIL"
-                                            size={14}
-                                            color={Textcolor.bluetext}
-                                            family="Roboto-Regular"
-                                        />
-                                    </TouchableOpacity>
-                                    :
-                                    <>
-                                        <TouchableOpacity>
-                                            <TEXT title="Forgot  Password  "
-                                                size={14}
-                                                color={Textcolor.bluetext}
-                                                family="Roboto-Regular"
-                                            />
-                                        </TouchableOpacity>
-                                        <Text style={styles.text}>|</Text>
-                                        <TouchableOpacity onPress={() => setVisible(true)}>
-                                            <TEXT title="OTP LOGIN"
-                                                size={14}
-                                                color={Textcolor.bluetext}
-                                                style={{ marginLeft: 15 }}
-                                                family="Roboto-Regular"
-                                            />
-                                        </TouchableOpacity>
-                                    </>
-                                }
-
-                            </View>
-                        }
+                        </>
 
                     </View>
-                </View>
+                }
 
-                <View style={{ height: "20%", width: "100%", alignItems: "center", paddingTop: 10, }}>
+                <View style={{ width: "100%", alignItems: "center", paddingTop: 10, marginTop: "5%" }}>
                     {type == 3 &&
-                        <TouchableOpacity style={{ marginBottom: 15 }}>
+                        <TouchableOpacity style={{ marginBottom: 15 }} onPress={() => setType(1)}>
                             <TEXT title="Already have an account?"
                                 size={16}
                                 color={Textcolor.bluetext}
-                                family="Montserrat-Medium"
+                                family="Roboto-Regular"
+                                style={{ letterSpacing: 1 }}
                             />
                         </TouchableOpacity>
                     }
@@ -191,10 +228,11 @@ const [type, setType] = useState(3)
                         family="Roboto-Bold"
                         size={17}
                         color={Textcolor.bluetext}
-                        press={signin}
+                        press={signup}
                     />
                 </View>
             </View>
+
 
             {visible &&
                 <TouchableOpacity
@@ -211,7 +249,7 @@ const [type, setType] = useState(3)
                             onPress={() => setVisible(false)}>
                             <TouchableWithoutFeedback style={styles.modalview} onPress={() => setVisible(true)}>
                                 <View style={styles.modalview}>
-                                    <View style={{ flexDirection: "row" ,marginBottom:10}}>
+                                    <View style={{ flexDirection: "row", marginBottom: 10 }}>
                                         <View style={styles.round}>
 
                                             <Image source={require("../../../assets/Image/mobile.png")}
@@ -230,7 +268,7 @@ const [type, setType] = useState(3)
                                         family="Roboto-Bold"
                                     />
                                     <OTPTextView handleTextChange={(e) => { }}
-                                        containerStyle={{ justifyContent: "space-between", width: "80%",marginTop:10 }}
+                                        containerStyle={{ justifyContent: "space-between", width: "80%", marginTop: 10 }}
                                         textInputStyle={{
                                             width: 45,
                                             height: 45,
@@ -254,12 +292,13 @@ const [type, setType] = useState(3)
                                         number={true}
                                     />
 
-                                    <View style={{ 
+                                    <View style={{
                                         flexDirection: "row",
-                                         width: "70%", 
-                                         padding: 1, 
-                                         marginTop: 15 ,
-                                         justifyContent:"center"}}>
+                                        width: "70%",
+                                        padding: 1,
+                                        marginTop: 15,
+                                        justifyContent: "center"
+                                    }}>
                                         <TEXT title="3.45"
                                             size={12}
                                             color={Textcolor.bluetext}
@@ -281,8 +320,8 @@ const [type, setType] = useState(3)
                     </Modal>
                 </TouchableOpacity>
             }
-
         </View>
+        </TouchableWithoutFeedback>
     );
 }
 
@@ -292,8 +331,9 @@ const styles = StyleSheet.create({
     container: { flex: 1, backgroundColor: "#ffffff" },
     subcontainer: { flex: 1, position: "absolute", width: "100%", height: "100%" },
     bottomview: { height: "60%", alignItems: "center", justifyContent: "center", },
-    cord: {
+    card: {
         width: "90%",
+        marginTop: "10%",
         backgroundColor: "#ffffff",
         alignItems: "center",
         justifyContent: "space-evenly",
@@ -303,8 +343,9 @@ const styles = StyleSheet.create({
         shadowColor: "rgba(0,0,0,0.2)",
         shadowOpacity: 1,
         elevation: 5,
-        minHeight: "50%"
+        minHeight: "55%"
     },
+   
     heading: {
         fontSize: 32,
         color: "#000000",
@@ -346,6 +387,6 @@ const styles = StyleSheet.create({
     modalview: { width: "70%", height: 325, backgroundColor: "#ffffff", borderRadius: 20, alignItems: "center", justifyContent: "center" },
     round: { width: 84, height: 84, borderRadius: 75, borderWidth: 8, borderColor: "#f0f0f0", alignItems: "center", justifyContent: "center" },
     msgview: { position: "absolute", marginTop: -15, marginLeft: 50 },
-    
+
 })
 

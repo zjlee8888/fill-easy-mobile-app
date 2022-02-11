@@ -24,7 +24,7 @@ export const BUTTON = (props) =>{
            press,
            family
            } = props
-           console.log("55555",press)
+
     return(
         <TouchableOpacity style={{ 
         width: width,

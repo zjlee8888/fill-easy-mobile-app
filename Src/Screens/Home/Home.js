@@ -3,6 +3,7 @@ import { View, Text, ScrollView, Image, TouchableOpacity, StyleSheet, StatusBar,
 
 import { Header } from './Component/header'
 import Swiper from 'react-native-swiper'
+import { useNavigation } from '@react-navigation/native';
 
 import { Backgroundcolor, Bordercolor, Textcolor } from '../../Utility/Colors'
 import { TEXT } from '../../Component/Text'
@@ -15,7 +16,8 @@ const data = [
     {
         id: 1,
         title: "Name & ID",
-        image: require("../../../assets/Image/name.png")
+        image: require("../../../assets/Image/name.png"),
+        
     },
     {
         id: 2,
@@ -158,6 +160,7 @@ const Activity = [
 
 
 const Home = () => {
+    const navigation = useNavigation();
 
     const [selected, setSelected] = useState("Name & ID")
 
@@ -191,7 +194,7 @@ const Home = () => {
                                 weight={"bold"}
                                 family="Poppins-Bold" 
                                 />
-                            <TouchableOpacity>
+                            <TouchableOpacity onPress={() =>navigation.navigate("Tasklist")}>
                                 <TEXT title="more >"
                                     size={12}
                                     color={Textcolor.bluetext}

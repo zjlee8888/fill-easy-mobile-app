@@ -8,6 +8,7 @@ export const TEXT = (props) => {
             <Text style={{
                 fontSize: size,
                 color: color,
+                letterSpacing:1,
              //fontWeight: weight,
             // fontFamily:"Poppins-ExtraBold",
             fontFamily:family,

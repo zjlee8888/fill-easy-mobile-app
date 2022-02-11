@@ -7,20 +7,21 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 //Screens
 
 import Home from '../Screens/Home/Home'
-import Profile from '../Screens/Profile/Profile'
 import Flag from '../Screens/Flag/Flag'
+import Profile from '../Screens/Profile/Profile'
 import History from '../Screens/History/History'
 
-import {Tabbar} from './Tabbar'
+import { Tabbar } from './Tabbar'
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
 const Tabnavigation = () => {
     return (
-        <Tab.Navigator screenOptions={{headerShown:false ,}} tabBar={() =><Tabbar />}>
+        <Tab.Navigator screenOptions={{ headerShown: false, }} tabBar={() => <Tabbar />}>
             <Tab.Screen name="Home" component={Home} />
-          
+            <Tab.Screen name="Flag" component={Flag} />
+
         </Tab.Navigator>
     );
 }
