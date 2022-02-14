@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text } from 'react-native'
+import { View, Text, TouchableOpacity } from 'react-native'
 import { Icon } from 'react-native-elements';
 
 import { Backgroundcolor, Textcolor, Buttoncolor, Bordercolor, Shadowcolor } from '../Utility/Colors'
@@ -9,7 +9,7 @@ import { BUTTON } from '../Component/Button'
 
 
 export const Card = (props) => {
-    const { title, desc, time, date, width } = props
+    const { title, desc, time, date, width ,notify } = props
     return (
         <View style={{
             width: width,
@@ -46,16 +46,33 @@ export const Card = (props) => {
             </View>
 
             <View style={{flex:1,marginRight:0,justifyContent:"space-between",alignItems:"flex-end"}}>
+                {notify ?
+                <View style={{flex:1,alignItems:"flex-end"}}>
+                    <TEXT title={time}
+                        size={10}
+                        color={Textcolor.grayoptext}
+                        family="Roboto-Regular"
+                        style={{marginBottom:10}}
+                    />
+                    <Icon name="arrow-right"
+                        type="feather"
+                        size={15}
+                        color={"#000"} />
+                </View>
+                 :
+                 <>
                 <View style={{ flexDirection: "row" ,width:"100%",justifyContent:"flex-end"}}>
                     <TEXT title={time}
                         size={10}
                         color={Textcolor.grayoptext}
                         family="Roboto-Regular"
                     />
+                    <TouchableOpacity>
                     <Icon name="more-vertical"
                         type="feather"
                         size={15}
                         color={Backgroundcolor.buleback} />
+                        </TouchableOpacity>
                 </View>
 
                 <BUTTON width={59}
@@ -75,6 +92,8 @@ export const Card = (props) => {
                     press={props.signin}
                     family="Poppins-Bold"
                 />
+                </>
+            }
 
             </View>
         </View>
