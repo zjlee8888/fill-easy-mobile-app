@@ -1,3 +1,5 @@
+import { Colors } from "react-native/Libraries/NewAppScreen"
+
 const Color = {
     Primarycolor:"#fed200",
     Secondrycolor:"#2b299e",
@@ -9,6 +11,7 @@ const Color = {
     lightgray:"#ebebeb",
     darkgray:"#a4a4a4",
     darkgrayop:"rgba(164, 164, 164 , 0.1449979990720749)",
+    dark1gray1:"#E8E8E8",
     grayop:"rgba(56,56,56,0.6)", // #383838
     darkshadegray:"#404040",
     vdarkgray:"#707070",
@@ -61,5 +64,6 @@ export const Backgroundcolor = {
     mainblueback:Color.Secondrycolor,
     dotbacground:Color.red,
     goldback:Color.gold,
-    buleback:Color.slightblue
+    buleback:Color.slightblue,
+    dark1gray:"#E8E8E8"
 }

@@ -2,7 +2,7 @@ import React from 'react'
 import { View, Text, Image, TouchableOpacity, TouchableWithoutFeedback } from 'react-native'
 
 import { Icon } from 'react-native-elements';
-import { Backgroundcolor ,Shadowcolor} from '../Utility/Colors'
+import { Backgroundcolor, Shadowcolor } from '../Utility/Colors'
 
 export const Tabbar = () => {
     return (
@@ -17,40 +17,59 @@ export const Tabbar = () => {
             alignSelf: "center"
         }}>
             <TouchableOpacity >
-                <Image source={require("../../assets/Image/home.png")}
-                    style={{ width: 24, height: 24 }} />
+                <Icon name="home"
+                    type="feather"
+                    size={24} />
+                {/* <Image source={require("../../assets/Image/home.png")}
+                    style={{ width: 24, height: 24 }} /> */}
             </TouchableOpacity>
 
             <TouchableOpacity >
-                <Image source={require("../../assets/Image/flag.png")}
-                    style={{ width: 24, height: 24 }} />
+                <Icon name="checkbox-outline"
+                    type="ionicon"
+                    size={24} />
+                {/* <Icon name="checkbox-blank-outline"
+                    type="material-community"
+                    size={24} 
+                    style={{marginTop:-15}}/> */}
+                
             </TouchableOpacity>
 
             <TouchableOpacity style={{
-                width:64,
-                height:64,
-                backgroundColor:Backgroundcolor.yelloback,
-                borderRadius:64/2,
-                alignItems:"center",
-                justifyContent:"center",
-                shadowOffset:{width:0 , height:3},
-                shadowRadius:3,
-                shadowColor:Shadowcolor.shadow2,
-                shadowOpacity:1,
-                marginBottom:45
-                }}>
-                    <Image source={require("../../assets/Image/Scan.png")}
+                width: 64,
+                height: 64,
+                backgroundColor: Backgroundcolor.yelloback,
+                borderRadius: 64 / 2,
+                alignItems: "center",
+                justifyContent: "center",
+                shadowOffset: { width: 0, height: 3 },
+                shadowRadius: 3,
+                shadowColor: Shadowcolor.shadow2,
+                shadowOpacity: 1,
+                marginBottom: 45
+            }}>
+                <Image source={require("../../assets/Image/Scan.png")}
                     style={{ width: 44, height: 44 }} />
-                </TouchableOpacity>
+            </TouchableOpacity>
+
+
 
             <TouchableOpacity >
-                <Image source={require("../../assets/Image/clipboard.png")}
-                    style={{ width: 24, height: 24 }} />
+            <Icon name="history"
+                    type="material-community"
+                    size={24} 
+                    />
+                {/* <Image source={require("../../assets/Image/clipboard.png")}
+                    style={{ width: 24, height: 24 }} /> */}
             </TouchableOpacity>
 
             <TouchableOpacity >
-                <Image source={require("../../assets/Image/user.png")}
-                    style={{ width: 24, height: 24 }} />
+            <Icon name="user"
+                    type="feather"
+                    size={24} 
+                    />
+                {/* <Image source={require("../../assets/Image/user.png")}
+                    style={{ width: 24, height: 24 }} /> */}
             </TouchableOpacity>
 
 

@@ -8,10 +8,10 @@ export const TEXT = (props) => {
             <Text style={{
                 fontSize: size,
                 color: color,
-                letterSpacing:1,
-             //fontWeight: weight,
+                letterSpacing:0.5,
+             fontWeight: weight,
             // fontFamily:"Poppins-ExtraBold",
-            fontFamily:family,
+            fontFamily: family,
                 ...style,
                 
 

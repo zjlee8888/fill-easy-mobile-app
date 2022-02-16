@@ -125,6 +125,24 @@
 		<string>Montserrat-SemiBoldItalic.ttf</string>
 		<string>Montserrat-Thin.ttf</string>
 		<string>Montserrat-ThinItalic.ttf</string>
+		<string>SF-Pro-Text-Black copy.otf</string>
+		<string>SF-Pro-Text-BlackItalic copy.otf</string>
+		<string>SF-Pro-Text-Bold copy.otf</string>
+		<string>SF-Pro-Text-BoldItalic copy.otf</string>
+		<string>SF-Pro-Text-Heavy copy.otf</string>
+		<string>SF-Pro-Text-HeavyItalic copy.otf</string>
+		<string>SF-Pro-Text-Light copy.otf</string>
+		<string>SF-Pro-Text-LightItalic copy.otf</string>
+		<string>SF-Pro-Text-Medium copy.otf</string>
+		<string>SF-Pro-Text-MediumItalic copy.otf</string>
+		<string>SF-Pro-Text-Regular copy.otf</string>
+		<string>SF-Pro-Text-RegularItalic copy.otf</string>
+		<string>SF-Pro-Text-Semibold copy.otf</string>
+		<string>SF-Pro-Text-SemiboldItalic copy.otf</string>
+		<string>SF-Pro-Text-Thin copy.otf</string>
+		<string>SF-Pro-Text-ThinItalic copy.otf</string>
+		<string>SF-Pro-Text-Ultralight copy.otf</string>
+		<string>SF-Pro-Text-UltralightItalic copy.otf</string>
 	</array>
 </dict>
 </plist>

@@ -69,7 +69,7 @@ const Tasklist = () => {
 
         }}>
             {/* <MyStatusBar backgroundColor={Backgroundcolor.yelloback} barStyle="light-content" /> */}
-            {/* <Header title="" />
+            <Header title="" />
             <ScrollView style={{ flex: 1, width: "100%", padding: 15 }}>
                 <TEXT title="Things to do (3)"
                     size={16}
@@ -110,8 +110,7 @@ const Tasklist = () => {
                 </View>
 
 
-            </ScrollView> */}
-
+            </ScrollView>
         </View>
     );
 }
