@@ -43,7 +43,7 @@ const LoginScreen = () => {
     }
 
     const signup = () => {
-       setLogin(true)
+        setLogin(true)
     }
 
     console.log(login)
@@ -52,18 +52,45 @@ const LoginScreen = () => {
 
     // },[])
 
+    const data = [
+        {
+            name: "data1",
+            subdata: [
+                {
+                    subname: "sub1",
+                },
+                {
+                    subname: "sub2",
+                },
+            ]
+        },
+        {
+            name: "data2",
+            subdata: [
+                {
+                    subname: "sub12",
+                },
+                {
+                    subname: "sub22",
+                },
+            ]
+        },
+    ]
+
+    const [open , setOpen] = useState(false)
     return (
+       
         <TouchableWithoutFeedback style={{ flex: 1 }} onPress={() => Keyboard.dismiss()}>
 
             <View style={{ flex: 1, alignItems: "center", backgroundColor: Backgroundcolor.whiteback, paddingHorizontal: "10%" }}>
-               
-               
+
+
                 <View style={{
                     flex: 1,
                     marginTop: "15%",
                     width: "100%",
                     height: "100%",
-                    //justifyContent:"space-around"
+                    justifyContent:"space-around"
 
                 }}>
                     <View style={{ flexDirection: "row", width: "100%", justifyContent: "space-between" }}>
@@ -75,8 +102,9 @@ const LoginScreen = () => {
                             shadowOffset: { width: 0, height: 3 },
                             shadowRadius: 15,
                             shadowOpacity: 1,
-                            shadowColor: "rgba(242, 147, 0, 0.15)",
-                            elevation: 45
+                            shadowColor:Platform.OS === 'android' ? "#fed303" : "rgba(242, 147, 0, 0.15)",
+                           // shadowColor: "rgba(242, 147, 0, 0.15)",
+                            elevation:25
                         }}>
                             <Image source={require("../../../assets/Image/logo2.png")}
                                 style={{
@@ -115,7 +143,7 @@ const LoginScreen = () => {
                                 setshow={setShowpass}
                                 signup={signup} />
                         }
-                    
+
 
                     <View style={{ width: "100%", marginTop: "10%", alignItems: "center", alignSelf: "center" }}>
 

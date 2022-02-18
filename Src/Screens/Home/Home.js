@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { View, Text, ScrollView, Image, TouchableOpacity, StyleSheet, StatusBar, SafeAreaView } from 'react-native'
+import { View, Text, ScrollView, Image, TouchableOpacity, StyleSheet, StatusBar, SafeAreaView , Alert } from 'react-native'
 
 import { Header } from './Component/header'
 import Swiper from 'react-native-swiper'
@@ -17,6 +17,8 @@ const data = [
         id: 1,
         title: "Name & ID",
         image: require("../../../assets/Image/name.png"),
+        name:"account-box-outline",
+        type:"material-community"
         
     },
     {
@@ -34,12 +36,16 @@ const data = [
     {
         id: 4,
         title: "Martial…",
-        image: require("../../../assets/Image/muluser.png")
+        image: require("../../../assets/Image/muluser.png"),
+        name:"account-box-multiple-outline",
+        type:"material-community"
     },
     {
         id: 5,
         title: "Phone No.",
-        image: require("../../../assets/Image/phone.png")
+        image: require("../../../assets/Image/phone.png"),
+        name:"phone-call",
+        type: "feather"
     },
     {
         id: 6,
@@ -56,7 +62,9 @@ const data = [
     {
         id: 8,
         title: "Beneficiary",
-        image: require("../../../assets/Image/star.png")
+        image: require("../../../assets/Image/star.png"),
+        name:"star-outline",
+        type:"ionicon"
     },
 
 ]
@@ -173,7 +181,9 @@ const Home = () => {
     );
 
     return (
-        <View style={{ flex: 1 }}>
+        <View style={{ flex: 1 ,
+        backgroundColor:"#F2F4F3"
+        }}>
             <MyStatusBar backgroundColor={Backgroundcolor.yelloback} barStyle="light-content" />
 
 
@@ -186,19 +196,22 @@ const Home = () => {
                         />
                     </View>
 
-                    <View style={{ padding: "5%" }}>
+                    <View style={{ paddingHorizontal: "5%",paddingTop:10 }}>
                         <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "space-between" }}>
                             <TEXT title="Things to do :"
                                 size={16}
                                 color={Textcolor.bluetext}
-                                weight={"bold"}
-                                family="Poppins-Bold" 
+                                
+                                family="Roboto-Black" 
                                 />
-                            <TouchableOpacity onPress={() =>navigation.navigate("Tasklist")}>
+                            <TouchableOpacity onPress={() =>
+                                //navigation.navigate("Tasklist")
+                                Alert.alert("Navigation Screen under Production....")
+                            }>
                                 <TEXT title="more >"
                                     size={12}
                                     color={Textcolor.bluetext}
-                                    family="Poppins-Regular"
+                                    family="Roboto-Regular"
                                 />
                             </TouchableOpacity>
                         </View>
@@ -213,7 +226,8 @@ const Home = () => {
                                                     desc={item.desc}
                                                     time={item.time}
                                                     date={item.date}
-                                                    width={260} />
+                                                    width={270}
+                                                     />
                                             </View>
                                         );
                                     })}
@@ -223,7 +237,7 @@ const Home = () => {
                         </View>
                     </View>
 
-                    <View style={{ width: "100%", height: 250, }}>
+                    <View style={{ width: "100%", height: 250, marginTop:20}}>
 
                         <Swiper activeDotColor={Backgroundcolor.yelloback}
                             activeDotStyle={{ width: 24 }}
@@ -243,9 +257,8 @@ const Home = () => {
                             <View>
                                 <TEXT title="Blog Posts"
                                     size={16}
-                                    weight={"700"}
                                     color={Textcolor.bluetext} 
-                                   family="Poppins-Bold"
+                                   family="Roboto-Black"
                                     />
                                 <TEXT title="Information Description"
                                     size={11}
@@ -254,12 +267,12 @@ const Home = () => {
                                     family="Roboto-Regular"/>
                             </View>
 
-                            <TouchableOpacity>
+                            <TouchableOpacity onPress={() =>  Alert.alert("Navigation Screen under Production....")}>
                                 <TEXT title="more >"
                                     size={12}
                                     color={Textcolor.bluetext}
                                     style={{ opacity: 0.9951270222663879 }}
-                                    family="Poppins-Regular"
+                                    family="Roboto-Regular"
                                 />
                             </TouchableOpacity>
                         </View>
@@ -273,15 +286,14 @@ const Home = () => {
 
                                         <TEXT title={item.title}
                                             size={13}
-                                            weight={"bold"}
                                             color={Textcolor.blacktext}
                                             style={{ marginTop: 5 }} 
                                             family="Poppins-Bold"/>
                                         <TEXT title={item.desc}
                                             size={11}
                                             color={Textcolor.lightblack}
-                                            style={{ marginTop: 2, opacity: 0.6200000047683716 }} 
-                                            family="Poppins-Regular"/>
+                                            style={{ marginTop:-2, opacity: 0.6200000047683716 }} 
+                                            family="Poppins-Medium"/>
                                     </View>
                                 );
                             })}
@@ -290,18 +302,17 @@ const Home = () => {
 
 
                     <View style={{}}>
-                        <View style={{ flexDirection: "row", justifyContent: "space-between", padding: 20 }}>
+                        <View style={{ flexDirection: "row", justifyContent: "space-between", padding: 20 , alignItems:"center" }}>
                             <TEXT title="Activity records"
                                 size={16}
-                                weight={"700"}
                                 color={Textcolor.bluetext}
-                                family="Poppins-Bold" />
-                            <TouchableOpacity>
+                                family="Roboto-Black" />
+                            <TouchableOpacity onPress={() =>  Alert.alert("Navigation Screen under Production....")}>
                                 <TEXT title="more >"
                                     size={12}
                                     color={Textcolor.bluetext}
                                     style={{ opacity: 0.9951270222663879 }}
-                                    family="Poppins-Regular"
+                                    family="Roboto-Regular"
                                 />
                             </TouchableOpacity>
                         </View>
@@ -323,14 +334,13 @@ const Home = () => {
                                             <TEXT title={item.title}
                                                 size={15}
                                                 color={Textcolor.darkshadetext}
-                                                weight={"bold"}
                                                 style={{ opacity: 0.6899999976158142 }}
-                                                family="Poppins-Bold"
+                                                family="Roboto-Black"
                                             />
                                             <TEXT title={`(${item.desc})`}
                                                 size={12}
                                                 color={Textcolor.grayoptext}
-                                                family="Poppins-Regular"
+                                                family="Roboto-Regular"
                                             />
 
                                         </View>
@@ -339,9 +349,8 @@ const Home = () => {
                                             <TEXT title={item.time}
                                                 size={11}
                                                 color={Textcolor.darkshadetext}
-                                                weight={"500"}
                                                 style={{ opacity: 0.38999998569488525 }}
-                                                family="Poppins-SemiBold"
+                                                family="Roboto-Bold"
                                             />
                                         </View>
                                     </View>

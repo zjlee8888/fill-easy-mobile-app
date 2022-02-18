@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, TouchableOpacity } from 'react-native'
+import { View, Text, TouchableOpacity, Alert } from 'react-native'
 import { Icon } from 'react-native-elements';
 
 import { Backgroundcolor, Textcolor, Buttoncolor, Bordercolor, Shadowcolor } from '../Utility/Colors'
@@ -10,6 +10,10 @@ import { BUTTON } from '../Component/Button'
 
 export const Card = (props) => {
     const { title, desc, time, date, width ,notify } = props
+
+    const signin = () =>{
+        Alert.alert("Navigation Screen is under Production......")
+    }
     return (
         <View style={{
             width: width,
@@ -22,13 +26,13 @@ export const Card = (props) => {
             <View>
                 <Cirle />
             </View>
-            <View style={{ marginLeft: 10}}>
+            <View style={{ marginLeft: 8}}>
                 <TEXT title={title}
                     size={16}
                     color={Textcolor.blacktext}
-                    weight={"bold"}
+                    numline= {1}
                     style={{marginBottom:0}}
-                    family="Poppins-Bold"
+                    family="Roboto-Black"
                     />
 
                 <TEXT title={desc}
@@ -91,6 +95,7 @@ export const Card = (props) => {
                     weight="bold"
                     press={props.signin}
                     family="Poppins-Bold"
+                    press={signin}
                 />
                 </>
             }

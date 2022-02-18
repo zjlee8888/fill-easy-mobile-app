@@ -26,8 +26,8 @@ const Preauth = () => {
 
 const Postauth = () => {
   return (
-    <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName="TabScreen">
-      <Stack.Screen name="TabScreen" component={Tabnavigation} />
+    <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName="TabScreen1">
+      <Stack.Screen name="TabScreen1" component={Tabnavigation} />
       <Stack.Screen name="Tasklist" component={Tasklist} />
       <Stack.Screen name="TodoScreen" component={TodoScreen} />
 

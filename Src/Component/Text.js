@@ -2,7 +2,7 @@ import React from 'react'
 import { View, Text } from 'react-native'
 
 export const TEXT = (props) => {
-    const { title, style, size, color, weight ,family} = props
+    const { title, style, size, color, weight ,family , numline} = props
     return (
         <View>
             <Text style={{
@@ -15,7 +15,9 @@ export const TEXT = (props) => {
                 ...style,
                 
 
-            }}>{title}</Text>
+            }}
+            numberOfLines={numline}
+            >{title}</Text>
         </View>
     );
 }

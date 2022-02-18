@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, Image, TouchableOpacity, TouchableWithoutFeedback } from 'react-native'
+import { View, Text, Image, TouchableOpacity, TouchableWithoutFeedback, Platform } from 'react-native'
 
 import { Icon } from 'react-native-elements';
 import { Backgroundcolor, Shadowcolor } from '../Utility/Colors'
@@ -44,8 +44,9 @@ export const Tabbar = () => {
                 justifyContent: "center",
                 shadowOffset: { width: 0, height: 3 },
                 shadowRadius: 3,
-                shadowColor: Shadowcolor.shadow2,
+                shadowColor:Platform.OS === 'android' ? "#000" : Shadowcolor.shadow2,
                 shadowOpacity: 1,
+                elevation:5,
                 marginBottom: 45
             }}>
                 <Image source={require("../../assets/Image/Scan.png")}

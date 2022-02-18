@@ -65,11 +65,12 @@ const Tasklist = () => {
         <View style={{
             flex: 1,
             alignItems: "center",
-            //justifyContent:"center",
+            justifyContent:"center",
 
         }}>
-            {/* <MyStatusBar backgroundColor={Backgroundcolor.yelloback} barStyle="light-content" /> */}
-            <Header title="" />
+            <Text>Tasklist Screeen under oriduction.......</Text>
+        
+            {/* <Header title="" />
             <ScrollView style={{ flex: 1, width: "100%", padding: 15 }}>
                 <TEXT title="Things to do (3)"
                     size={16}
@@ -110,7 +111,7 @@ const Tasklist = () => {
                 </View>
 
 
-            </ScrollView>
+            </ScrollView> */}
         </View>
     );
 }

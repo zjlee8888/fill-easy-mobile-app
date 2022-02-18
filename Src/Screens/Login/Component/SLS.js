@@ -21,7 +21,7 @@ export const Signin = (props) => {
                 color={Textcolor.blacktext}
             />
 
-            <View style={{ ...styles.textview, marginTop: "5%" }}>
+            <View style={{ ...styles.textview, marginTop: 25 }}>
                 <View style={{ width: "20%" }}>
                     <Icon name="email"
                         type="zocial"
@@ -29,6 +29,7 @@ export const Signin = (props) => {
                         size={20} />
                 </View>
                 <TextInput placeholder="Email......"
+                 placeholderTextColor="rgba(60, 60, 67,0.3)"
                     value={email}
                     onChangeText={value => props.setemail(value)}
                     style={{ color: "rgba(60, 60, 67, 1)", fontSize: 15 }}
@@ -45,6 +46,7 @@ export const Signin = (props) => {
                 </View>
 
                 <TextInput placeholder="Password......"
+                        placeholderTextColor="rgba(60, 60, 67,0.3)"
                     value={password}
                     onChangeText={value => props.setpass(value)}
                     style={{ color: "rgba(60, 60, 67, 1)", fontSize: 15, width: "65%", }}
@@ -74,6 +76,7 @@ export const Signin = (props) => {
                 bradius={10}
                 title="Continue"
                 size={17}
+                weight={"800"}
                 style={{ marginTop:"5%"}}
                 color={Textcolor.whitetext}
                 press={props.signin}
@@ -118,6 +121,7 @@ export const Signup = (props) => {
                         size={20} />
                 </View>
                 <TextInput placeholder="Email......"
+                placeholderTextColor="rgba(60, 60, 67,0.3)"
                     value={email}
                     onChangeText={value => props.setemail(value)}
                     style={{ color: "rgba(60, 60, 67, 1)", fontSize: 15 }}
@@ -134,6 +138,7 @@ export const Signup = (props) => {
                 </View>
 
                 <TextInput placeholder="Password......"
+                placeholderTextColor="rgba(60, 60, 67,0.3)"
                     value={password}
                     onChangeText={value => props.setpass(value)}
                     style={{ color: "rgba(60, 60, 67, 1)", fontSize: 15, width: "65%", }}
@@ -163,6 +168,7 @@ export const Signup = (props) => {
                 bradius={10}
                 title="Register"
                 size={17}
+                weight={"800"}
                 style={{marginTop:15}}
                 color={Textcolor.whitetext}
                 press={props.signup}

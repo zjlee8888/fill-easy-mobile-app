@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, TextInput, ScrollView, TouchableOpacity, Image } from 'react-native'
+import { View, Text, TextInput, ScrollView, TouchableOpacity, Image, Alert } from 'react-native'
 import { Icon } from 'react-native-elements';
 import { useNavigation } from '@react-navigation/native';
 
@@ -23,21 +23,23 @@ export const Header = (props) => {
                 <TEXT title="Fill"
                     size={39}
                     color={Textcolor.whitetext}
-                    weight={"bold"}
                     family="Poppins-Bold"
                 />
                 <TEXT title=" Easy"
                     size={39}
                     color={Textcolor.blacktext}
-                    weight={"bold"}
                     family="Poppins-Bold"
                 />
                 <View style={{ marginRight: 0, flex: 1, alignItems: "flex-end" }}>
-                    <TouchableOpacity style={{ flexDirection: "row" }} onPress={() => navigation.navigate("Tasklist")}>
+                    <TouchableOpacity style={{ flexDirection: "row" }}
+                        onPress={() =>
+                            // navigation.navigate("Tasklist")
+                            Alert.alert("Tasklist Screen under production....")
+                        }>
                         <Icon name="bell"
                             type="fontisto"
                             size={20} />
-                        <View style={{ width: 6, height: 6, backgroundColor: Backgroundcolor.dotbacground, borderRadius: 3, marginLeft: -2 }}>
+                        <View style={{ width: 6, height: 6, backgroundColor: Backgroundcolor.dotbacground, borderRadius: 3, marginLeft: -6,marginTop:-3 }}>
                             {/* <Icon name="dot-single"
                                 type="entypo"
                                 size={25}
@@ -59,26 +61,25 @@ export const Header = (props) => {
                 paddingHorizontal: 10
 
             }}>
-                <Icon name="search1"
-                    type="antdesign"
-                    size={15}
+                <Icon name="search"
+                    type="ionicon"
+                    size={16}
                     color={Bordercolor.mblue} />
 
                 <TextInput placeholder="Search for service..."
-                    style={{ flex: 1, marginLeft: 5 }} />
+                placeholderTextColor="rgba(183, 190, 198, 1)"
+                    style={{ flex: 1, marginLeft: 10, fontFamily: "Roboto-Regular" }} />
 
             </TouchableOpacity>
             <View style={{ marginTop: 15, flexDirection: "row", alignItems: "center" }}>
                 <TEXT title="1. Choose your"
                     size={18}
                     color={Textcolor.whitetext}
-                    weight={"bold"}
-                    family="Poppins-ExtraBold" />
+                    family="Poppins-Black" />
                 <TEXT title=" Service"
                     size={18}
                     color={Textcolor.bluetext}
-                    weight={"bold"}
-                    family="Poppins-ExtraBold" />
+                    family="Poppins-Black" />
             </View>
 
 
@@ -106,10 +107,14 @@ export const Header = (props) => {
                                         alignItems: "center",
                                         justifyContent: "center", marginBottom: 5
                                     }}
-                                        onPress={() => {setSelected(item.title) , navigation.navigate("TodoScreen")}}
+                                        onPress={() => {
+                                            setSelected(item.title),
+                                            // navigation.navigate("TodoScreen"),
+                                            Alert.alert("Navigation Screens under production.....")
+                                        }}
                                     >
-
-                                        {item.id === 1 || item.id === 4 || item.id === 5 || item.id === 8 ?
+                                        {/* 
+                                        {  item.id === 8 ?
                                             <Image source={item.image}
                                                 style={{ width: 35, height: 35 }} />
                                             :
@@ -118,16 +123,22 @@ export const Header = (props) => {
 
                                                 <Icon name={item.name}
                                                     type={item.type}
-                                                    color={Backgroundcolor.yelloback}
+                                                    color={ selected == item.title ? Backgroundcolor.mainblueback : Backgroundcolor.yelloback}
                                                     size={35} />
 
                                             )
-                                        }
+                                        } */}
+
+                                        <Icon name={item.name}
+                                            type={item.type}
+                                            color={selected == item.title ? Backgroundcolor.mainblueback : Backgroundcolor.yelloback}
+                                            size={35} />
+
                                     </TouchableOpacity>
                                     <TEXT title={item.title}
                                         size={11}
                                         color={selected == item.title ? Textcolor.darkblack : Textcolor.lightblack}
-                                        family={selected == item.title ? "Poppins-Regular" : "Poppins-Light"}
+                                        family={selected == item.title ? "Poppins-Medium" : "Poppins-Light"}
                                     />
 
                                 </View>
