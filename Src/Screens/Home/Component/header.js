@@ -33,8 +33,8 @@ export const Header = (props) => {
                 <View style={{ marginRight: 0, flex: 1, alignItems: "flex-end" }}>
                     <TouchableOpacity style={{ flexDirection: "row" }}
                         onPress={() =>
-                            // navigation.navigate("Tasklist")
-                            Alert.alert("Tasklist Screen under production....")
+                             navigation.navigate("Tasklist")
+                            //Alert.alert("Tasklist Screen under production....")
                         }>
                         <Icon name="bell"
                             type="fontisto"
@@ -109,8 +109,8 @@ export const Header = (props) => {
                                     }}
                                         onPress={() => {
                                             setSelected(item.title),
-                                            // navigation.navigate("TodoScreen"),
-                                            Alert.alert("Navigation Screens under production.....")
+                                            navigation.navigate("TodoScreen")
+                                          //  Alert.alert("Navigation Screens under production.....")
                                         }}
                                     >
                                         {/* 

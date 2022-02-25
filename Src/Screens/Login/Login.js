@@ -77,9 +77,9 @@ const LoginScreen = () => {
         },
     ]
 
-    const [open , setOpen] = useState(false)
+    const [open, setOpen] = useState(false)
     return (
-       
+
         <TouchableWithoutFeedback style={{ flex: 1 }} onPress={() => Keyboard.dismiss()}>
 
             <View style={{ flex: 1, alignItems: "center", backgroundColor: Backgroundcolor.whiteback, paddingHorizontal: "10%" }}>
@@ -90,7 +90,7 @@ const LoginScreen = () => {
                     marginTop: "15%",
                     width: "100%",
                     height: "100%",
-                    justifyContent:"space-around"
+                    justifyContent: "space-around"
 
                 }}>
                     <View style={{ flexDirection: "row", width: "100%", justifyContent: "space-between" }}>
@@ -102,9 +102,9 @@ const LoginScreen = () => {
                             shadowOffset: { width: 0, height: 3 },
                             shadowRadius: 15,
                             shadowOpacity: 1,
-                            shadowColor:Platform.OS === 'android' ? "#fed303" : "rgba(242, 147, 0, 0.15)",
-                           // shadowColor: "rgba(242, 147, 0, 0.15)",
-                            elevation:25
+                            shadowColor: Platform.OS === 'android' ? "#fed303" : "rgba(242, 147, 0, 0.15)",
+                            // shadowColor: "rgba(242, 147, 0, 0.15)",
+                            elevation: 25
                         }}>
                             <Image source={require("../../../assets/Image/logo2.png")}
                                 style={{
@@ -145,74 +145,74 @@ const LoginScreen = () => {
                         }
 
 
-                    <View style={{ width: "100%", marginTop: "10%", alignItems: "center", alignSelf: "center" }}>
+                        <View style={{ width: "100%", marginTop: "10%", alignItems: "center", alignSelf: "center" }}>
 
-                        <View style={{ width: "105%", alignItems: "center" }}>
-                            <View style={{ height: 1, width: "100%", backgroundColor: "#7070702C", }}></View>
-                            <View style={{ position: "absolute", backgroundColor: "white", paddingHorizontal: 10, marginTop: -8 }}>
-                                <TEXT title="Or Log In Using"
-                                    color="#3C3C4399"
-                                    size={12} />
+                            <View style={{ width: "105%", alignItems: "center" }}>
+                                <View style={{ height: 1, width: "100%", backgroundColor: "#7070702C", }}></View>
+                                <View style={{ position: "absolute", backgroundColor: "white", paddingHorizontal: 10, marginTop: -8 }}>
+                                    <TEXT title="Or Log In Using"
+                                        color="#3C3C4399"
+                                        size={12} />
+                                </View>
+                            </View>
+
+
+                            <View style={{ flexDirection: "row", width: "100%", marginTop: "10%", justifyContent: "space-around" }}>
+                                <TouchableOpacity style={{
+                                    width: "48%",
+                                    borderRadius: 10,
+                                    borderWidth: 1,
+                                    borderColor: "#4CAE72",
+                                    height: 54,
+                                    alignItems: "center",
+                                    justifyContent: "center"
+                                }}>
+                                    <Image source={require("../../../assets/Image/IamSmart_logo.png")}
+                                        style={{ width: 89, height: 33 }}
+                                    />
+                                </TouchableOpacity>
+
+                                <TouchableOpacity style={{
+                                    width: "48%",
+                                    borderRadius: 10,
+                                    borderWidth: 1,
+                                    borderColor: "#707070",
+                                    height: 54,
+                                    alignItems: "center",
+                                    justifyContent: "center",
+                                    flexDirection: "row"
+                                }}>
+                                    <Image source={require('../../../assets/Image/google.png')}
+                                        style={{ width: 18, height: 18 }} />
+                                    <TEXT title="Google"
+                                        size={14}
+                                        color="#3C3C4399"
+                                        style={{ marginLeft: 5 }} />
+                                </TouchableOpacity>
+
+
+                            </View>
+                            <View style={{ flexDirection: "row", marginTop: "10%" }}>
+                                <TEXT title={login ? "New to FillEasy? " : "Already a member? "}
+                                    size={16}
+                                    color="#000000" />
+                                {login ?
+                                    <TouchableOpacity onPress={() => setLogin(false)}>
+                                        <TEXT title="Sign Up"
+                                            color="#2B299E"
+                                            weight={"bold"}
+                                            size={16} />
+                                    </TouchableOpacity>
+                                    :
+                                    <TouchableOpacity onPress={() => setLogin(true)}>
+                                        <TEXT title="Log In"
+                                            color="#2B299E"
+                                            weight={"bold"}
+                                            size={16} />
+                                    </TouchableOpacity>
+                                }
                             </View>
                         </View>
-
-
-                        <View style={{ flexDirection: "row", width: "100%", marginTop: "10%", justifyContent: "space-around" }}>
-                            <TouchableOpacity style={{
-                                width: "48%",
-                                borderRadius: 10,
-                                borderWidth: 1,
-                                borderColor: "#4CAE72",
-                                height: 54,
-                                alignItems: "center",
-                                justifyContent: "center"
-                            }}>
-                                <Image source={require("../../../assets/Image/IamSmart_logo.png")}
-                                    style={{ width: 89, height: 33 }}
-                                />
-                            </TouchableOpacity>
-
-                            <TouchableOpacity style={{
-                                width: "48%",
-                                borderRadius: 10,
-                                borderWidth: 1,
-                                borderColor: "#707070",
-                                height: 54,
-                                alignItems: "center",
-                                justifyContent: "center",
-                                flexDirection: "row"
-                            }}>
-                                <Image source={require('../../../assets/Image/google.png')}
-                                    style={{ width: 18, height: 18 }} />
-                                <TEXT title="Google"
-                                    size={14}
-                                    color="#3C3C4399"
-                                    style={{ marginLeft: 5 }} />
-                            </TouchableOpacity>
-
-
-                        </View>
-                        <View style={{ flexDirection: "row", marginTop: "10%" }}>
-                            <TEXT title={login ? "New to FillEasy? " : "Already a member? "}
-                                size={16}
-                                color="#000000" />
-                            {login ? 
-                            <TouchableOpacity onPress={() =>setLogin(false)}>
-                                <TEXT title= "Sign Up"
-                                    color="#2B299E"
-                                    weight={"bold"}
-                                    size={16} />
-                            </TouchableOpacity>
-                            : 
-                            <TouchableOpacity onPress={() =>setLogin(true)}>
-                                <TEXT title= "Log In"
-                                    color="#2B299E"
-                                    weight={"bold"}
-                                    size={16} />
-                            </TouchableOpacity>
-                            }
-                        </View>
-                    </View>
                     </ScrollView>
                 </View>
             </View>

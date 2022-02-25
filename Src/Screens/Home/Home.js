@@ -205,8 +205,8 @@ const Home = () => {
                                 family="Roboto-Black" 
                                 />
                             <TouchableOpacity onPress={() =>
-                                //navigation.navigate("Tasklist")
-                                Alert.alert("Navigation Screen under Production....")
+                                navigation.navigate("Tasklist")
+                               // Alert.alert("Navigation Screen under Production....")
                             }>
                                 <TEXT title="more >"
                                     size={12}
@@ -267,7 +267,10 @@ const Home = () => {
                                     family="Roboto-Regular"/>
                             </View>
 
-                            <TouchableOpacity onPress={() =>  Alert.alert("Navigation Screen under Production....")}>
+                            <TouchableOpacity onPress={() => 
+                                Alert.alert("Navigation Screen under Production....")
+                              // navigation.navigate("TabScreen1")
+                                 }>
                                 <TEXT title="more >"
                                     size={12}
                                     color={Textcolor.bluetext}

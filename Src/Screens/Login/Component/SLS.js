@@ -21,7 +21,7 @@ export const Signin = (props) => {
                 color={Textcolor.blacktext}
             />
 
-            <View style={{ ...styles.textview, marginTop: 25 }}>
+            <View style={{ ...styles.textview, marginTop: 20 }}>
                 <View style={{ width: "20%" }}>
                     <Icon name="email"
                         type="zocial"

@@ -9,7 +9,8 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Home from '../Screens/Home/Home'
 import Flag from '../Screens/Flag/Flag'
 import Profile from '../Screens/Profile/Profile'
-import History from '../Screens/History/History'
+import ActivityRecord from '../Screens/Activity/Activity'
+// import History from '../Screens/History/History'
 
 import { Tabbar } from './Tabbar'
 
@@ -20,7 +21,7 @@ const Tabnavigation = () => {
     return (
         <Tab.Navigator screenOptions={{ headerShown: false, }} tabBar={() => <Tabbar />}>
             <Tab.Screen name="Home" component={Home} />
-            <Tab.Screen name="Flag" component={Flag} />
+           
 
         </Tab.Navigator>
     );

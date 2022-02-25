@@ -1,10 +1,12 @@
 import React from 'react'
 import { View, Text, Image, TouchableOpacity, TouchableWithoutFeedback, Platform } from 'react-native'
+import { useNavigation } from '@react-navigation/native';
 
 import { Icon } from 'react-native-elements';
 import { Backgroundcolor, Shadowcolor } from '../Utility/Colors'
 
 export const Tabbar = () => {
+    const navigation = useNavigation();
     return (
         <View style={{
             width: "98%",
@@ -55,7 +57,7 @@ export const Tabbar = () => {
 
 
 
-            <TouchableOpacity >
+            <TouchableOpacity onPress={() =>navigation.navigate("Activity")}>
             <Icon name="history"
                     type="material-community"
                     size={24} 

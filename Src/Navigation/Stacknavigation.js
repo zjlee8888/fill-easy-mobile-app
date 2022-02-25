@@ -3,6 +3,7 @@ import { View, Text, TextInput } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import ActivityRecord from '../Screens/Activity/Activity'
 
 //Screens
 import LoginScreen from '../Screens/Login/Login'
@@ -30,6 +31,7 @@ const Postauth = () => {
       <Stack.Screen name="TabScreen1" component={Tabnavigation} />
       <Stack.Screen name="Tasklist" component={Tasklist} />
       <Stack.Screen name="TodoScreen" component={TodoScreen} />
+      <Stack.Screen name="Activity" component={ActivityRecord} />
 
     </Stack.Navigator>
   );
@@ -37,6 +39,7 @@ const Postauth = () => {
 
 const Stacknavigation = () => {
   const [authtoken, SetAuthtoken] = useState("")
+  console.log("HElllo")
 
   return (
     <NavigationContainer>
