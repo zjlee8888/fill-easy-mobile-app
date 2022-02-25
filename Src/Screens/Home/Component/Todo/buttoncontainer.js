@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text , Dimensions } from 'react-native'
+import { View, Text, Dimensions } from 'react-native'
 
 import { BUTTON } from '../../../../Component/Button'
 import { Textcolor } from '../../../../Utility/Colors'
@@ -8,14 +8,28 @@ const windowWidth = Dimensions.get('screen').width;
 
 console.log(windowWidth)
 export const Bottom = (props) => {
-    const {contiue , Company , back , style} = props
+
+    const formDownload = (type) => {
+        switch (type) {
+            case 'con':
+                return 'Continue';
+            case 'send':
+                return 'Send(1)'
+            case 'submit':
+                return 'Submit'
+            default:
+                return 'Continue'
+        }
+    }
+
+    const { contiue, FillAccount, type, Company, back, style } = props
     return (
         <View style={{
             width: "100%",
             flexDirection: "row",
             justifyContent: "space-around",
             ...style
-            
+
         }}>
             <BUTTON
                 width={windowWidth < 330 ? 135 : 146}
@@ -24,7 +38,7 @@ export const Bottom = (props) => {
                 bwidth={2}
                 bcolor={Company ? 'white' : "black"}
                 bradius={50}
-                title={Company ?  "Search Now" : "Back"}
+                title={Company ? "Search Now" : "Back"}
                 family="Poppins-Bold"
                 size={14}
                 color={Company ? 'white' : "black"}
@@ -45,12 +59,12 @@ export const Bottom = (props) => {
             <BUTTON
                 width={windowWidth < 330 ? 135 : 146}
                 height={50}
-                background={Textcolor.yellowtext}
+                background={type == 'send' ? '#EB632E' : Textcolor.yellowtext}
                 bradius={50}
-                title="Continue"
+                title={formDownload(type)}
                 family="Poppins-Bold"
                 size={14}
-                color={Textcolor.blacktext}
+                color={type == 'send' ? Textcolor.whitetext : Textcolor.blacktext}
                 press={() => { props.handlebutton(contiue) }}
                 style={{
                     shadowColor: "rgba(0, 0, 0, 0.16)",

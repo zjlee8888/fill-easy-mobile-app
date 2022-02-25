@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import {
-    View, 
-    Text, 
+    View,
+    Text,
     StyleSheet,
     TouchableOpacity,
     TextInput,
@@ -18,7 +18,7 @@ import { BUTTON } from '../../../../Component/Button'
 import { Fillin } from './Fillin';
 import { Platform } from 'react-native';
 
-import { Bottom } from '../Todo/buttoncontainer'
+import { Bottom } from '../todo/buttoncontainer'
 const data = [
     {
         name: "Service",
@@ -58,7 +58,7 @@ export const FillAccount = (props) => {
     const [Adress, setAdress] = useState(false);
     const [addressfill, setAddressfill] = useState("Change Residential Address")
 
-    const [number , setNumber] = useState()
+    const [number, setNumber] = useState()
 
     return (
         // <View>
@@ -69,65 +69,66 @@ export const FillAccount = (props) => {
                 style={{ padding: "4%", }}
             >
 
-            <View style={{ flex:1}}>
-                <View style={{
-                    padding: 20,
-                    borderWidth: 1,
-                    borderColor: '#D8D6D6',
-                    borderRadius: 22,
-                    backgroundColor:"#ffffff",
-                    shadowColor: "rgba(0, 0, 0, 0.04)",
-                    shadowOffset: {
-                        width: 0,
-                        height: 3
-                    },
-                    shadowOpacity: 0.6,
-                    shadowRadius: 10,
-                    elevation: 25,
-                }}>
-                   
-                            <TEXT title="If you are concerned about privacy, 
+                <View style={{ flex: 1 }}>
+                    <View style={{
+                        padding: 20,
+                        borderWidth: 1,
+                        borderColor: '#D8D6D6',
+                        borderRadius: 22,
+                        backgroundColor: "#ffffff",
+                        shadowColor: "rgba(0, 0, 0, 0.04)",
+                        shadowOffset: {
+                            width: 0,
+                            height: 3
+                        },
+                        shadowOpacity: 0.6,
+                        shadowRadius: 10,
+                        elevation: 25,
+                    }}>
+
+                        <TEXT title="If you are concerned about privacy, 
                                 you can fill in yourself!"
-                                size={9}
-                                color={'#A4A4A4'}
-                                family="Roboto-Regular"
-                            // weight={'bold'}
-                            />
-                     
-                            <TEXT title="TAI SANG BANK LIMITED Account No."
-                                size={14}
-                                color={Textcolor.bluetext}
-                                weight={'bold'}
-                                style={{marginTop:10}}
-                            />
+                            size={9}
+                            color={'#A4A4A4'}
+                            family="Roboto-Regular"
+                        // weight={'bold'}
+                        />
+
+                        <TEXT title="TAI SANG BANK LIMITED Account No."
+                            size={14}
+                            color={Textcolor.bluetext}
+                            weight={'bold'}
+                            style={{ marginTop: 10 }}
+                        />
 
                         <View style={{
                             width: '100%',
                             borderBottomWidth: 1,
                             borderBottomColor: '#DDDDDD',
-                            paddingVertical:Platform.OS == "android" ? 0 : 15
+                            paddingVertical: Platform.OS == "android" ? 0 : 15
                         }}>
-                            <TextInput  placeholder="e.g. 123-456789-111"
-                                        value={number}
-                                        onChangeText={(value) => setNumber(value)}
-                                        style={{marginTop:Platform.OS == "android" ? 0 :10,fontSize:15,}}
-                                        placeholderTextColor="rgba(0, 0, 0, 0.2)"
-                                        keyboardType="numeric"
+                            <TextInput placeholder="e.g. 123-456789-111"
+                                value={number}
+                                onChangeText={(value) => setNumber(value)}
+                                style={{ marginTop: Platform.OS == "android" ? 0 : 10, fontSize: 15, }}
+                                placeholderTextColor="rgba(0, 0, 0, 0.2)"
+                                keyboardType="numeric"
                             >
                             </TextInput>
                         </View>
-                        
-                   
-                </View>
-            </View>
 
-            <View style={{marginTop:20,width:"100%",alignItems:"center",alignSelf:"center",marginBottom:15}}>
-                    <Bottom handlebutton={props.handlebutton}
-                            contiue="acc2finish"
-                            back="in2add"
-                            style={{ justifyContent: "space-evenly",}}/>
+
                     </View>
-            {/* <View style={{
+                </View>
+
+                <View style={{ marginTop: 20, width: "100%", alignItems: "center", alignSelf: "center", marginBottom: 15 }}>
+                    <Bottom handlebutton={props.handlebutton}
+                        type='submit'
+                        contiue="acc2finish"
+                        back="in2add"
+                        style={{ justifyContent: "space-evenly", }} />
+                </View>
+                {/* <View style={{
                 width: '100%',
                 flexDirection: 'row',
                 justifyContent: "space-around",

@@ -15,7 +15,7 @@ import { Icon } from 'react-native-elements';
 import { TEXT } from '../../../../Component/Text'
 
 //component
-import { Bottom } from '../Todo/buttoncontainer'
+import { Bottom } from '../todo/buttoncontainer'
 
 const data2 = [
     {

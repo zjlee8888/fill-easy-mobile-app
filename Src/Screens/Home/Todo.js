@@ -1,22 +1,19 @@
 import React, { useState } from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 import { useNavigation } from '@react-navigation/native';
-
-
 import { Header } from './Component/Screeheader'
 import { Textcolor } from '../../Utility/Colors'
 import { Icon } from 'react-native-elements';
 //components
-import { Company } from './Component/Todo/company'
-import { Fillin } from './Component/Todo/fillin'
+import { Company } from './Component/todo/company'
+import { Fillin } from './Component/todo/fillin'
 import { TEXT } from '../../Component/Text'
 import { BUTTON, Button } from '../../Component/Button'
 import { Colors } from '../../Utility/Colors'
 import { Buttoncolor, Bordercolor } from '../../Utility/Colors'
-import { FillinAddress } from './Component/Todo/address'
-import { FillAccount } from './Component/Todo/account'
-import {FormDownload} from './Component/Todo/finished'
-
+import { FillinAddress } from './Component/todo/address'
+import { FillAccount } from './Component/todo/account'
+import {FormDownload} from './Component/todo/finished'
 
 const data = [
     {

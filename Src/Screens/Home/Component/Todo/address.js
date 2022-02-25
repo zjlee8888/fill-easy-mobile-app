@@ -19,7 +19,7 @@ import { BUTTON } from '../../../../Component/Button'
 import { Fillin } from './Fillin';
 import { FillAccount } from './FillAccount';
 
-import { Bottom } from '../Todo/buttoncontainer'
+import { Bottom } from '../todo/buttoncontainer'
 
 const data = [
     {

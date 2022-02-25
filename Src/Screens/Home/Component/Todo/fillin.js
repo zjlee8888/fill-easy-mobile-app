@@ -17,7 +17,7 @@ import { Icon } from 'react-native-elements';
 import { BUTTON } from '../../../../Component/Button'
 import { FillinAddress } from './FillinAddress';
 
-import { Bottom } from '../Todo/buttoncontainer'
+import { Bottom } from '../todo/buttoncontainer'
 const data = [
     {
         name: "Service",
@@ -65,6 +65,26 @@ export const Fillin = (props) => {
     const [idtype, setIdtype] = useState("HKID")
     const [iddocument, setIddocument] = useState("")
     const [effetdate, setEffectdate] = useState("")
+    const DateValidation = (text, field) => {
+        if (field == "date") {
+          setDate(
+            text
+              .replace(/^(\d\d)(\d)$/g, "$1/$2")
+              .replace(/^(\d\d\/\d\d)(\d+)$/g, "$1/$2")
+              .replace(/[^\d\/]/g, "")
+          );
+        }
+    
+        if (field == "effetdate") {
+            
+            setEffectdate(
+                text.replace(/^(\d\d)(\d)$/g, "$1/$2")
+                .replace(/^(\d\d\/\d\d)(\d+)$/g, "$1/$2")
+                .replace(/[^\d\/]/g, "")
+                )
+    
+        }
+      };
     return (
         // <View>
 
@@ -103,16 +123,28 @@ export const Fillin = (props) => {
                             borderColor: 'rgba(226, 226, 226, 0.5)',
                             paddingVertical: Platform.OS == "android" ? 0 : 12
                         }}>
-
+{/* 
                             <TextInput
-                             placeholder="08/01/2022"
+                             placeholder="08//2022"
                                 placeholderTextColor="rgba(164, 164, 164, 1)"
                               value={data}
                                 onChangeText={value => setDate(value)}
                                 style={{ fontSize: 14, color: Textcolor.blacktext }}
                              //   keyboardType="numeric"
                                 dataDetectorTypes={true}
-                            />
+                            /> */}
+                            <TextInput
+                placeholder="08/01/2022"
+                placeholderTextColor="rgba(164, 164, 164, 1)"
+                value={date}
+                onChangeText={(text) => {
+                  DateValidation(text, "date");
+                }}
+                style={{ fontSize: 14, color: Textcolor.blacktext }}
+                keyboardType="number-pad"
+                dataDetectorTypes={true}
+                maxLength={10}
+              />                  
 {/* 
                             <DateInput
                                 inputProps={
@@ -359,16 +391,30 @@ export const Fillin = (props) => {
                             </View>
 
                             <View style={{ borderBottomWidth: 1, width: "50%", borderColor: "rgba(226, 226, 226, 1)", paddingBottom: Platform.OS == "android" ? 0 : 15 }}>
-                                <TextInput placeholder="08 / 01 / 2022"
+                                {/* <TextInput placeholder="08 / 01 / 2022"
                                     placeholderTextColor="rgba(164, 164, 164, 1)"
                                     value={effetdate}
                                     onChangeText={value => setEffectdate(value)}
                                     style={{ fontSize: 14, color: Textcolor.blacktext }}
                                     editable={effect ? false : true}
-                                /></View>
+                                />
+                                 */}
+                                 <TextInput
+                  placeholder="08 / 01 / 2022"
+                  placeholderTextColor="rgba(164, 164, 164, 1)"
+                  value={effetdate}
+                  onChangeText={(value) => DateValidation(value, "effetdate")}
+                  keyboardType="number-pad"
+                  style={{ fontSize: 14, color: Textcolor.blacktext }}
+                  editable={effect ? false : true}
+                  maxLength={10}
+                />
+                                </View>
                         </View>
                     </View>
-                    <View style={{ marginTop: 15, width: "100%", alignItems: "center", marginBottom: 25 }}>
+                    <View style={{ marginTop: 15, width: "100%", alignItems: "center", 
+                    marginBottom: 25 
+                    }}>
                         <Bottom handlebutton={props.handlebutton}
                             contiue="in2add"
                             back="company"

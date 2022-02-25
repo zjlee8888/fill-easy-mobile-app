@@ -15,7 +15,7 @@ import { FillinAddress } from './Component/todo/FillinAddress'
 import { FillAccount } from './Component/todo/FillAccount'
 import { BUTTON } from '../../../../Component/Button'
 
-import { Bottom } from '../Todo/buttoncontainer'
+import { Bottom } from '../todo/buttoncontainer'
 import { Alert } from 'react-native';
 
 const data2 = [
@@ -232,6 +232,7 @@ export const FormDownload = (props) => {
                 <View style={{marginTop:20,width:"100%",alignItems:"center",alignSelf:"center",marginBottom:15}}>
                     <Bottom handlebutton={props.handlebutton}
                             contiue="finish"
+                            type='send'
                             back="add2acc"/>
                     </View>
 
