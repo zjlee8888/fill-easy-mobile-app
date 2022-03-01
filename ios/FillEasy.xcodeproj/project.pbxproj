@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* FillEasyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* FillEasyTests.m */; };
-		0B2429F3C1AD9C516ADDEAFE /* libPods-FillEasy.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 82205C42B9F7FB886063D6B1 /* libPods-FillEasy.a */; };
 		0BA1CD3A64CA4541879BBE35 /* Montserrat-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3D965FF807B54CDEBEA80FCD /* Montserrat-ExtraLightItalic.ttf */; };
 		0BE6A4CA51134AF98EA497B9 /* Ubuntu-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DCF4D671CC85478CB9914A4A /* Ubuntu-Regular.ttf */; };
 		1203A22B1C7641138C5B4114 /* Montserrat-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26F5B8C853CB49F6B8722A9F /* Montserrat-Thin.ttf */; };
@@ -47,7 +46,6 @@
 		6F9DEA696CFA4424B86ABAFB /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BAACAA41D20449B1B2F679C6 /* Poppins-Bold.ttf */; };
 		7032FC4A5773404F9E8EB1C4 /* Ubuntu-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A96AEEFDCA444F21B102D1D2 /* Ubuntu-Light.ttf */; };
 		73F99022A27A4D26A02F6228 /* Montserrat-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C75C84D333554CC4B7A19D97 /* Montserrat-BoldItalic.ttf */; };
-		7530327A48171A0059BDB693 /* libPods-FillEasy-FillEasyTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 61743C0C5BE1581686F41E9A /* libPods-FillEasy-FillEasyTests.a */; };
 		76A5FA20140B43F1B066DDB9 /* Poppins-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6CB96AA97619421F94151362 /* Poppins-LightItalic.ttf */; };
 		7920F92687694C8E9141A430 /* SF-Pro-Text-Ultralight copy.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8FE6CA630F4442A48B34EC91 /* SF-Pro-Text-Ultralight copy.otf */; };
 		7B0427F6B2D74ABFA5FC3331 /* Roboto-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EEEE1E97A1104328870AD94C /* Roboto-LightItalic.ttf */; };
@@ -57,10 +55,12 @@
 		846418C127B1430400052B04 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		8A60BE88D74242219337AE95 /* Montserrat-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8A4C5B33F3F544668C1AA1BB /* Montserrat-ExtraLight.ttf */; };
 		8E439297268045728AECA148 /* Montserrat-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7969C20139EE41BE9C91259A /* Montserrat-SemiBoldItalic.ttf */; };
+		8F2691CC7D60B13C6A676742 /* libPods-FillEasy-FillEasyTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CF7DBB12920782D68C6792D /* libPods-FillEasy-FillEasyTests.a */; };
 		91EA992AADE045B28A0D5C40 /* Poppins-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 62E11028290D40EA97C29588 /* Poppins-Thin.ttf */; };
 		931A43B9349B49E8BC894173 /* Roboto-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EBB99EB3D54B4C2EBAD80041 /* Roboto-Italic.ttf */; };
 		98D93A7084214C53B9231279 /* Roboto-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 07111B1F7CB84C2B9CF2B6D3 /* Roboto-MediumItalic.ttf */; };
 		A29AEF8F095A4C13B3715E82 /* Poppins-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F091B48270314AB588994D8E /* Poppins-ExtraLight.ttf */; };
+		A2D2B2DAEFC7334C267863C3 /* libPods-FillEasy.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 07063FB815B2AF1FEB7D4207 /* libPods-FillEasy.a */; };
 		A76DDA8DDC8E493E9D7149FD /* SF-Pro-Text-Medium copy.otf in Resources */ = {isa = PBXBuildFile; fileRef = 30B06774B49F431AB1DB30A4 /* SF-Pro-Text-Medium copy.otf */; };
 		A77B730FF38747C7BB6B4327 /* Ubuntu-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 533CD0E340924FFAB021520A /* Ubuntu-Medium.ttf */; };
 		AC9BF65FB14D40D3AB76117A /* Poppins-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 36D75B43DC2845DB876FDD0E /* Poppins-Black.ttf */; };
@@ -107,6 +107,7 @@
 		01A534DA37AA4888868979A3 /* SF-Pro-Text-LightItalic copy.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SF-Pro-Text-LightItalic copy.otf"; path = "../assets/fonts/SF-Pro-Text-LightItalic copy.otf"; sourceTree = "<group>"; };
 		0289FA7D201F4E5995EAD5EC /* Poppins-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-Light.ttf"; path = "../assets/fonts/Poppins-Light.ttf"; sourceTree = "<group>"; };
 		02A3AFA7ECF44DFA90FAE0E9 /* SF-Pro-Text-RegularItalic copy.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SF-Pro-Text-RegularItalic copy.otf"; path = "../assets/fonts/SF-Pro-Text-RegularItalic copy.otf"; sourceTree = "<group>"; };
+		07063FB815B2AF1FEB7D4207 /* libPods-FillEasy.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FillEasy.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		07111B1F7CB84C2B9CF2B6D3 /* Roboto-MediumItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-MediumItalic.ttf"; path = "../assets/fonts/Roboto-MediumItalic.ttf"; sourceTree = "<group>"; };
 		07EF5E6F843549409B33BF00 /* Montserrat-ExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-ExtraBold.ttf"; path = "../assets/fonts/Montserrat-ExtraBold.ttf"; sourceTree = "<group>"; };
 		0B379ED0C4CF49C8AC3CD110 /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-Medium.ttf"; path = "../assets/fonts/Montserrat-Medium.ttf"; sourceTree = "<group>"; };
@@ -143,8 +144,10 @@
 		4E1E5D49DE8B4288974B99F4 /* Poppins-BlackItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-BlackItalic.ttf"; path = "../assets/fonts/Poppins-BlackItalic.ttf"; sourceTree = "<group>"; };
 		533CD0E340924FFAB021520A /* Ubuntu-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Ubuntu-Medium.ttf"; path = "../assets/fonts/Ubuntu-Medium.ttf"; sourceTree = "<group>"; };
 		57369A0DAA7845E2ADDE8754 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Regular.ttf"; path = "../assets/fonts/Roboto-Regular.ttf"; sourceTree = "<group>"; };
+		5A37AC0C08ECBF33890224DC /* Pods-FillEasy-FillEasyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FillEasy-FillEasyTests.release.xcconfig"; path = "Target Support Files/Pods-FillEasy-FillEasyTests/Pods-FillEasy-FillEasyTests.release.xcconfig"; sourceTree = "<group>"; };
+		5CB294A60231C27F8B5DE68C /* Pods-FillEasy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FillEasy.debug.xcconfig"; path = "Target Support Files/Pods-FillEasy/Pods-FillEasy.debug.xcconfig"; sourceTree = "<group>"; };
+		5CF7DBB12920782D68C6792D /* libPods-FillEasy-FillEasyTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FillEasy-FillEasyTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DD3A51ED62845A890EABE50 /* Ubuntu-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Ubuntu-Bold.ttf"; path = "../assets/fonts/Ubuntu-Bold.ttf"; sourceTree = "<group>"; };
-		61743C0C5BE1581686F41E9A /* libPods-FillEasy-FillEasyTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FillEasy-FillEasyTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		62E11028290D40EA97C29588 /* Poppins-Thin.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-Thin.ttf"; path = "../assets/fonts/Poppins-Thin.ttf"; sourceTree = "<group>"; };
 		6386F3C158CA401DBDAA635D /* Feather.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Feather.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Feather.ttf"; sourceTree = "<group>"; };
 		64E3B963E6BA4E9CB52B4C35 /* Montserrat-BlackItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-BlackItalic.ttf"; path = "../assets/fonts/Montserrat-BlackItalic.ttf"; sourceTree = "<group>"; };
@@ -154,18 +157,14 @@
 		72FF804B644A453FAB1DAD11 /* Montserrat-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-ExtraBoldItalic.ttf"; path = "../assets/fonts/Montserrat-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
 		735E19432A284263B1094916 /* FontAwesome5_Solid.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Solid.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Solid.ttf"; sourceTree = "<group>"; };
 		7969C20139EE41BE9C91259A /* Montserrat-SemiBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-SemiBoldItalic.ttf"; path = "../assets/fonts/Montserrat-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
-		79C738D62B2E9189E3A72A25 /* Pods-FillEasy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FillEasy.release.xcconfig"; path = "Target Support Files/Pods-FillEasy/Pods-FillEasy.release.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = FillEasy/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		82205C42B9F7FB886063D6B1 /* libPods-FillEasy.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FillEasy.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A4C5B33F3F544668C1AA1BB /* Montserrat-ExtraLight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-ExtraLight.ttf"; path = "../assets/fonts/Montserrat-ExtraLight.ttf"; sourceTree = "<group>"; };
 		8A79FBFE6ED24AF3B7667ABA /* Poppins-ThinItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-ThinItalic.ttf"; path = "../assets/fonts/Poppins-ThinItalic.ttf"; sourceTree = "<group>"; };
-		8F54D663FB08772B0326E3D8 /* Pods-FillEasy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FillEasy.debug.xcconfig"; path = "Target Support Files/Pods-FillEasy/Pods-FillEasy.debug.xcconfig"; sourceTree = "<group>"; };
 		8FE6CA630F4442A48B34EC91 /* SF-Pro-Text-Ultralight copy.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SF-Pro-Text-Ultralight copy.otf"; path = "../assets/fonts/SF-Pro-Text-Ultralight copy.otf"; sourceTree = "<group>"; };
 		924713E1387342B9A7B4BADC /* SF-Pro-Text-Black copy.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SF-Pro-Text-Black copy.otf"; path = "../assets/fonts/SF-Pro-Text-Black copy.otf"; sourceTree = "<group>"; };
 		92DA11F8DC3C4D7DA697BA18 /* Fontisto.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Fontisto.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Fontisto.ttf"; sourceTree = "<group>"; };
 		96A4E1288E6A430598E80D71 /* FontAwesome5_Brands.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Brands.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf"; sourceTree = "<group>"; };
 		A35C56CC8FED49E29E6136C6 /* SF-Pro-Text-BlackItalic copy.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SF-Pro-Text-BlackItalic copy.otf"; path = "../assets/fonts/SF-Pro-Text-BlackItalic copy.otf"; sourceTree = "<group>"; };
-		A3F37E6FFFEA32C70632CB72 /* Pods-FillEasy-FillEasyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FillEasy-FillEasyTests.debug.xcconfig"; path = "Target Support Files/Pods-FillEasy-FillEasyTests/Pods-FillEasy-FillEasyTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A7730466AF804EA9A158318F /* Montserrat-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-Italic.ttf"; path = "../assets/fonts/Montserrat-Italic.ttf"; sourceTree = "<group>"; };
 		A96AEEFDCA444F21B102D1D2 /* Ubuntu-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Ubuntu-Light.ttf"; path = "../assets/fonts/Ubuntu-Light.ttf"; sourceTree = "<group>"; };
 		A992C2825FE54CD988FD7D52 /* AntDesign.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = AntDesign.ttf; path = "../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf"; sourceTree = "<group>"; };
@@ -178,7 +177,6 @@
 		B9DFAF51A8DE4CB589A8A1C9 /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
 		BAACAA41D20449B1B2F679C6 /* Poppins-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-Bold.ttf"; path = "../assets/fonts/Poppins-Bold.ttf"; sourceTree = "<group>"; };
 		BAC1AEB473EF4DF2B276C53F /* SF-Pro-Text-Light copy.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SF-Pro-Text-Light copy.otf"; path = "../assets/fonts/SF-Pro-Text-Light copy.otf"; sourceTree = "<group>"; };
-		BB9FBCB618F4C42885F04B22 /* Pods-FillEasy-FillEasyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FillEasy-FillEasyTests.release.xcconfig"; path = "Target Support Files/Pods-FillEasy-FillEasyTests/Pods-FillEasy-FillEasyTests.release.xcconfig"; sourceTree = "<group>"; };
 		BCC1CF9D3E0748C7BAEB4340 /* Ubuntu-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Ubuntu-Italic.ttf"; path = "../assets/fonts/Ubuntu-Italic.ttf"; sourceTree = "<group>"; };
 		BEA4F36E015A44218EFDB6A9 /* Roboto-BlackItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-BlackItalic.ttf"; path = "../assets/fonts/Roboto-BlackItalic.ttf"; sourceTree = "<group>"; };
 		C02BD78699584FAF967E46B8 /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
@@ -199,10 +197,12 @@
 		E02D577F838A4400BDE1FAC6 /* Roboto-ThinItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-ThinItalic.ttf"; path = "../assets/fonts/Roboto-ThinItalic.ttf"; sourceTree = "<group>"; };
 		E20FB2A71AA5495B8C649707 /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-Regular.ttf"; path = "../assets/fonts/Montserrat-Regular.ttf"; sourceTree = "<group>"; };
 		E215CC675D0E4F1BA76D5232 /* SF-Pro-Text-UltralightItalic copy.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SF-Pro-Text-UltralightItalic copy.otf"; path = "../assets/fonts/SF-Pro-Text-UltralightItalic copy.otf"; sourceTree = "<group>"; };
+		E544E32CCDDE58AADCC12EEF /* Pods-FillEasy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FillEasy.release.xcconfig"; path = "Target Support Files/Pods-FillEasy/Pods-FillEasy.release.xcconfig"; sourceTree = "<group>"; };
 		EBB99EB3D54B4C2EBAD80041 /* Roboto-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Italic.ttf"; path = "../assets/fonts/Roboto-Italic.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		EEEE1E97A1104328870AD94C /* Roboto-LightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-LightItalic.ttf"; path = "../assets/fonts/Roboto-LightItalic.ttf"; sourceTree = "<group>"; };
 		EEF1C668590948879ECD97BE /* Montserrat-MediumItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-MediumItalic.ttf"; path = "../assets/fonts/Montserrat-MediumItalic.ttf"; sourceTree = "<group>"; };
+		F08F3318C2AF0785E9EAC16A /* Pods-FillEasy-FillEasyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FillEasy-FillEasyTests.debug.xcconfig"; path = "Target Support Files/Pods-FillEasy-FillEasyTests/Pods-FillEasy-FillEasyTests.debug.xcconfig"; sourceTree = "<group>"; };
 		F091B48270314AB588994D8E /* Poppins-ExtraLight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-ExtraLight.ttf"; path = "../assets/fonts/Poppins-ExtraLight.ttf"; sourceTree = "<group>"; };
 		F8D61BC59E114031B81544EA /* Roboto-Thin.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Thin.ttf"; path = "../assets/fonts/Roboto-Thin.ttf"; sourceTree = "<group>"; };
 		FBC578E23F564C07B586FD30 /* Poppins-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-Italic.ttf"; path = "../assets/fonts/Poppins-Italic.ttf"; sourceTree = "<group>"; };
@@ -215,7 +215,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7530327A48171A0059BDB693 /* libPods-FillEasy-FillEasyTests.a in Frameworks */,
+				8F2691CC7D60B13C6A676742 /* libPods-FillEasy-FillEasyTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -223,7 +223,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0B2429F3C1AD9C516ADDEAFE /* libPods-FillEasy.a in Frameworks */,
+				A2D2B2DAEFC7334C267863C3 /* libPods-FillEasy.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -264,8 +264,8 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				82205C42B9F7FB886063D6B1 /* libPods-FillEasy.a */,
-				61743C0C5BE1581686F41E9A /* libPods-FillEasy-FillEasyTests.a */,
+				07063FB815B2AF1FEB7D4207 /* libPods-FillEasy.a */,
+				5CF7DBB12920782D68C6792D /* libPods-FillEasy-FillEasyTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -402,10 +402,10 @@
 		D51F710333118421D47D739E /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				8F54D663FB08772B0326E3D8 /* Pods-FillEasy.debug.xcconfig */,
-				79C738D62B2E9189E3A72A25 /* Pods-FillEasy.release.xcconfig */,
-				A3F37E6FFFEA32C70632CB72 /* Pods-FillEasy-FillEasyTests.debug.xcconfig */,
-				BB9FBCB618F4C42885F04B22 /* Pods-FillEasy-FillEasyTests.release.xcconfig */,
+				5CB294A60231C27F8B5DE68C /* Pods-FillEasy.debug.xcconfig */,
+				E544E32CCDDE58AADCC12EEF /* Pods-FillEasy.release.xcconfig */,
+				F08F3318C2AF0785E9EAC16A /* Pods-FillEasy-FillEasyTests.debug.xcconfig */,
+				5A37AC0C08ECBF33890224DC /* Pods-FillEasy-FillEasyTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -417,12 +417,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "FillEasyTests" */;
 			buildPhases = (
-				159A0331A62EF9CC6321A248 /* [CP] Check Pods Manifest.lock */,
+				1BD91B259ED28C09BEE0DD52 /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				AC752D73C1952B88797043BC /* [CP] Embed Pods Frameworks */,
-				26A5686A8D190CB91D020909 /* [CP] Copy Pods Resources */,
+				2820D248FFDDB411C7FF58BE /* [CP] Embed Pods Frameworks */,
+				F0E3A47EC0EAED7D26232871 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -438,14 +438,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "FillEasy" */;
 			buildPhases = (
-				2795E4EDF82893C6811AA99A /* [CP] Check Pods Manifest.lock */,
+				DF1D7DE5F654E30510CA1324 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				5EAFF9E53BF27DBF2FC04C0D /* [CP] Embed Pods Frameworks */,
-				70E005D971DD799BF757AD73 /* [CP] Copy Pods Resources */,
+				BD859BB857C90F2508319BFD /* [CP] Embed Pods Frameworks */,
+				2289F86BF51F93B3BF845ADF /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -600,7 +600,7 @@
 			shellPath = /bin/sh;
 			shellScript = "set -e\n\nexport NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh\n";
 		};
-		159A0331A62EF9CC6321A248 /* [CP] Check Pods Manifest.lock */ = {
+		1BD91B259ED28C09BEE0DD52 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -622,24 +622,58 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		26A5686A8D190CB91D020909 /* [CP] Copy Pods Resources */ = {
+		2289F86BF51F93B3BF845ADF /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-FillEasy-FillEasyTests/Pods-FillEasy-FillEasyTests-resources-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-FillEasy/Pods-FillEasy-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-FillEasy-FillEasyTests/Pods-FillEasy-FillEasyTests-resources-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-FillEasy/Pods-FillEasy-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FillEasy-FillEasyTests/Pods-FillEasy-FillEasyTests-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FillEasy/Pods-FillEasy-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		2795E4EDF82893C6811AA99A /* [CP] Check Pods Manifest.lock */ = {
+		2820D248FFDDB411C7FF58BE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FillEasy-FillEasyTests/Pods-FillEasy-FillEasyTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FillEasy-FillEasyTests/Pods-FillEasy-FillEasyTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FillEasy-FillEasyTests/Pods-FillEasy-FillEasyTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BD859BB857C90F2508319BFD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FillEasy/Pods-FillEasy-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FillEasy/Pods-FillEasy-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FillEasy/Pods-FillEasy-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DF1D7DE5F654E30510CA1324 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -661,55 +695,21 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		5EAFF9E53BF27DBF2FC04C0D /* [CP] Embed Pods Frameworks */ = {
+		F0E3A47EC0EAED7D26232871 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-FillEasy/Pods-FillEasy-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-FillEasy/Pods-FillEasy-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FillEasy/Pods-FillEasy-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		70E005D971DD799BF757AD73 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-FillEasy/Pods-FillEasy-resources-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-FillEasy-FillEasyTests/Pods-FillEasy-FillEasyTests-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-FillEasy/Pods-FillEasy-resources-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-FillEasy-FillEasyTests/Pods-FillEasy-FillEasyTests-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FillEasy/Pods-FillEasy-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		AC752D73C1952B88797043BC /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-FillEasy-FillEasyTests/Pods-FillEasy-FillEasyTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-FillEasy-FillEasyTests/Pods-FillEasy-FillEasyTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FillEasy-FillEasyTests/Pods-FillEasy-FillEasyTests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FillEasy-FillEasyTests/Pods-FillEasy-FillEasyTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FD10A7F022414F080027D42C /* Start Packager */ = {
@@ -764,7 +764,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A3F37E6FFFEA32C70632CB72 /* Pods-FillEasy-FillEasyTests.debug.xcconfig */;
+			baseConfigurationReference = F08F3318C2AF0785E9EAC16A /* Pods-FillEasy-FillEasyTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -791,7 +791,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BB9FBCB618F4C42885F04B22 /* Pods-FillEasy-FillEasyTests.release.xcconfig */;
+			baseConfigurationReference = 5A37AC0C08ECBF33890224DC /* Pods-FillEasy-FillEasyTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
@@ -815,7 +815,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8F54D663FB08772B0326E3D8 /* Pods-FillEasy.debug.xcconfig */;
+			baseConfigurationReference = 5CB294A60231C27F8B5DE68C /* Pods-FillEasy.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -832,7 +832,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.fill-easy";
 				PRODUCT_NAME = FillEasy;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -842,7 +842,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 79C738D62B2E9189E3A72A25 /* Pods-FillEasy.release.xcconfig */;
+			baseConfigurationReference = E544E32CCDDE58AADCC12EEF /* Pods-FillEasy.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -858,7 +858,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.fill-easy";
 				PRODUCT_NAME = FillEasy;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
