@@ -111,7 +111,8 @@ const Tasklist = () => {
 
                 <TEXT title="Notifications (2)"
                     size={16}
-                    family="Roboto-Black" />
+                    family="Roboto-Black" 
+                    color = "#0A0A0A"/>
 
                 <View style={{ width: "100%", marginTop: 15 ,borderRadius:5,backgroundColor:"#fff" ,padding:2}}>
                     {Things.map((item, i) => {

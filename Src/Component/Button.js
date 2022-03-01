@@ -22,10 +22,11 @@ export const BUTTON = (props) =>{
            sopacity,
            elevation,
            press,
-           family
+           family,activeopacity
            } = props
 
     return(
+       
         <TouchableOpacity style={{ 
         width: width,
         height: height,
@@ -38,7 +39,7 @@ export const BUTTON = (props) =>{
         shadowOffset: { width: swidth, height: shight },
         shadowColor: scolor,
         shadowOpacity: sopacity,
-        elevation: elevation, ...style}}
+        elevation: elevation, ...style,}}
         onPress={() =>press()}>
            <TEXT title={title}
                 //style={styles.heading}
@@ -46,7 +47,6 @@ export const BUTTON = (props) =>{
                 color={color}
                 weight={weight}
                 family={family}
-
                  />
         </TouchableOpacity>
     );

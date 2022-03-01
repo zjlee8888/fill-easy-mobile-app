@@ -18,7 +18,7 @@ import { BUTTON } from '../../../../Component/Button'
 import { Fillin } from './Fillin';
 import { Platform } from 'react-native';
 
-import { Bottom } from '../todo/buttoncontainer'
+import { Bottom } from '../Todo/buttoncontainer'
 const data = [
     {
         name: "Service",

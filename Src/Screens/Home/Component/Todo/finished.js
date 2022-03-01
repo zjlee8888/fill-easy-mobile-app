@@ -10,12 +10,12 @@ import {
 import { Textcolor } from '../../../../Utility/Colors';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { TEXT } from '../../../../Component/Text'
-import { Fillin } from './Component/todo/Fillin'
-import { FillinAddress } from './Component/todo/FillinAddress'
-import { FillAccount } from './Component/todo/FillAccount'
+import { Fillin } from './Component/Todo/Fillin'
+import { FillinAddress } from './Component/Todo/FillinAddress'
+import { FillAccount } from './Component/Todo/FillAccount'
 import { BUTTON } from '../../../../Component/Button'
 
-import { Bottom } from '../todo/buttoncontainer'
+import { Bottom } from '../Todo/buttoncontainer'
 import { Alert } from 'react-native';
 
 const data2 = [
@@ -86,6 +86,7 @@ export const FormDownload = (props) => {
                 }}>
                     <Icon
                         name="text-box-multiple-outline"
+                        color={'black'}
                         size={50} />
                 </View>
                 <View style={{
@@ -157,22 +158,25 @@ export const FormDownload = (props) => {
                 backgroundColor: '#F2F4F3',
                 borderRadius: 20,
                 padding:10,
-                alignItems:"center"
+                alignItems:"center",
+                borderWidth:5
                 
             }}>
                 <TEXT
                     
-                    title={'Thanks for'}
-                    size={32}
+                    title={'Thanks For Filling the Form!'}
+                    size={30}
                     color={Textcolor.blacktext}
                     family="Poppins-Bold"
+                    style={{marginTop:5,alignItems:'center',textAlign:'center',lineHeight:33}}
                 />
-                <TEXT
+                {/* <TEXT
                     title={'Filling the Form!'}
-                    size={32}
+                    size={30}
                     color={Textcolor.blacktext}
                     family="Poppins-Bold"
-                />
+                    style={{marginTop:0,alignItems:'center'}}
+                /> */}
                 <TEXT
                     style={{
                         marginTop: 10,
@@ -229,7 +233,40 @@ export const FormDownload = (props) => {
                     )}
                 </View>
 
-                <View style={{marginTop:20,width:"100%",alignItems:"center",alignSelf:"center",marginBottom:15}}>
+                {/* <View style={{marginTop:20,width:"100%",alignItems:"center",alignSelf:"center",marginBottom:15}}>
+                    <Bottom handlebutton={props.handlebutton}
+                            contiue="finish"
+                            type='send'
+                            back="add2acc"/>
+                    </View> */}
+
+
+                {/* <View style={{
+                    width: '100%',
+                    flexDirection: 'row',
+                    justifyContent: "space-around",
+                    marginTop: 15,
+                    marginBottom:25
+                }}>
+                    <BUTTON
+                        weight={'bold'}
+                        width={"95%"}
+                        height={50}
+                        background={'#4CAE72'}
+                        // bwidth={2}
+                        // bcolor={'black'}
+                        bradius={50}
+                        title="Login with iAM Smart"
+                        // family="Poppins-Bold"
+                        size={17}
+                        color={'white'}
+                    // press={signup}
+                    press={() => Alert.alert("Functionality Under Production")}
+                    /></View> */}
+
+            </View>
+                    <View>
+                        <View style={{marginTop:20,width:"100%",alignItems:"center",alignSelf:"center",marginBottom:15}}>
                     <Bottom handlebutton={props.handlebutton}
                             contiue="finish"
                             type='send'
@@ -259,9 +296,7 @@ export const FormDownload = (props) => {
                     // press={signup}
                     press={() => Alert.alert("Functionality Under Production")}
                     /></View>
-
-            </View>
-
+                    </View>
         </ScrollView>
     );
 }

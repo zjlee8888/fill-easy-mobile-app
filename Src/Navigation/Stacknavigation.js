@@ -4,7 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import ActivityRecord from '../Screens/Activity/Activity'
-
+import QrcodeScreen from '../Screens/QRSceen/QRcodeScanScreen';
 //Screens
 import LoginScreen from '../Screens/Login/Login'
 import OtpVerification from '../Screens/Login/OtpVerification'
@@ -32,7 +32,7 @@ const Postauth = () => {
       <Stack.Screen name="Tasklist" component={Tasklist} />
       <Stack.Screen name="TodoScreen" component={TodoScreen} />
       <Stack.Screen name="Activity" component={ActivityRecord} />
-
+      <Stack.Screen name="QrcodeScreen" component={QrcodeScreen} />
     </Stack.Navigator>
   );
 }

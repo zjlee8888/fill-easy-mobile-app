@@ -50,7 +50,7 @@ export const Tabbar = () => {
                 shadowOpacity: 1,
                 elevation:5,
                 marginBottom: 45
-            }}>
+            }} onPress={()=>navigation.navigate("QrcodeScreen")}>
                 <Image source={require("../../assets/Image/Scan.png")}
                     style={{ width: 44, height: 44 }} />
             </TouchableOpacity>

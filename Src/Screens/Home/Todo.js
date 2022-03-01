@@ -5,15 +5,15 @@ import { Header } from './Component/Screeheader'
 import { Textcolor } from '../../Utility/Colors'
 import { Icon } from 'react-native-elements';
 //components
-import { Company } from './Component/todo/company'
-import { Fillin } from './Component/todo/fillin'
+import { Company } from './Component/Todo/company'
+import { Fillin } from './Component/Todo/fillin'
 import { TEXT } from '../../Component/Text'
 import { BUTTON, Button } from '../../Component/Button'
 import { Colors } from '../../Utility/Colors'
 import { Buttoncolor, Bordercolor } from '../../Utility/Colors'
-import { FillinAddress } from './Component/todo/address'
-import { FillAccount } from './Component/todo/account'
-import {FormDownload} from './Component/todo/finished'
+import { FillinAddress } from './Component/Todo/address'
+import { FillAccount } from './Component/Todo/account'
+import {FormDownload} from './Component/Todo/finished'
 
 const data = [
     {
@@ -126,7 +126,7 @@ const TodoScreen = () => {
                                 <Text style={{
                                     fontSize: 14,
                                     color: 'white',
-                                    letterSpacing: 1,
+                                    // letterSpacing: 0.5,
                                 }}>{item.name}</Text>
 
                                 {open == "Fill-address" &&
@@ -134,7 +134,6 @@ const TodoScreen = () => {
                                         {item.name == "Fill-in" &&
                                             <View style={{
                                                 position: "absolute",
-                                                backgroundColor: "red",
                                                 marginTop: -15,
                                                 ...styles.triAngle
                                             }}>

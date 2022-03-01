@@ -15,7 +15,7 @@ import { Icon } from 'react-native-elements';
 import { TEXT } from '../../../../Component/Text'
 
 //component
-import { Bottom } from '../todo/buttoncontainer'
+import { Bottom } from '../Todo/buttoncontainer'
 
 const data2 = [
     {
@@ -175,7 +175,7 @@ export const Company = (props) => {
                     }}>
                         <TEXT title={item?.type ?? ''}
                             size={12}
-                            color={'#BFBFBF'}
+                            color={'rgba(191,191,191,1)'}
                             family="Roboto-Regular"
                             numline={1}
                         /></View>
@@ -360,7 +360,7 @@ export const Company = (props) => {
             </ScrollView>
             <View style={{
                 height: "30%",
-                backgroundColor: "rgba(234, 234, 232, 1)",
+                backgroundColor: "rgba(43, 41, 158, 1)",
                 borderTopLeftRadius: 20,
                 borderTopRightRadius: 20,
                 width: "100%",

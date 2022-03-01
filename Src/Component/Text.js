@@ -12,6 +12,7 @@ export const TEXT = (props) => {
              fontWeight: weight,
             // fontFamily:"Poppins-ExtraBold",
             fontFamily: family,
+           
                 ...style,
                 
 

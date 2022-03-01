@@ -19,7 +19,7 @@ import { BUTTON } from '../../../../Component/Button'
 import { Fillin } from './Fillin';
 import { FillAccount } from './FillAccount';
 
-import { Bottom } from '../todo/buttoncontainer'
+import { Bottom } from '../Todo/buttoncontainer'
 
 const data = [
     {
@@ -108,7 +108,7 @@ export const FillinAddress = (props) => {
                     </View>
 
 
-                    <View style={styles.textcontainer}>
+                    <View style={{...styles.textcontainer}}>
 
                         <View style={{width:"50%"}}>
                             <TEXT title="Flat / Apartment"
@@ -118,7 +118,7 @@ export const FillinAddress = (props) => {
                             <TextInput placeholder="e.g. G, A, E"
                                         value={flatnumber}
                                         onChangeText={(value) => setFlatnumber(value)}
-                                        style={{marginTop:Platform.OS == "android" ? 0 :10,fontSize:15,}}
+                                        style={{marginTop:Platform.OS == "android" ? 0 :10,fontSize:15}}
                                         placeholderTextColor="rgba(0, 0, 0, 0.2)" />
                         </View>
 
@@ -378,6 +378,7 @@ const styles = StyleSheet.create({
         borderBottomWidth: 1 ,
         borderColor:"#dddddd",
        // paddingVertical:10
-        paddingVertical:Platform.OS == "android" ? 10 :15
+         paddingVertical:Platform.OS == "android" ? 0 :15,
+         
         }
 })
