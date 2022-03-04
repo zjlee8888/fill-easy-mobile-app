@@ -12,7 +12,7 @@ import Tabnavigation from './Tabnavigation'
 import Home from '../Screens/Home/Home'
 import Tasklist from '../Screens/Home/Tasklist'
 import TodoScreen from '../Screens/Home/Todo'
-
+import BlogPosts from '../Screens/Home/BlogPosts'
 
 const Stack = createNativeStackNavigator();
 
@@ -33,6 +33,7 @@ const Postauth = () => {
       <Stack.Screen name="TodoScreen" component={TodoScreen} />
       <Stack.Screen name="Activity" component={ActivityRecord} />
       <Stack.Screen name="QrcodeScreen" component={QrcodeScreen} />
+      <Stack.Screen name="BlogPosts" component={BlogPosts} />
     </Stack.Navigator>
   );
 }

@@ -159,7 +159,7 @@ export const FormDownload = (props) => {
                 borderRadius: 20,
                 padding:10,
                 alignItems:"center",
-                borderWidth:5
+                
                 
             }}>
                 <TEXT

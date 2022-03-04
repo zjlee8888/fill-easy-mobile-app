@@ -268,8 +268,8 @@ const Home = () => {
                             </View>
 
                             <TouchableOpacity onPress={() => 
-                                Alert.alert("Navigation Screen under Production....")
-                              // navigation.navigate("TabScreen1")
+                               
+                              navigation.navigate("BlogPosts")
                                  }>
                                 <TEXT title="more >"
                                     size={12}
@@ -310,7 +310,7 @@ const Home = () => {
                                 size={16}
                                 color={Textcolor.bluetext}
                                 family="Roboto-Black" />
-                            <TouchableOpacity onPress={() =>  Alert.alert("Navigation Screen under Production....")}>
+                            <TouchableOpacity onPress={() =>navigation.navigate("Activity")}>
                                 <TEXT title="more >"
                                     size={12}
                                     color={Textcolor.bluetext}

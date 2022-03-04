@@ -377,7 +377,9 @@ const styles = StyleSheet.create({
         width: "100%", 
         borderBottomWidth: 1 ,
         borderColor:"#dddddd",
-       // paddingVertical:10
+         marginBottom:2,
+         marginTop:8,
+        // paddingVertical:10,
          paddingVertical:Platform.OS == "android" ? 0 :15,
          
         }

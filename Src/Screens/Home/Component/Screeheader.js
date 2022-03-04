@@ -10,7 +10,7 @@ import { Backgroundcolor } from '../../../Utility/Colors'
 
 export const Header = (props) => {
     const navigation = useNavigation();
-    const { title, title2 } = props
+    const { title, title2,title3 } = props
     return (
         <View style={{
             height: 105,
@@ -38,6 +38,11 @@ export const Header = (props) => {
                 <TEXT title={title2} 
                 size={18}
                     color={Textcolor.bluetext}
+                    family="Poppins-Bold"
+                />
+                <TEXT title={title3} 
+                size={18}
+                    color={Textcolor.blacktext}
                     family="Poppins-Bold"
                 />
             </View>

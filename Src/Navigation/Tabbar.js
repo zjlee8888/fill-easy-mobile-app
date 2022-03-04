@@ -26,7 +26,7 @@ export const Tabbar = () => {
                     style={{ width: 24, height: 24 }} /> */}
             </TouchableOpacity>
 
-            <TouchableOpacity >
+            <TouchableOpacity onPress={()=>navigation.navigate("Tasklist")}>
                 <Icon name="checkbox-outline"
                     type="ionicon"
                     size={24} />
