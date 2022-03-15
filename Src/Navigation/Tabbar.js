@@ -66,7 +66,7 @@ export const Tabbar = () => {
                     style={{ width: 24, height: 24 }} /> */}
             </TouchableOpacity>
 
-            <TouchableOpacity >
+            <TouchableOpacity onPress={()=>navigation.navigate("Profile")} >
             <Icon name="user"
                     type="feather"
                     size={24} 

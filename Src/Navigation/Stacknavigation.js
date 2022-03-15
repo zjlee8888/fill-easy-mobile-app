@@ -13,9 +13,10 @@ import Home from '../Screens/Home/Home'
 import Tasklist from '../Screens/Home/Tasklist'
 import TodoScreen from '../Screens/Home/Todo'
 import BlogPosts from '../Screens/Home/BlogPosts'
+import EditProfile from '../Screens/Profile/EditProfile'
 
 const Stack = createNativeStackNavigator();
-
+import Setting from '../Screens/Setting/SettingScreen';
 const Preauth = () => {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName="LoginScreen">
@@ -34,6 +35,8 @@ const Postauth = () => {
       <Stack.Screen name="Activity" component={ActivityRecord} />
       <Stack.Screen name="QrcodeScreen" component={QrcodeScreen} />
       <Stack.Screen name="BlogPosts" component={BlogPosts} />
+      <Stack.Screen name="Setting" component={Setting} />
+      <Stack.Screen name="EditProfile" component={EditProfile} />
     </Stack.Navigator>
   );
 }

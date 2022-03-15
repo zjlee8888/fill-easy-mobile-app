@@ -16,6 +16,8 @@ export const Bottom = (props) => {
         return "Send(1)";
       case "submit":
         return "Submit";
+        case "Save":
+          return "Save";
       default:
         return "Continue";
     }
@@ -63,12 +65,12 @@ export const Bottom = (props) => {
         <BUTTON
           width={windowWidth < 330 ? 135 : 146}
           height={50}
-          background={type == "send" ? "#EB632E" : Textcolor.yellowtext}
+          background={type == "send" || type=="Save"? "#EB632E" : Textcolor.yellowtext}
           bradius={50}
           title={formDownload(type)}
           family="Poppins-Bold"
           size={14}
-          color={type == "send" ? Textcolor.whitetext : Textcolor.blacktext}
+          color={type == "send" || type=="Save"? Textcolor.whitetext : Textcolor.blacktext}
           press={() => {
             props.handlebutton(contiue);
           }}

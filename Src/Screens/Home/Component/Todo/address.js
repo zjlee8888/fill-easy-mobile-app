@@ -316,7 +316,8 @@ export const FillinAddress = (props) => {
                                                 size={15}
                                                 color={Textcolor.blacktext}
 
-                                            /></View>
+                                            />
+                                            </View>
                                     );
                                 })}
                             </View>

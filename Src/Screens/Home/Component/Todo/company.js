@@ -50,7 +50,7 @@ export const Company = (props) => {
   const [used, setUsed] = useState();
 
   const [isKeyboardVisible, setKeyboardVisible] = useState(false);
-  const handleSearch = (queryText) => {ð
+  const handleSearch = (queryText) => {
     {
       data.map((item, i) => {
         setSearchdata(item.title);
@@ -270,23 +270,7 @@ export const Company = (props) => {
                 
               {modalVisible && (
                 <View
-                  style={{
-                    position: "absolute",
-                    marginTop: 30,
-                    width: 95,
-                    backgroundColor: "white",
-                    borderRadius: 8,
-                    marginLeft: -48,
-                    shadowColor: "rgba(70, 88, 131, 0.13)",
-                    shadowOffset: {
-                      width: 0,
-                      height: 4,
-                    },
-                    shadowOpacity: 0.6,
-                    shadowRadius: 4,
-                    elevation: 25,
-                    padding: 10,
-                  }}
+                  style={styles.modal}
                 >
                   <TouchableOpacity style={{ marginBottom: 5 }}>
                     <TEXT
@@ -438,5 +422,21 @@ const styles = StyleSheet.create({
   },
   triangle2: {
     backgroundColor: "pink",
-  },
+  },modal:{
+    position: "absolute",
+    marginTop: 30,
+    width: 95,
+    backgroundColor: "white",
+    borderRadius: 8,
+    marginLeft: -48,
+    shadowColor: "rgba(70, 88, 131, 0.13)",
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
+    shadowOpacity: 0.6,
+    shadowRadius: 4,
+    elevation: 25,
+    padding: 10,
+  }
 });
