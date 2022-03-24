@@ -1,42 +1,26 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
-  TextInput,
   StyleSheet,
   Image,
   TouchableOpacity,
   Keyboard,
   Platform,
   SafeAreaView,
-  KeyboardAvoidingView,
   Modal,
-  Alert,
   ScrollView,
   TouchableWithoutFeedback,
   StatusBar,
-  TouchableWithoutFeedbackBase,
 } from "react-native";
-import OTPTextView from "react-native-otp-textinput";
 import { useNavigation } from "@react-navigation/native";
-import Elevations from "react-native-elevation";
 
-import { Background } from "./Component/background";
-import { Logo } from "./Component/Logo";
-import { Icon } from "react-native-elements";
 import { TEXT } from "../../Component/Text";
-import { BUTTON } from "../../Component/Button";
-import { Signin, Login, Signup } from "./Component/SLS";
+import { Signin, Signup } from "./Component/SLS";
 
-import {
-  Textcolor,
-  Buttoncolor,
-  Bordercolor,
-  Shadowcolor,
-  Backgroundcolor,
-} from "../../Utility/Colors";
-import { Colors } from "react-native/Libraries/NewAppScreen";
-
+import { Backgroundcolor } from "../../Utility/Colors";
+import { useDispatch } from "react-redux";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 const LoginScreen = () => {
   const navigation = useNavigation();
 
@@ -47,9 +31,15 @@ const LoginScreen = () => {
   const [username, setUsername] = useState("");
   const [remail, setRemail] = useState("");
   const [rpass, setRpassword] = useState("");
+  const [token, setToken] = useState("");
+  const [alertmsg, setalertmsg] = useState("");
 
-  console.log("Email", email);
-
+  const [modalVisible, setModalVisible] = useState(false);
+  // const dispatch = useDispatch();
+  // dispatch({
+  //   type: "SET_TOKEN",
+  //   payload: token,
+  // });
   const MyStatusBar = ({ backgroundColor, ...props }) => (
     <View style={{}}>
       <SafeAreaView style={{ backgroundColor: Backgroundcolor.whiteback }}>
@@ -63,14 +53,133 @@ const LoginScreen = () => {
   );
 
   const signin = () => {
-    navigation.navigate("TabScreen");
+    console.log("email login", email);
+    console.log("password ==>", password);
+    if (email == "" && password == "") {
+      setModalVisible(true);
+      setalertmsg("Please Enter Email and Password!");
+    } else if (email == "") {
+      setModalVisible(true);
+      setalertmsg("Please Enter Email");
+    } else if (password == "") {
+      setModalVisible(true);
+      setalertmsg("Please Password!");
+    } else if (email.length > 0) {
+      var raw = JSON.stringify({
+        username: email,
+        password: password,
+        device: "mobile",
+        lang: "en",
+      });
+
+      fetch("https://fill-easy.com/login-post", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: raw,
+      })
+        .then((response) => response.text())
+        .then((result) => {
+          let parsedData = JSON.parse(result);
+          if (parsedData.email != undefined) {
+            setModalVisible(true);
+            return setalertmsg("Email is  not-verified!");
+          }
+          if (parsedData.login_message != undefined) {
+            setModalVisible(true);
+            return setalertmsg("User does not exist!");
+          }
+          if (parsedData.email == undefined) {
+            setToken(parsedData.token);
+
+            AsyncStorage.setItem("accessToken", parsedData.token);
+          }
+        })
+        .catch((error) => console.log("error", error));
+    }
   };
 
-  const signup = () => {
-    setLogin(true);
+  const validEmail = (token) => {
+    var requestOptions = {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      redirect: "follow",
+    };
+
+    fetch(
+      `https://fill-easy.com/email-validation?token=${token}`,
+      requestOptions
+    )
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        console.log("data:::", data);
+      })
+      .catch((error) => console.log("error", error));
   };
 
-  const [open, setOpen] = useState(false);
+  const signup = async () => {
+    console.log("email", remail);
+    console.log("username", username);
+    console.log("Password", rpass);
+    if (remail == "" && username == "" && rpass == "") {
+      setModalVisible(true);
+      return setalertmsg("Please fill up all of the fields!");
+    } else if (remail == "") {
+      setModalVisible(true);
+      return setalertmsg("Please enter your email!");
+    } else if (username == "") {
+      setModalVisible(true);
+      return setalertmsg("Please enter your username!");
+    } else if (rpass == "") {
+      setModalVisible(true);
+      return setalertmsg("Please enter your password!");
+    } else {
+      if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(remail)) {
+        var userData = {
+          username: username,
+          email: remail,
+          password: rpass,
+          device: "mobile",
+        };
+
+       await fetch("https://fill-easy.com/register-post", {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(userData),
+        })
+          .then((response) => {
+            return response.json();
+          })
+          .then((data) => {
+            if (data.username != undefined) {
+              setModalVisible(true);
+              return setalertmsg("Username  already registered!");
+            } else if (data.email != undefined) {
+              setModalVisible(true);
+              return setalertmsg("Email  already registered!");
+            } else {
+              setModalVisible(true);
+              setalertmsg("Please check your mailbox!");
+              validEmail(data);
+            }
+          });
+      } else {
+        setModalVisible(true);
+        return setalertmsg("You have entered an invalid email address!");
+      }
+    }
+  };
+
   return (
     <TouchableWithoutFeedback
       style={{ flex: 1 }}
@@ -84,6 +193,23 @@ const LoginScreen = () => {
           paddingHorizontal: "10%",
         }}
       >
+        <Modal
+          animationType="slide"
+          transparent={true}
+          visible={modalVisible}
+          onRequestClose={() => {
+            setModalVisible(!modalVisible);
+          }}
+        >
+          <TouchableOpacity
+            style={styles.centeredView}
+            onPress={() => setModalVisible(!modalVisible)}
+          >
+            <View style={styles.modalView}>
+              <Text style={styles.modalText}>{alertmsg}</Text>
+            </View>
+          </TouchableOpacity>
+        </Modal>
         <View
           style={{
             flex: 1,
@@ -105,15 +231,9 @@ const LoginScreen = () => {
             </View>
 
             <View style={{ width: 160, paddingLeft: "10%" }}>
-              <View
-                style={styles.firstCircle}
-              ></View>
-              <View
-                style={styles.secoundCircle}
-              ></View>
-              <View
-                style={styles.thiredCircle}
-              ></View>
+              <View style={styles.firstCircle}></View>
+              <View style={styles.secoundCircle}></View>
+              <View style={styles.thiredCircle}></View>
             </View>
           </View>
 
@@ -142,17 +262,11 @@ const LoginScreen = () => {
               />
             )}
 
-            <View
-              style={styles.linkContainer}
-            >
-              <View style={{ width: "105%", alignItems: "center" ,}}>
-                <View
-                  style={styles.firstBorder}
-                ></View>
-                <View
-                  style={styles.secoundBorder}
-                >
-                  <TEXT title="Or Log In Using" color="#3C3C4399" size={12} />
+            <View style={styles.linkContainer}>
+              <View style={{ width: "105%", alignItems: "center" }}>
+                <View style={styles.firstBorder}></View>
+                <View style={styles.secoundBorder}>
+                  <TEXT title={"Or Log In Using"} color="#3C3C4399" size={12} />
                 </View>
               </View>
 
@@ -164,18 +278,14 @@ const LoginScreen = () => {
                   justifyContent: "space-around",
                 }}
               >
-                <TouchableOpacity
-                  style={styles.ScanButton}
-                >
+                <TouchableOpacity style={styles.ScanButton}>
                   <Image
                     source={require("../../../assets/Image/IamSmart_logo.png")}
                     style={{ width: 89, height: 33 }}
                   />
                 </TouchableOpacity>
 
-                <TouchableOpacity
-                  style={styles.googleLogin}
-                >
+                <TouchableOpacity style={styles.googleLogin}>
                   <Image
                     source={require("../../../assets/Image/google.png")}
                     style={{ width: 18, height: 18 }}
@@ -250,14 +360,14 @@ const styles = StyleSheet.create({
       Platform.OS === "android" ? "#fed303" : "rgba(242, 147, 0, 0.15)",
     elevation: 25,
   },
-firstCircle:{
+  firstCircle: {
     height: 30,
     width: 30,
     borderRadius: 40 / 2,
     backgroundColor: "rgba(254, 210, 0, 0.1)",
     marginLeft: 110,
   },
-  secoundCircle:{
+  secoundCircle: {
     height: 40,
     width: 40,
     borderRadius: 50 / 2,
@@ -265,7 +375,7 @@ firstCircle:{
     marginLeft: 50,
     marginTop: 15,
   },
-  thiredCircle:{
+  thiredCircle: {
     height: 40,
     width: 40,
     borderRadius: 50 / 2,
@@ -273,7 +383,7 @@ firstCircle:{
     marginLeft: 145,
     marginTop: -25,
   },
-  ScanButton:{
+  ScanButton: {
     width: "48%",
     borderRadius: 10,
     borderWidth: 1,
@@ -282,24 +392,24 @@ firstCircle:{
     alignItems: "center",
     justifyContent: "center",
   },
-  linkContainer:{
+  linkContainer: {
     width: "100%",
     marginTop: "10%",
     alignItems: "center",
     alignSelf: "center",
   },
-  firstBorder:{
+  firstBorder: {
     height: 1,
     width: "100%",
     backgroundColor: "#7070702C",
   },
-  secoundBorder:{
+  secoundBorder: {
     position: "absolute",
     backgroundColor: "white",
     paddingHorizontal: 10,
     marginTop: -8,
   },
-  googleLogin:{
+  googleLogin: {
     width: "48%",
     borderRadius: 10,
     borderWidth: 1,
@@ -308,5 +418,47 @@ firstCircle:{
     alignItems: "center",
     justifyContent: "center",
     flexDirection: "row",
-  }
+  },
+  centeredView: {
+    justifyContent: "center",
+    alignItems: "center",
+    height: "100%",
+    width: "100%",
+  },
+  modalView: {
+    margin: 20,
+    backgroundColor: "white",
+    borderRadius: 20,
+    padding: 35,
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+  },
+  buttonClose: {
+    backgroundColor: "#2196F3",
+  },
+  textStyle: {
+    color: "white",
+    fontWeight: "bold",
+    textAlign: "center",
+  },
+  modalText: {
+    marginBottom: 15,
+    textAlign: "center",
+    color: "red",
+    fontSize: 16,
+    fontWeight: "bold",
+    fontFamily: "Roboto-Light",
+  },
+  button: {
+    borderRadius: 20,
+    padding: 10,
+    elevation: 2,
+  },
 });

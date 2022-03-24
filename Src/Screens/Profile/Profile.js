@@ -52,9 +52,7 @@ const Profile = () => {
   const [selected, setSelected] = useState("My Forms");
   return (
     <ScrollView>
-    <View style={{ flex: 1 }}>
-     
-       
+      <View style={{ flex: 1 }}>
         <LinearGradient
           colors={["#FED200", "#FED200", "#FFFFFF"]}
           style={styles.linearGradient}
@@ -69,20 +67,19 @@ const Profile = () => {
               style={{
                 flexDirection: "row",
                 marginTop: 50,
-                alignItems:'center',
-                width:'90%',
-                alignSelf:'center',
-                justifyContent:'space-between',
-                height:'10%',
+                alignItems: "center",
+                width: "90%",
+                alignSelf: "center",
+                justifyContent: "space-between",
+                height: "10%",
                 // borderWidth: 1,
-
               }}
             >
               <TouchableOpacity
                 style={{
-                  justifyContent:'flex-start',
-                  width: '20%',
-                //   borderWidth: 1,
+                  justifyContent: "flex-start",
+                  width: "20%",
+                  //   borderWidth: 1,
                 }}
                 onPress={() =>
                   // Alert.alert("Navigation Screen under Production....")
@@ -93,14 +90,12 @@ const Profile = () => {
               </TouchableOpacity>
               <TouchableOpacity
                 style={{
-                  width:'20%',
-                //   borderWidth: 1,
+                  width: "20%",
+                  //   borderWidth: 1,
                 }}
                 onPress={() => navigation.navigate("Setting")}
               >
-                <Icon name="settings" 
-                type="simple-line-icon" 
-                size={20} />
+                <Icon name="settings" type="simple-line-icon" size={20} />
               </TouchableOpacity>
             </View>
             <TEXT
@@ -165,7 +160,8 @@ const Profile = () => {
         <View
           style={{
             backgroundColor: "#F2F4F3",
-            marginLeft: 30,
+            marginLeft: 22,
+            width: "85%",
           }}
         >
           <TEXT
@@ -182,12 +178,12 @@ const Profile = () => {
             width: "90%",
             alignSelf: "center",
             marginTop: "5%",
-            elevation:5,
-            shadowOffset:{
-              width:0,
-              height:0
+            elevation: 5,
+            shadowOffset: {
+              width: 0,
+              height: 0,
             },
-            shadowColor:"rgba(70, 88, 131, 0.13)"
+            shadowColor: "rgba(70, 88, 131, 0.13)",
           }}
         >
           {documents.map((item, i) => {
@@ -197,15 +193,17 @@ const Profile = () => {
                   flexDirection: "row",
                   padding: "4%",
                   justifyContent: "space-between",
-
+                  alignItems: "center",
                 }}
               >
-                <View style={{
-                    width: '60%',
-                    justifyContent:'center'
-                }}>
+                <View
+                  style={{
+                    width: "60%",
+                    justifyContent: "center",
+                  }}
+                >
                   <TEXT
-                  style={{marginVertical:'2%'}}
+                    style={{ marginVertical: "2%" }}
                     title={item.name}
                     size={16}
                     color={Textcolor.blacktext}
@@ -236,9 +234,9 @@ const Profile = () => {
                     family="Roboto-Black"
                   />
                   <Icon
-                  style={{
+                    style={{
                       marginLeft: 5,
-                  }}
+                    }}
                     name="upload"
                     type="antdesign"
                     size={15}
@@ -252,14 +250,17 @@ const Profile = () => {
         <View
           style={{
             backgroundColor: "#F2F4F3",
-            marginLeft: 30,
+            marginLeft: 22,
             marginVertical: "5%",
             flexDirection: "row",
             justifyContent: "space-between",
             marginRight: 20,
+
+            width: "90%",
+
+            alignSelf: "flex-start",
           }}
         >
-        
           <TEXT
             title={"Linked Company"}
             size={18}
@@ -271,6 +272,7 @@ const Profile = () => {
             size={14}
             color={Textcolor.bluetext}
             family="Roboto-Regular"
+            style={{ marginTop: 5 }}
           />
         </View>
         <View
@@ -285,30 +287,29 @@ const Profile = () => {
               style={{
                 flexDirection: "row",
                 padding: "4%",
+                justifyContent: "space-between",
                 alignItems: "center",
+                width: "90%",
               }}
             >
               <View
                 style={{
-                    
                   width: 50,
                   height: 50,
                   borderRadius: 25,
                   backgroundColor: "#A4A4A4",
-                  opacity: 0.20,
+                  opacity: 0.2,
+                  marginRight: 5,
                 }}
               ></View>
-              <View style={{ width: "50%", 
-              marginLeft: "2%",
-              justifyContent: "center",
-            //   borderWidth: 1,
-             
-               }}>
-              
-                <TEXT
+              <View
                 style={{
-                    paddingBottom: 5,
+                  width: "60%",
+                  justifyContent: "center",
                 }}
+              >
+                <TEXT
+                  style={{ marginVertical: "2%" }}
                   title={item.name}
                   size={16}
                   color={Textcolor.blacktext}
@@ -346,7 +347,7 @@ const Profile = () => {
         <View
           style={{
             backgroundColor: "#F2F4F3",
-            marginLeft: 30,
+            marginLeft: 22,
             marginVertical: "5%",
             flexDirection: "row",
             justifyContent: "space-between",
@@ -365,6 +366,7 @@ const Profile = () => {
             size={14}
             color={Textcolor.bluetext}
             family="Roboto-Regular"
+            style={{ marginTop: 5 }}
           />
         </View>
         <View
@@ -372,7 +374,7 @@ const Profile = () => {
             width: "90%",
             alignSelf: "center",
             backgroundColor: "rgba(255, 255, 255, 1)",
-            marginBottom:Platform.OS==='ios'?0:'10%'
+            marginBottom: Platform.OS === "ios" ? 0 : "10%",
           }}
         >
           {Bank.map((item) => (
@@ -398,9 +400,9 @@ const Profile = () => {
               </View>
               <View style={{ width: "50%", marginLeft: "2%" }}>
                 <TEXT
-                style={{
+                  style={{
                     marginBottom: 5,
-                }}
+                  }}
                   title={item.name}
                   size={16}
                   color={Textcolor.blacktext}
@@ -430,8 +432,7 @@ const Profile = () => {
             </View>
           ))}
         </View>
-    
-    </View>
+      </View>
     </ScrollView>
   );
 };

@@ -74,7 +74,9 @@ export const Card = (props) => {
                                     color={Textcolor.grayoptext}
                                     family="Roboto-Regular"
                                 />
-                                <TouchableOpacity onPress={() => props.setopen(title)}>
+                                <TouchableOpacity 
+                                // onPress={() => props.setopen(title)}
+                                >
                                     <Icon name="more-vertical"
                                         type="feather"
                                         size={15}

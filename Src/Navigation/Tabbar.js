@@ -18,12 +18,10 @@ export const Tabbar = () => {
             justifyContent: "space-around",
             alignSelf: "center"
         }}>
-            <TouchableOpacity >
+            <TouchableOpacity onPress={()=>navigation.navigate("Home")}>
                 <Icon name="home"
                     type="feather"
                     size={24} />
-                {/* <Image source={require("../../assets/Image/home.png")}
-                    style={{ width: 24, height: 24 }} /> */}
             </TouchableOpacity>
 
             <TouchableOpacity onPress={()=>navigation.navigate("Tasklist")}>
