@@ -15,7 +15,6 @@ const HIGHT = Dimensions.get('screen').height;
 const OtpVerification = () => {
     const [success, setSuccess] = useState(false)
 
-    console.log("Hight", HIGHT)
     return (
         <TouchableWithoutFeedback
             style={{ flex: 1, alignItems: "center", backgroundColor: Backgroundcolor.whiteback }}

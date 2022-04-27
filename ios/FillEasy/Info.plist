@@ -8,6 +8,8 @@
 	<string>FillEasy</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
+	<key>CFBundleIconName</key>
+	<string>AppIcon</string>
 	<key>CFBundleIdentifier</key>
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
@@ -17,11 +19,11 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -35,22 +37,14 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>Your message to user when the camera is accessed for the first time</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string/>
-	<key>UILaunchStoryboardName</key>
-	<string>LaunchScreen</string>
-	<key>UIRequiredDeviceCapabilities</key>
-	<array>
-		<string>armv7</string>
-	</array>
-	<key>UISupportedInterfaceOrientations</key>
-	<array>
-		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
-	</array>
-	<key>UIViewControllerBasedStatusBarAppearance</key>
-	<false/>
+	<string></string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Your message to user when the microsphone is accessed for the first time</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Your message to user when the photo library is accessed for the first time</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>AntDesign.ttf</string>
@@ -125,6 +119,40 @@
 		<string>Montserrat-SemiBoldItalic.ttf</string>
 		<string>Montserrat-Thin.ttf</string>
 		<string>Montserrat-ThinItalic.ttf</string>
+		<string>SF-Pro-Text-Black copy.otf</string>
+		<string>SF-Pro-Text-BlackItalic copy.otf</string>
+		<string>SF-Pro-Text-Bold copy.otf</string>
+		<string>SF-Pro-Text-BoldItalic copy.otf</string>
+		<string>SF-Pro-Text-Heavy copy.otf</string>
+		<string>SF-Pro-Text-HeavyItalic copy.otf</string>
+		<string>SF-Pro-Text-Light copy.otf</string>
+		<string>SF-Pro-Text-LightItalic copy.otf</string>
+		<string>SF-Pro-Text-Medium copy.otf</string>
+		<string>SF-Pro-Text-MediumItalic copy.otf</string>
+		<string>SF-Pro-Text-Regular copy.otf</string>
+		<string>SF-Pro-Text-RegularItalic copy.otf</string>
+		<string>SF-Pro-Text-Semibold copy.otf</string>
+		<string>SF-Pro-Text-SemiboldItalic copy.otf</string>
+		<string>SF-Pro-Text-Thin copy.otf</string>
+		<string>SF-Pro-Text-ThinItalic copy.otf</string>
+		<string>SF-Pro-Text-Ultralight copy.otf</string>
+		<string>SF-Pro-Text-UltralightItalic copy.otf</string>
 	</array>
+	<key>UILaunchStoryboardName</key>
+	<string>LaunchScreen</string>
+	<key>UIRequiredDeviceCapabilities</key>
+	<array>
+		<string>armv7</string>
+	</array>
+	<key>UIRequiresFullScreen</key>
+	<true/>
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<false/>
 </dict>
 </plist>
