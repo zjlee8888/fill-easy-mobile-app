@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   View,
   Text,
@@ -18,42 +18,8 @@ import { TEXT } from "../../../../Component/Text";
 import { Icon } from "react-native-elements";
 import { BUTTON } from "../../../../Component/Button";
 import { FillinAddress } from "./FillinAddress";
-
+import { useDispatch ,useSelector} from "react-redux";
 import { Bottom } from "../Todo/buttoncontainer";
-const data = [
-  {
-    name: "Service",
-    color: "25%",
-  },
-  {
-    name: "Companies",
-    color: "50%",
-  },
-  {
-    name: "Fill-in",
-    color: "75%",
-  },
-  {
-    name: "Finished!",
-    color: "100%",
-  },
-];
-
-const ID = [
-  {
-    id: 1,
-    type: "HKID",
-  },
-  {
-    id: 2,
-    type: "Passport",
-  },
-  {
-    id: 3,
-    type: "Others",
-  },
-];
-
 export const Fillin = (props) => {
   const [modalVisible, setModalVisible] = useState(false);
   const [isPress, setIsPress] = useState(false);
@@ -64,11 +30,93 @@ export const Fillin = (props) => {
   const [date, setDate] = useState("");
   const [Ename, setEname] = useState("");
   const [Gname, setGname] = useState("");
-  const [idtype, setIdtype] = useState("HKID");
+  const [idtype, setIdtype] = useState({});
   const [iddocument, setIddocument] = useState("");
   const [effetdate, setEffectdate] = useState("");
+  const [formFilledData, setformFieldData] = useState("");
+
+  const [formData, setFormData] = useState([]);
+  const [inputs, setInputs] = useState({});
+
+
+
+  const dynamicformGenrate = useSelector((state) => state.userInfo.dynamicFormGenrate);
+
+
+  // console.log("state",inputs)
+  console.log("state==>",idtype["ID Document Type"])
+  
+
+  useEffect(() => {
+    convertData();
+  }, [dynamicformGenrate]);
+
+const onchangeHandle =(text,item)=>{
+
+      setInputs(state => ({...state,[item]:text}))
+    }
+  const convertData = () => {
+    let obj = dynamicformGenrate
+    let option = {};
+    let covertdataobject = [];
+    if(obj.length===0)
+    {
+      console.log("true")
+    }
+    else{
+      console.log("false")
+    const arr = Object.values(obj["formfields"]["Basic Information"]);
+    const updatedArr = arr.map((el, index) => {
+      const fieldName = Object.keys(el);
+      const Values = Object.values(el);
+
+      if (Values[1][0] == "RADIO BUTTONS") {
+        var length = Object.values(Object.values(el)[2]).length - 2;
+        option = Object.values(Object.values(el)[2]);
+        option.splice(length, 2);
+      } else {
+        option = "";
+      }
+      if (fieldName.length < 4) {
+        covertdataobject.push([
+          {
+            type: Values[1][0],
+            fieldName: fieldName[0],
+            placeholder: Values[0]["placeholder"],
+            sentence_description: Values[0]["sentence_description"],
+            opction: option,
+          },
+        ]);
+      } else {
+        let length = Object.keys(el).length - 3;
+        let Startfieldname = fieldName.splice(length, 3);
+        let endfieldname = fieldName.splice(0, length);
+        covertdataobject.push([
+          {
+            type: Values[1][0],
+            fieldName: Startfieldname[0],
+            placeholder: Values[0]["placeholder"],
+            sentence_description: Values[0]["sentence_description"],
+            // opction: option,
+          },
+          {
+            type: Values[4][0],
+            fieldName: endfieldname[0],
+            placeholder: Values[3]["placeholder"],
+            sentence_description: Values[3]["sentence_description"],
+            // opction: option,
+          },
+        ]);
+      }
+    });
+    setFormData(covertdataobject);
+    }
+    
+  };
+
   const DateValidation = (text, field) => {
-    if (field == "date") {
+    if (field == "Date") {
+      console.log("text", text);
       setDate(
         text
           .replace(/^(\d\d)(\d)$/g, "$1/$2")
@@ -78,15 +126,17 @@ export const Fillin = (props) => {
     }
 
     if (field == "effetdate") {
-        
-        setEffectdate(
-            text.replace(/^(\d\d)(\d)$/g, "$1/$2")
-            .replace(/^(\d\d\/\d\d)(\d+)$/g, "$1/$2")
-            .replace(/[^\d\/]/g, "")
-            )
-
+      setEffectdate(
+        text
+          .replace(/^(\d\d)(\d)$/g, "$1/$2")
+          .replace(/^(\d\d\/\d\d)(\d+)$/g, "$1/$2")
+          .replace(/[^\d\/]/g, "")
+      );
     }
   };
+  const selectionValue= (item2,index,fieldName)=>{
+    setIdtype(state=>({...state,[fieldName]:item2}))
+  }
   return (
     // <View>
 
@@ -115,370 +165,166 @@ export const Fillin = (props) => {
               padding: 20,
             }}
           >
-            <TEXT
-              title="Date"
-              size={14}
-              color={Textcolor.bluetext}
-              weight={"bold"}
-            />
-
-            <View
-              style={{
-                width: "100%",
-                borderBottomWidth: 0.5,
-                borderColor: "rgba(226, 226, 226, 0.5)",
-                paddingVertical: Platform.OS == "android" ? 0 : 12,
-              }}
-            >
-              {/* <TextInput
-                             placeholder="08/01/2022"
-                                placeholderTextColor="rgba(164, 164, 164, 1)"
-                              value={data}
-                                onChangeText={value => setDate(value)}
-                                style={{ fontSize: 14, color: Textcolor.blacktext }}
-                             //   keyboardType="numeric"
-                                dataDetectorTypes={true}
-                            /> */}
-              <TextInput
-                placeholder="08/01/2022"
-                placeholderTextColor="rgba(0, 0, 0, 1)"
-                value={date}
-                onChangeText={(text) => {
-                  DateValidation(text, "date");
-                }}
-                style={{ fontSize: 14, color: Textcolor.blacktext }}
-                keyboardType="number-pad"
-                dataDetectorTypes={true}
-                maxLength={10}
-              />
-              {/* 
-                            <DateInput
-                                inputProps={
-                                   
-                                    placeholder="08/01/2022",
-                                    placeholderTextColor="rgba(164, 164, 164, 1)",
-                                    value={data},
-                                  //  onChangeText={value => setDate(value)},
-                                 //   style={{ fontSize: 14, color: Textcolor.blacktext }},
-                                    keyboardType="numeric"
-                                }
-                                dateFormat={'DD/MM/YYYY'}
-                                 defaultValue={"08/01/2022"}
-                                // defaultDate={new Date(dayjs().subtract(5, 'year'))}
-                                // minimumDate={new Date(dayjs().subtract(10, 'year'))}
-                                // maximumDate={new Date()}
-                                 handleChange={value => setDate(value)}
-                                // onRef={(input) => (dateInput = input)}
-                            /> */}
-            </View>
-
-            {/* <View style={{
-                        height: 20,
-                    }}>
-                        </View> */}
-
-            <View
-              style={{
-                // height: 80,
-                borderTopWidth: 1,
-                paddingTop: 15,
-                borderColor: "#DDDDDD",
-              }}
-            >
-              <TEXT
-                title='The following fields are all mandatory fields to fill in your form.
-                                For fields regarding Chinese names: these fields are only mandatory for users.who have a
-                                Chinese name on their ID documents. If you do not have a Chinese name on your
-                                ID document, please type "N/A" and move on the next relevant field.'
-                size={9}
-                color={"#A4A4A4"}
-                fontFamily={"Roboto-Regular"}
-              />
-            </View>
-
-            <View
-              style={{
-                flex: 1,
-                flexDirection: "row",
-                width: "100%",
-                marginTop: 20,
-              }}
-            >
-              <View style={{ width: "50%" }}>
-                <TEXT
-                  title="English Surname"
-                  size={14}
-                  color={Textcolor.bluetext}
-                  weight={"bold"}
-                />
-              </View>
-              <View style={{ width: "50%" }}>
-                <TEXT
-                  title="Given Name"
-                  size={14}
-                  color={Textcolor.bluetext}
-                  weight={"bold"}
-                />
-              </View>
-            </View>
-            <View
-              style={{
-                flexDirection: "row",
-                marginTop: Platform.OS == "android" ? 0 : 10,
-              }}
-            >
-              <View
-                style={{
-                  width: "50%",
-                }}
-              >
-                <TextInput
-                  placeholder="LEE"
-                  value={Ename}
-                  placeholderTextColor="rgba(0, 0, 0, 1)"
-                  onChangeText={(value) => setEname(value)}
-                  style={{ fontSize: 14, color: Textcolor.blacktext }}
-                />
-              </View>
-
-              <View
-                style={{
-                  width: "50%",
-                }}
-              >
-                <TextInput
-                  placeholder="Matthew"
-                  value={Gname}
-                  placeholderTextColor="rgba(0, 0, 0, 1)"
-                  onChangeText={(value) => setGname(value)}
-                  style={{ fontSize: 14, color: Textcolor.blacktext }}
-                />
-              </View>
-            </View>
-
-            <View
-              style={{
-                paddingTop: 20,
-                marginTop: 10,
-                borderTopWidth: 1,
-                borderColor: "#DDDDDD",
-              }}
-            >
-              <TEXT
-                title="ID Document Type"
-                size={14}
-                color={Textcolor.bluetext}
-                weight={"bold"}
-              />
-            </View>
-
-            <View
-              style={{
-                width: "100%",
-                flexDirection: "row",
-                justifyContent: "space-between",
-                alignItems: "center",
-                marginTop: 10,
-              }}
-            >
-              {ID.map((item, i) => {
-                return (
-                  <View
-                    style={{
-                      flexDirection: "row",
-                      justifyContent: "space-between",
-                      alignItems: "center",
-                    }}
-                  >
-                    <TouchableOpacity
+            {formData.map((item) =>
+              item.length <= 1 ? (
+                <View style={{}}>
+                  {item[0].sentence_description ? (
+                    <View
                       style={{
-                        borderRadius: 15,
-                        borderWidth: 5,
-                        borderColor: "#0000000F",
-                        backgroundColor: "#0000000F",
-                        //  opacity: 0.9,
-                        height: 24,
-                        width: 24,
+                        // height: 80,
+                        width: "100%",
+                        borderTopWidth: 1,
+                        paddingTop: 15,
+                        borderColor: "#DDDDDD",
                       }}
-                      onPress={() => setIdtype(item.type)}
                     >
+                      <TEXT
+                        title={item[0].sentence_description}
+                        size={9}
+                        color={"#A4A4A4"}
+                        fontFamily={"Roboto-Regular"}
+                      />
+                    </View>
+                  ) : null}
+                  <TEXT
+                    title={item[0].fieldName}
+                    size={14}
+                    color={Textcolor.bluetext}
+                    weight={"bold"}
+                  />
+                  {item[0].type == "TEXT FIELD" ? (
+                    <View
+                      style={{
+                        width: "100%",
+                        borderBottomWidth: 0.5,
+                        borderColor: "#DDDDDD",
+                        paddingVertical: Platform.OS == "android" ? 0 : 12,
+                      }}
+                    >
+                      <TextInput
+                        placeholder={item[0].placeholder}
+                        placeholderTextColor="rgba(0, 0, 0, 1)"
+                        name={item[0].fieldName}
+                          value={inputs[item[0].fieldName]}
+                       onChangeText={(text)=>onchangeHandle(text,item[0].fieldName)}
+                        style={{ fontSize: 14, color: Textcolor.blacktext }}
+                        // keyboardType="number-pad"
+                        // dataDetectorTypes={true}
+                        // maxLength={10}
+                      />
+                    </View>
+                  ) : (
+                    <View>
+                      {item[0].opction.map((item2,index) => (
+                        <View
+                          style={{
+                            flexDirection: "row",
+                            // justifyContent: "space-between",
+                            alignItems: "center",
+                            margin: "2%",
+                          }}
+                        >
+                          <TouchableOpacity
+                            style={{
+                              borderRadius: 15,
+                              borderWidth: 5,
+                              borderColor: "#0000000F",
+                              backgroundColor: "#0000000F",
+                              //  opacity: 0.9,
+                              height: 24,
+                              width: 24,
+                            }}
+                            onPress={() => selectionValue(item2,index,item[0]?.fieldName)}
+                          >
+                            <View
+                              style={{
+                                width: 14,
+                                height: 14,
+                                 backgroundColor:Object.keys(idtype).length===0?"#ffffff":item2 == idtype[item[0].fieldName] ? "#2B299E" : "#ffffff",
+                                borderRadius: 14 / 2,
+                              }}
+                            ></View>
+                          </TouchableOpacity>
+                          <TEXT
+                            title={item2}
+                            color={"rgba(0, 0, 0, 1)"}
+                            style={{ marginLeft: 8 }}
+                          />
+                        </View>
+                      ))}
+                    </View>
+                  )}
+                </View>
+              ) : (
+                <View style={{ width: "100%" }}>
+                  {item.map((item2) =>
+                    item2.sentence_description ? (
                       <View
                         style={{
-                          width: 14,
-                          height: 14,
-                          backgroundColor:
-                            item.type == idtype ? "#2B299E" : "#ffffff",
-                          borderRadius: 14 / 2,
+                          // height: 80,
+                          borderTopWidth: 1,
+                          paddingTop: 15,
+                          borderColor: "#DDDDDD",
                         }}
-                      ></View>
-                    </TouchableOpacity>
-                    <TEXT
-                      title={item.type}
-                      color={"rgba(0, 0, 0, 1)"}
-                      style={{ marginLeft: 8 }}
-                    />
-                  </View>
-                );
-              })}
-            </View>
+                      >
+                        <TEXT
+                          title={item2.sentence_description}
+                          size={9}
+                          color={"#A4A4A4"}
+                          fontFamily={"Roboto-Regular"}
+                        />
+                      </View>
+                    ) : null
+                  )}
 
-            <TEXT
-              title="ID Document No."
-              size={14}
-              color={Textcolor.bluetext}
-              weight={"bold"}
-              style={{ marginTop: 15 }}
-            />
-
-            <View
-              style={{
-                marginTop: Platform.OS == "android" ? 0 : 10,
-                width: "50%",
-                borderBottomWidth: 0.5,
-                borderColor: "#DDDDDD",
-                paddingBottom: Platform.OS == "android" ? 0 : 10,
-              }}
-            >
-              <TextInput
-                placeholder="Y123456(1)"
-                placeholderTextColor="rgba(164, 164, 164, 1)"
-                value={iddocument}
-                onChangeText={(value) => setIddocument(value)}
-                style={{ fontSize: 14, color: Textcolor.blacktext }}
-              />
-            </View>
-
-            <View
-              style={{
-                flexDirection: "row",
-                marginTop: 15,
-                width: "100%",
-              }}
-            >
-              <View
-                style={{
-                  marginTop: 7,
-                  width: "50%",
-                }}
-              >
-                <TEXT
-                  title="Effective Date"
-                  size={14}
-                  color={Textcolor.bluetext}
-                  weight={"bold"}
-                />
-              </View>
-              <View
-                style={{
-                  marginTop: 7,
-                  width: "50%",
-                }}
-              >
-                <TEXT
-                  title="With Effect From"
-                  size={14}
-                  color={Textcolor.bluetext}
-                  weight={"bold"}
-                />
-              </View>
-            </View>
-            <View
-              style={{
-                flexDirection: "row",
-                alignItems: "center",
-                marginTop: 8,
-              }}
-            >
-              <TouchableOpacity
-                style={{
-                  borderRadius: 15,
-                  borderWidth: 5,
-                  borderColor: "#0000000F",
-                  backgroundColor: "#0000000F",
-                  //  opacity: 0.9,
-                  height: 24,
-                  width: 24,
-                  marginRight: 10,
-                }}
-                onPress={() => setEffect(true)}
-              >
-                <View
-                  style={{
-                    width: 14,
-                    height: 14,
-                    backgroundColor: effect ? "#2B299E" : "#ffffff",
-                    borderRadius: 14 / 2,
-                  }}
-                ></View>
-              </TouchableOpacity>
-
-              <TEXT
-                title="Immediate"
-                size={14}
-                color={Textcolor.blacktext}
-                // weight={'bold'}
-              />
-            </View>
-            <View
-              style={{
-                flexDirection: "row",
-                marginTop: 4,
-                alignItems: "center",
-              }}
-            >
-              <View style={{ width: "50%", flexDirection: "row" }}>
-                <TouchableOpacity
-                  style={{
-                    borderRadius: 15,
-                    borderWidth: 5,
-                    borderColor: "#0000000F",
-                    backgroundColor: "#0000000F",
-                    //  opacity: 0.9,
-                    height: 24,
-                    width: 24,
-                    marginRight: 10,
-                  }}
-                  onPress={() => setEffect(false)}
-                >
                   <View
                     style={{
-                      width: 14,
-                      height: 14,
-                      backgroundColor: effect ? "#ffffff" : "#2B299E",
-                      borderRadius: 14 / 2,
+                      flex: 1,
+                      width: "100%",
+                      marginTop: "5%",
+                      flexDirection: "row",
+                      marginBottom: "1%",
+                      
                     }}
-                  ></View>
-                </TouchableOpacity>
+                  >
+                    {item.map((item2) => (
+                      <View style={{ width: "50%"}}>
+                        <TEXT
+                          title={item2.fieldName}
+                          size={14}
+                          color={Textcolor.bluetext}
+                          weight={"bold"}
+                        />
 
-                <TEXT
-                  title="From Date"
-                  size={14}
-                  color={Textcolor.blacktext}
-                  // weight={'bold'}
-                />
-              </View>
-
-              <View
-                style={{
-                  borderBottomWidth: 1,
-                  width: "50%",
-                  borderColor: "rgba(226, 226, 226, 1)",
-                  paddingBottom: Platform.OS == "android" ? 0 : 15,
-                }}
-              >
-                <TextInput
-                  placeholder="08 / 01 / 2022"
-                  placeholderTextColor="rgba(0, 0, 0, 1)"
-                  value={effetdate}
-                  onChangeText={(value) => DateValidation(value, "effetdate")}
-                  keyboardType="number-pad"
-                  style={{ fontSize: 14, color: Textcolor.blacktext }}
-                  editable={effect ? false : true}
-                  maxLength={10}
-                />
-              </View>
-            </View>
+                        <View
+                          style={{
+                            width: "100%",
+                            borderBottomWidth: 0.5,
+                            borderColor: "rgba(226, 226, 226, 0.5)",
+                            paddingVertical: Platform.OS == "android" ? 0 : 12,
+                          }}
+                        >
+                          <TextInput
+                            placeholder={item2.placeholder}
+                            placeholderTextColor="rgba(0, 0, 0, 1)"
+                            value={inputs[item2.fieldName]}
+                            onChangeText={(text) =>
+                              onchangeHandle(text, item2.fieldName)
+                            }
+                            style={{
+                              fontSize: 14,
+                              color: Textcolor.blacktext,
+                            }}
+                          />
+                        </View>
+                      </View>
+                    ))}
+                  </View>
+                </View>
+              )
+            )}
           </View>
+
           <View
             style={{
               marginTop: 15,
@@ -491,7 +337,7 @@ export const Fillin = (props) => {
               handlebutton={props.handlebutton}
               contiue="in2add"
               back="company"
-              style={{ justifyContent: "space-evenly"}}
+              style={{ justifyContent: "space-evenly" }}
             />
           </View>
         </View>
@@ -517,5 +363,11 @@ const styles = StyleSheet.create({
   },
   triangle2: {
     backgroundColor: "pink",
+  },
+  row: {
+    display: "flex",
+    flexDirection: "row",
+    flex: 1,
+    justifyContent: "space-between",
   },
 });

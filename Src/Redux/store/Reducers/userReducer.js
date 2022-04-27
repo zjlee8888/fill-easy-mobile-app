@@ -1,6 +1,7 @@
 const initialState = {
     userData: {},
     userToken: '',
+    dynamicFormGenrate:[]
 };
 
 function userReducer(state = initialState, action) {
@@ -11,6 +12,10 @@ function userReducer(state = initialState, action) {
         case 'SET_TOKEN':
             return { ...state, userToken: action.payload }
             break;
+
+        case 'DYNAMIC_FORM_GENRATE':
+            return{...state,dynamicFormGenrate:action.payload}
+        
         default:
             return state;
     }

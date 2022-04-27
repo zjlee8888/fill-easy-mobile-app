@@ -49,7 +49,6 @@ const EditProfile = (props) => {
     );
   };
   const handlebutton = (type) => {
-    console.log("type", type);
     switch (type) {
       case "Profile":
         props.navigation.navigate("Profile");

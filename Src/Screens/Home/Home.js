@@ -17,10 +17,12 @@ import { useNavigation } from "@react-navigation/native";
 
 import { Backgroundcolor, Bordercolor, Textcolor } from "../../Utility/Colors";
 import { TEXT } from "../../Component/Text";
-import { Cirle } from "../../Component/Cirle";
+import { Circle } from "../../Component/Circle";
 import { Icon } from "react-native-elements";
 
 import { Card } from "../../Component/Card";
+import { request } from "react-native-permissions";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const data = [
   {
@@ -32,7 +34,7 @@ const data = [
   },
   {
     id: 2,
-    title: "Employm…",
+    title: "Employment",
     name: "briefcase-outline",
     type: "ionicon",
   },
@@ -44,14 +46,14 @@ const data = [
   },
   {
     id: 4,
-    title: "Martial…",
+    title: "Marital Status and Education",
     image: require("../../../assets/Image/muluser.png"),
     name: "account-box-multiple-outline",
     type: "material-community",
   },
   {
     id: 5,
-    title: "Phone No.",
+    title: "Phone Number & Fax",
     image: require("../../../assets/Image/phone.png"),
     name: "phone-call",
     type: "feather",
@@ -64,16 +66,9 @@ const data = [
   },
   {
     id: 7,
-    title: "Contact",
+    title: "Contact Person",
     name: "contacts",
     type: "antdesign",
-  },
-  {
-    id: 8,
-    title: "Beneficiary",
-    image: require("../../../assets/Image/star.png"),
-    name: "star-outline",
-    type: "ionicon",
   },
 ];
 
@@ -175,8 +170,35 @@ const Activity = [
 
 const Home = () => {
   const navigation = useNavigation();
-
   const [selected, setSelected] = useState("Name & ID");
+  //  AsyncStorage.removeItem("accessToken")
+
+
+  const Companies = async (data) => {
+    setSelected(data);
+    // navigation.navigate("TodoScreen");
+  
+    const token = await AsyncStorage.getItem("accessToken");
+
+    var requestOptions = {
+      Servicelinecheckbox: data,
+      jwt: token,
+    };
+
+    await fetch(
+      "https://fill-easy.com/serviceline/formsubmitted-choosecompany",
+      {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(requestOptions),
+      }
+    )
+      .then((response) => response.json())
+      .then((result) => {navigation.navigate("TodoScreen",{companiesData:result,selected:data})});
+  };
 
   const MyStatusBar = ({ backgroundColor, ...props }) => (
     <View style={{ flex: 1 }}>
@@ -200,7 +222,12 @@ const Home = () => {
       <ScrollView>
         <View style={{ flex: 1 }}>
           <View style={{ width: "100%" }}>
-            <Header data={data} selected={selected} setSelected={setSelected} />
+            <Header
+              data={data}
+              selected={selected}
+              setSelected={setSelected}
+              companies={Companies}
+            />
           </View>
 
           <View style={{ paddingHorizontal: "5%", paddingTop: 10 }}>
@@ -367,10 +394,8 @@ const Home = () => {
             >
               {Activity.map((item, i) => {
                 return (
-                  <View
-                    style={styles.activity}
-                  >
-                    <Cirle />
+                  <View style={styles.activity}>
+                    <Circle />
                     <View style={{ marginLeft: 15 }}>
                       <TEXT
                         title={item.title}
@@ -421,7 +446,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between",
   },
-  activity:{
+  activity: {
     flexDirection: "row",
     paddingHorizontal: 20,
     paddingBottom: 15,
@@ -429,5 +454,5 @@ const styles = StyleSheet.create({
     alignItems: "center",
     borderBottomWidth: 1,
     borderBottomColor: Bordercolor.darkgrayopborder,
-  }
+  },
 });

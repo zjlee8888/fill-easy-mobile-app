@@ -6,7 +6,7 @@ import { Header } from './Component/Screeheader'
 
 import { Backgroundcolor, Bordercolor, Textcolor } from '../../Utility/Colors'
 import { TEXT } from '../../Component/Text'
-import { Cirle } from '../../Component/Cirle'
+import { Circle } from '../../Component/Circle'
 import { Card } from '../../Component/Card'
 
 const Things = [
@@ -74,7 +74,6 @@ const option = [
 const Tasklist = () => {
     const [open , setOpen] = useState('')
 
-    console.log(open)
     return (
         <View style={{
             flex: 1,

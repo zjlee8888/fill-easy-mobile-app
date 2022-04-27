@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { Header } from "./Component/Screeheader";
@@ -14,6 +14,7 @@ import { Buttoncolor, Bordercolor } from "../../Utility/Colors";
 import { FillinAddress } from "./Component/Todo/address";
 import { FillAccount } from "./Component/Todo/account";
 import { FormDownload } from "./Component/Todo/finished";
+import { useDispatch, useSelector } from "react-redux";
 
 const data = [
   {
@@ -34,15 +35,62 @@ const data = [
   },
 ];
 
-const TodoScreen = () => {
-  const navigation = useNavigation();
-
+const TodoScreen = (props) => {
   const [Htitle1, setHtitle1] = useState("2. Select your");
   const [Htitle2, setHtitle2] = useState(" Companies");
   const [open, setOpen] = useState("Companies");
   const [color, setColor] = useState("52%");
   const [stepcolor, setStepcolor] = useState("25%");
   const [step, setStep] = useState(1);
+
+  const [companies, setCompanies] = useState("");
+  const [cfId, setCfId] = useState([]);
+  const [formField, setformField] = useState("");
+  const navigation = useNavigation();
+
+  const { selected } = props?.route?.params;
+  const dispatch = useDispatch();
+
+  const GenerateFormEndpoint = () => {
+    console.log("cfID 888888=>", cfId);
+    var obj = cfId?.reduce(function (obj, v) {
+      obj[v] = v;
+      return obj;
+    }, {});
+    obj["csrf_test_name"] = "b9ceea154bfbc8cdd3528da8c6a6120c";
+    console.log("$$$$$$$$", obj);
+    var raw = JSON.stringify({
+      lang: "en",
+      user_hash: "0f86e23331a27b3761f70408cfa85699f08ce9f5e6b8c2ad",
+      FormID: obj,
+      Serviceline: [selected],
+    });
+
+    var requestOptions = {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: raw,
+      redirect: "follow",
+    };
+    fetch("https://fill-easy.com/serviceline/formfields", requestOptions)
+      .then((response) => response.json())
+      .then((result) => {
+        dispatch({
+          type: "DYNAMIC_FORM_GENRATE",
+          payload: result,
+        });
+        setformField(result);
+      })
+      .catch((error) => console.log("error", error));
+  };
+  useEffect(() => {
+    if (props?.route?.params?.companiesData) {
+      setCompanies(props?.route?.params?.companiesData);
+    }
+  });
 
   const handlebutton = (type) => {
     switch (type) {
@@ -53,6 +101,8 @@ const TodoScreen = () => {
         setStep(1);
         setStepcolor("25%");
         setHtitle2(" Basic Information");
+        console.log("company");
+        GenerateFormEndpoint();
         break;
 
       case "company":
@@ -60,6 +110,7 @@ const TodoScreen = () => {
         setColor("52%");
         setHtitle1("2. Select your");
         setHtitle2(" Companies");
+
         break;
 
       case "in2add":
@@ -71,12 +122,20 @@ const TodoScreen = () => {
         setStepcolor("50%");
         break;
       case "add2acc":
-        setOpen("Account");
-        setColor("75%");
-        setHtitle1("4. Fill your");
-        setHtitle2(" Account No.");
-        setStep(3);
-        setStepcolor("75%");
+        if (Object.keys(formField["formfields"]).length == 3) {
+          setOpen("Account");
+          setColor("75%");
+          setHtitle1("4. Fill your");
+          setHtitle2(" Account No.");
+          setStep(3);
+          setStepcolor("75%");
+        } else {
+          setOpen("Finished!");
+          setHtitle1("5. Download &");
+          setHtitle2(" Send Forms");
+          setColor("98%");
+        }
+        console.log("Account", formField);
         break;
       case "acc2finish":
         setOpen("Finished!");
@@ -94,10 +153,8 @@ const TodoScreen = () => {
   return (
     <View style={{ flex: 1, alignItems: "center", backgroundColor: "#fff" }}>
       <Header title={Htitle1} title2={Htitle2} />
-      {/* HEader VIew */}
-      <View
-        style={styles.trinagleContainer}
-      >
+
+      <View style={styles.trinagleContainer}>
         <View
           style={{
             flexDirection: "row",
@@ -161,9 +218,6 @@ const TodoScreen = () => {
                       }}
                     ></View>
                   )}
-
-              
-              
               </View>
             );
           })}
@@ -185,7 +239,6 @@ const TodoScreen = () => {
             padding: 25,
             backgroundColor: "rgba(234, 234, 232, 1)",
             justifyContent: "space-around",
-             
           }}
         >
           <TEXT
@@ -217,19 +270,32 @@ const TodoScreen = () => {
 
       {open == "Companies" && (
         <View style={styles.mainContainer}>
-          <Company handlebutton={handlebutton} />
+          <Company
+            handlebutton={handlebutton}
+            otherCompanyDetails={companies}
+            cfId={cfId}
+            setCfId={setCfId}
+
+            // setCfId={(data) => {
+            //   GenerateFormEndpoint(data);
+            // }}
+          />
         </View>
       )}
 
       {open == "Fill-in" && (
         <View style={styles.mainContainer}>
-          <Fillin handlebutton={handlebutton} />
+          <Fillin handlebutton={handlebutton} formField={formField} />
         </View>
       )}
 
       {open == "Fill-address" && (
         <View style={styles.mainContainer}>
-          <FillinAddress handlebutton={handlebutton} />
+          <FillinAddress
+            handlebutton={handlebutton}
+            formField={formField}
+            selected={selected}
+          />
         </View>
       )}
 
@@ -272,7 +338,7 @@ const styles = StyleSheet.create({
     height: "100%",
     backgroundColor: "white",
   },
-  trinagleContainer:{
+  trinagleContainer: {
     marginTop: "0%",
     height: 32,
     width: "100%",
@@ -285,5 +351,5 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.5,
     elevation: 10,
     zIndex: 1,
-  }
+  },
 });

@@ -6,7 +6,6 @@ import { Textcolor } from "../../../../Utility/Colors";
 
 const windowWidth = Dimensions.get("screen").width;
 
-console.log(windowWidth);
 export const Bottom = (props) => {
   const formDownload = (type) => {
     switch (type) {
@@ -23,7 +22,7 @@ export const Bottom = (props) => {
     }
   };
 
-  const { contiue, FillAccount, type, Company, back, style } = props;
+  const { contiue, FillAccount, type, Company, back, style,checkvalue } = props;
   return (
     <View
       style={{

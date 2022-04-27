@@ -3,7 +3,7 @@ import { View, Text, TextInput, Platform,StyleSheet, TouchableOpacityBase, Touch
 import QRCodeScanner from "react-native-qrcode-scanner";
 
 import { Backgroundcolor} from '../../Utility/Colors'
-import { Cirle } from '../../Component/Cirle'
+import { Circle } from '../../Component/Circle'
 import { Icon } from 'react-native-elements';
 import { Dimensions } from 'react-native';
 import { TEXT } from '../../Component/Text'

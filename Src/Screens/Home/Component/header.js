@@ -21,7 +21,7 @@ import {
 } from "../../../Utility/Colors";
 
 export const Header = (props) => {
-  const { data, selected, setSelected } = props;
+  const { data, selected,companies} = props;
   const navigation = useNavigation();
   return (
     <View style={styles.mainContainer}>
@@ -117,10 +117,13 @@ export const Header = (props) => {
                           ? Backgroundcolor.yelloback
                           : null,
                     }}
-                    onPress={() => {
-                      setSelected(item.title),
-                        navigation.navigate("TodoScreen");
-                    }}
+                    onPress={() => 
+                    //   {
+                    //   setSelected(item.title),
+                    //     navigation.navigate("TodoScreen");
+                    // }
+                    companies(item.title)
+                  }
                   >
                     <Icon
                       name={item.name}

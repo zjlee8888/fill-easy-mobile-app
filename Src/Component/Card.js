@@ -3,7 +3,7 @@ import { View, Text, TouchableOpacity, Alert } from 'react-native'
 import { Icon } from 'react-native-elements';
 
 import { Backgroundcolor, Textcolor, Buttoncolor, Bordercolor, Shadowcolor } from '../Utility/Colors'
-import { Cirle } from '../Component/Cirle'
+import { Circle } from '../Component/Circle'
 import { TEXT } from '../Component/Text'
 import { BUTTON } from '../Component/Button'
 
@@ -26,7 +26,7 @@ export const Card = (props) => {
 
         }}>
             <View>
-                <Cirle />
+                <Circle />
             </View>
             <View style={{ marginLeft: 10 }}>
                 <TEXT title={title}

@@ -24,7 +24,9 @@ const Tab = createBottomTabNavigator();
   
 const Tabnavigation = () => {
     return (
-        <Tab.Navigator screenOptions={{ headerShown: false, }} tabBar={() => <Tabbar />}>
+        <Tab.Navigator screenOptions={{ headerShown: false, }} 
+        tabBar={() => <Tabbar />} 
+        initialRouteName="Home">
             <Tab.Screen name="Home" component={Home} />
             <Tab.Screen name="Profile" component={Profile} />
 

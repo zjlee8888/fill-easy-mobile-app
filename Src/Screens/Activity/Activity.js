@@ -17,7 +17,7 @@ import { Bordercolor } from "../../Utility/Colors";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import { TEXT } from "../../Component/Text";
 
-import { Cirle } from "../../Component/Cirle";
+import { Circle } from "../../Component/Circle";
 
 const Activity = [
   {
@@ -191,7 +191,7 @@ const ActivityRecord = (props) => {
                    
                   }}
                 >
-                  <Cirle />
+                  <Circle />
                   <View style={{ marginLeft: 15 }}>
                     <TEXT
                       title={item.title}
@@ -258,7 +258,7 @@ const ActivityRecord = (props) => {
                     borderBottomColor: Bordercolor.darkgrayopborder,
                   }}
                 >
-                  <Cirle />
+                  <Circle />
                   <View style={{ marginLeft: 15 }}>
                     <TEXT
                       title={item.title}

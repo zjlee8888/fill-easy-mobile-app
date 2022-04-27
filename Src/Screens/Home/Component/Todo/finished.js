@@ -52,7 +52,6 @@ export const FormDownload = (props) => {
 
         const { item } = props;
 
-        console.log("*******",item)
 
         return (
             <View style={{
@@ -138,7 +137,6 @@ export const FormDownload = (props) => {
          let selectedItem = banks.filter((bank) => bank && bank.selected);
        
          setUsed(selectedItem[0])
-         console.log("!!!!!",used)
         // setSelected(used?.name)
         
     }
@@ -149,7 +147,6 @@ export const FormDownload = (props) => {
         
     }, [banks])
 
-    console.log(used)
     const [modalVisible, setModalVisible] = useState(false);
     return (
         <ScrollView style={{ flex: 1, width: "100%", backgroundColor:"#FFFFFF", padding:15}}>

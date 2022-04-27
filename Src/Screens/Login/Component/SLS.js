@@ -23,7 +23,7 @@ import {
 } from "../../../Utility/Colors";
 
 export const Signin = (props) => {
-  const { email, password, showpass } = props;
+  const { email, password, showpass ,emailRef,passwordRef,signin,usernameRef} = props;
 
   return (
     <View style={styles.mainContainer}>
@@ -44,6 +44,10 @@ export const Signin = (props) => {
           value={email}
           onChangeText={(value) => props.setemail(value)}
           style={{ color: "rgba(60, 60, 67, 1)", fontSize: 15 }}
+          autoFocus={true}
+          returnKeyType={"next"}
+          onSubmitEditing={()=>passwordRef.current.focus()}
+          ref={emailRef}
         />
       </View>
 
@@ -72,6 +76,9 @@ export const Signin = (props) => {
           style={{ color: "rgba(60, 60, 67, 1)", fontSize: 15, width: "65%" }}
           textContentType="password"
           secureTextEntry={showpass ? false : true}
+          returnKeyType={"done"}
+          onSubmitEditing={()=>signin()}
+          ref={passwordRef}
         />
         <TouchableOpacity
           style={{ marginRight: 0, width: "15%" }}
@@ -121,7 +128,7 @@ export const Signin = (props) => {
 };
 
 export const Signup = (props) => {
-  const { email, password, showpass, usename } = props;
+  const { email, password, showpass, usename ,usernameRef,emailRef,passwordRef,signup} = props;
   return (
     <View
       style={{
@@ -151,7 +158,11 @@ export const Signup = (props) => {
           placeholder="Name ......"
           value={usename}
           onChangeText={(value) => props.setuser(value)}
-          style={styles.textInput}
+          style={{...styles.textInput,fontSize: 15, width: "65%"}}
+          returnKeyType={"next"}
+          autoFocus={true}
+          ref={usernameRef}
+          onSubmitEditing={()=>emailRef.current.focus()}
         />
       </View>
 
@@ -165,6 +176,8 @@ export const Signup = (props) => {
           value={email}
           onChangeText={(value) => props.setemail(value)}
           style={styles.textInput}
+          ref={emailRef}
+          onSubmitEditing={()=>passwordRef.current.focus()}
         />
       </View>
 
@@ -193,6 +206,9 @@ export const Signup = (props) => {
           style={{ color: "rgba(60, 60, 67, 1)", fontSize: 15, width: "65%" }}
           textContentType="password"
           secureTextEntry={showpass ? false : true}
+          ref={passwordRef}
+          onSubmitEditing={()=>signup()}
+         returnKeyType={"done"}
         />
         <TouchableOpacity
           style={{ marginRight: 0, width: "15%" }}

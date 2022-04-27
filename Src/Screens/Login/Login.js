@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import {
   View,
   Text,
@@ -21,7 +21,11 @@ import { Signin, Signup } from "./Component/SLS";
 import { Backgroundcolor } from "../../Utility/Colors";
 import { useDispatch } from "react-redux";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { Login, userRegistration } from "../../API/authentication/LoginApi";
 const LoginScreen = () => {
+  const emailRef = useRef();
+  const passwordRef = useRef();
+  const usernameRef = useRef();
   const navigation = useNavigation();
 
   const [login, setLogin] = useState(true);
@@ -35,11 +39,7 @@ const LoginScreen = () => {
   const [alertmsg, setalertmsg] = useState("");
 
   const [modalVisible, setModalVisible] = useState(false);
-  // const dispatch = useDispatch();
-  // dispatch({
-  //   type: "SET_TOKEN",
-  //   payload: token,
-  // });
+ const dispatch = useDispatch();
   const MyStatusBar = ({ backgroundColor, ...props }) => (
     <View style={{}}>
       <SafeAreaView style={{ backgroundColor: Backgroundcolor.whiteback }}>
@@ -52,9 +52,7 @@ const LoginScreen = () => {
     </View>
   );
 
-  const signin = () => {
-    console.log("email login", email);
-    console.log("password ==>", password);
+  const signin = async () => {
     if (email == "" && password == "") {
       setModalVisible(true);
       setalertmsg("Please Enter Email and Password!");
@@ -65,69 +63,28 @@ const LoginScreen = () => {
       setModalVisible(true);
       setalertmsg("Please Password!");
     } else if (email.length > 0) {
-      var raw = JSON.stringify({
-        username: email,
-        password: password,
-        device: "mobile",
-        lang: "en",
-      });
-
-      fetch("https://fill-easy.com/login-post", {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: raw,
-      })
-        .then((response) => response.text())
-        .then((result) => {
-          let parsedData = JSON.parse(result);
-          if (parsedData.email != undefined) {
-            setModalVisible(true);
-            return setalertmsg("Email is  not-verified!");
-          }
-          if (parsedData.login_message != undefined) {
-            setModalVisible(true);
-            return setalertmsg("User does not exist!");
-          }
-          if (parsedData.email == undefined) {
-            setToken(parsedData.token);
-
-            AsyncStorage.setItem("accessToken", parsedData.token);
-          }
-        })
-        .catch((error) => console.log("error", error));
+      const parsedData = await Login(email, password);
+      if (parsedData.email != undefined) {
+        setModalVisible(true);
+        return setalertmsg("Email is  not-verified!");
+      }
+      if (parsedData.login_message != undefined) {
+        setModalVisible(true);
+        return setalertmsg("User does not exist!");
+      }
+      if (parsedData.email == undefined) {
+        dispatch({
+          type: "SET_TOKEN",
+          payload: parsedData.token,
+        });
+        setToken(parsedData.token);
+       AsyncStorage.setItem("accessToken", parsedData.token);
+      }
     }
   };
 
-  const validEmail = (token) => {
-    var requestOptions = {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      redirect: "follow",
-    };
-
-    fetch(
-      `https://fill-easy.com/email-validation?token=${token}`,
-      requestOptions
-    )
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        console.log("data:::", data);
-      })
-      .catch((error) => console.log("error", error));
-  };
-
   const signup = async () => {
-    console.log("email", remail);
-    console.log("username", username);
-    console.log("Password", rpass);
+  
     if (remail == "" && username == "" && rpass == "") {
       setModalVisible(true);
       return setalertmsg("Please fill up all of the fields!");
@@ -142,37 +99,18 @@ const LoginScreen = () => {
       return setalertmsg("Please enter your password!");
     } else {
       if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(remail)) {
-        var userData = {
-          username: username,
-          email: remail,
-          password: rpass,
-          device: "mobile",
-        };
-
-       await fetch("https://fill-easy.com/register-post", {
-          method: "POST",
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(userData),
-        })
-          .then((response) => {
-            return response.json();
-          })
-          .then((data) => {
-            if (data.username != undefined) {
-              setModalVisible(true);
-              return setalertmsg("Username  already registered!");
-            } else if (data.email != undefined) {
-              setModalVisible(true);
-              return setalertmsg("Email  already registered!");
-            } else {
-              setModalVisible(true);
-              setalertmsg("Please check your mailbox!");
-              validEmail(data);
-            }
-          });
+        const data = await userRegistration(remail, username, rpass);
+        console.log("data==>", data);
+        if (data.username != undefined) {
+          setModalVisible(true);
+          return setalertmsg("Username  already registered!");
+        } else if (data.email != undefined) {
+          setModalVisible(true);
+          return setalertmsg("Email  already registered!");
+        } else {
+          setModalVisible(true);
+          setalertmsg("Please check your mailbox!");
+        }
       } else {
         setModalVisible(true);
         return setalertmsg("You have entered an invalid email address!");
@@ -247,6 +185,8 @@ const LoginScreen = () => {
                 setpass={setPassword}
                 setshow={setShowpass}
                 signin={signin}
+                emailRef={emailRef}
+                passwordRef={passwordRef}
               />
             ) : (
               <Signup
@@ -259,6 +199,9 @@ const LoginScreen = () => {
                 setpass={setRpassword}
                 setshow={setShowpass}
                 signup={signup}
+                usernameRef={usernameRef}
+                emailRef={emailRef}
+                passwordRef={passwordRef}
               />
             )}
 
