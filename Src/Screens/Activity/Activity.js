@@ -14,6 +14,7 @@ import Moment from 'react-moment';
 import { Textcolor } from "../../Utility/Colors";
 import { Backgroundcolor } from "../../Utility/Colors";
 import { Header } from "../Home/Component/Screeheader";
+import { useDispatch, useSelector } from "react-redux";
 
 import { Bordercolor } from "../../Utility/Colors";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
@@ -22,42 +23,6 @@ import { getdataActivity } from '../../Helper/Activity'
 
 import { Circle } from "../../Component/Circle";
 
-
-const Activity = [
-  {
-    title: "AIA",
-    desc: "Activities record content",
-    time: "12 hours",
-  },
-  {
-    title: "AIA",
-    desc: "Activities record content",
-    time: "14 hours",
-  },
-  {
-    title: "AIA",
-    desc: "Activities record content",
-    time: "17 hours",
-  },
-];
-
-const Activity2 = [
-  {
-    title: "AIA",
-    desc: "Activities record content",
-    time: "02 Jan",
-  },
-  {
-    title: "AIA",
-    desc: "Activities record content",
-    time: "02 Jan",
-  },
-  {
-    title: "AIA",
-    desc: "Activities record content",
-    time: "02 Jan",
-  },
-];
 
 const ActivityRecord = (props) => {
   const [open, setOpen] = useState([
@@ -68,11 +33,7 @@ const ActivityRecord = (props) => {
     "Activity-Address",
   ]);
 
-  const getdata = async () => {
-    const res = await getdataActivity()
 
-    console.log("@@@@@@@@@@@@@@@aCTIVITY", res)
-  }
 
   const data = [
     {
@@ -92,11 +53,27 @@ const ActivityRecord = (props) => {
     },
 
   ]
-  useEffect(() => {
-    getdata()
-  }, [])
+
+
+  const Activity = useSelector((state) => state.activityReducer.all_activity);
+  console.log("#################", Activity[0])
 
   const [modalVisible, setModalVisible] = useState(false);
+
+  if (Activity[0] == "error") {
+      return(
+        <View style={{flex:1,alignItems:"center"}}>
+          <Header />
+          <View style={{flex:1 ,alignItems:"center",justifyContent:"center"}}>
+            <TouchableOpacity onPress={() =>getdataActivity()}>
+              <Text>Refresh</Text>
+              </TouchableOpacity>
+          </View>
+        </View>
+      );
+  }else{
+
+ 
   return (
     <ScrollView
       style={{
@@ -210,10 +187,10 @@ const ActivityRecord = (props) => {
               paddingTop: 0,
             }}
           >
-            {data.map((item, i) => {
+            {Activity.map((item, i) => {
               const time = item.Time
               const converttime = moment(time, "YYYYMMDD").fromNow()
-              // console.log("++++++++",)
+
               return (
                 <View
                   style={{
@@ -284,9 +261,9 @@ const ActivityRecord = (props) => {
               paddingTop: 0,
             }}
           >
-            {data.map((item, i) => {
+            {Activity.map((item, i) => {
               const time = item.Time
-              const converttime = moment(time, "YYYYMMDD").fromNow()
+              const converttime = moment(time, "'YYYYM'MDD").fromNow()
               return (
                 <View
                   style={{
@@ -339,6 +316,7 @@ const ActivityRecord = (props) => {
       </View>
     </ScrollView>
   );
+}
 };
 
 export default ActivityRecord;

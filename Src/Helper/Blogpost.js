@@ -4,12 +4,6 @@ import Type from '../Redux/constant'
 
 export const Allblogpost = async (dispatch, token) => {
 
-
-  var requestOptions = {
-    jwt: token,
-  };
-
-
   const res = await fetch(
     API.BLOGPOST_GET,
     {
@@ -21,46 +15,71 @@ export const Allblogpost = async (dispatch, token) => {
       // body: JSON.stringify(requestOptions),
     }
   )
-    .then((response) => response.json())
-    .then((result) => {
-      dispatch({
-        type : Type.SET_ALL_BLOGS,
-        payload : result.posts
-      })
-      
-    });
+    .then((response) => {
+  
+      if (response.status == 200) {
+
+        const result = response.json()
+        .then((res) =>{
+          console.log("###############",res)
+          dispatch({
+            type: Type.SET_ALL_BLOGS,
+            payload: res.posts
+          })
+        })
+        
+      } else {
+        dispatch({
+          type: Type.SET_ALL_BLOGS,
+          payload: ["error"]
+        })
+      }
+
+
+    }
+
+
+    )
+  // .then((result) => {
+  //   console.log("$$$$$$$$$$$$",result)
+  //   dispatch({
+  //     type : Type.SET_ALL_BLOGS,
+  //     payload : result.posts
+  //   })
+
+  // });
 
   // return res
 }
 
-export const blogdetailapi = async (dispatch , id ,token) =>{
+export const blogdetailapi = async (dispatch, id, token) => {
 
 
-var requestOptions = {
-  jwt: token,
-};
+  var requestOptions = {
+    jwt: token,
+  };
 
 
-const res = await fetch(
-  `https://fill-easy.com/blog/1?device=mobie&lang=en`,
-  {
-    method: "GET",
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-    },
-    // body: JSON.stringify(requestOptions),
-  }
-)
-  .then((response) =>JSON.parse(response))
-  .then((result) => {
-    
+  const res = await fetch(
+    `https://fill-easy.com/blog/1?device=mobie&lang=en`,
+    {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      // body: JSON.stringify(requestOptions),
+    }
+  )
+    .then((response) => JSON.parse(response))
+    .then((result) => {
 
-    // dispatch({
-    //   type : Type.SET_ALL_BLOGS,
-    //   payload : result.posts
-    // })
-    
-  });
+
+      // dispatch({
+      //   type : Type.SET_ALL_BLOGS,
+      //   payload : result.posts
+      // })
+
+    });
 
 }

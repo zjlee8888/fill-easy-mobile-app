@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { useSelector, useDispatch } from "react-redux";
+import { ActivityIndicator, View } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
+//Screena 
 import ActivityRecord from "../Screens/Activity/Activity";
 import QrcodeScreen from "../Screens/QRSceen/QRcodeScanScreen";
 import LoginScreen from "../Screens/Login/Login";
@@ -9,22 +14,17 @@ import Tasklist from "../Screens/Home/Tasklist";
 import TodoScreen from "../Screens/Home/Todo";
 import BlogPosts from "../Screens/Home/BlogPosts";
 import EditProfile from "../Screens/Profile/EditProfile";
-import { useSelector, useDispatch } from "react-redux";
-import { ActivityIndicator, View } from "react-native";
-const Stack = createNativeStackNavigator();
 import Setting from "../Screens/Setting/SettingScreen";
 
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import Loader from "../Screens/Loader/Loader";
+//Helper 
 import { Allblogpost } from '../Helper/Blogpost'
+import {getdataActivity} from '../Helper/Activity'
+
+const Stack = createNativeStackNavigator();
 
 const Preauth = () => {
   return (
-    <Stack.Navigator
-      screenOptions={{ headerShown: false }}
-      // initialRouteName="LoginScreen"
-    >
-       {/* <Stack.Screen name="LoaderScreen" component={LoaderScreen} /> */}
+    <Stack.Navigator screenOptions={{ headerShown: false }}  >
       <Stack.Screen name="LoginScreen" component={LoginScreen} />
     </Stack.Navigator>
   );
@@ -51,8 +51,6 @@ const Postauth = () => {
 
 export default function Stacknavigation() {
   const [isLoading, setIsLoading] = useState(true);
-
-
 
   useEffect(() => {
     setTimeout(() => {
@@ -84,7 +82,8 @@ export default function Stacknavigation() {
         });
 
         Allblogpost(dispatch , token)
-        
+        getdataActivity(dispatch)
+
        
       }
     } catch (e) {

@@ -51,7 +51,6 @@ export const FillinAddress = (props) => {
   );
 
 
-  console.log("!!!!!!!!!!!!!!!!!",selected)
   useEffect(() => {
     convertData();
   }, [formFilledData]);
@@ -74,7 +73,7 @@ export const FillinAddress = (props) => {
     if (obj.length === 0) {
 
     } else {
-      console.log("******",typeof obj)
+
       const arr = Object.values(obj["formfields"][selected]);
 
      

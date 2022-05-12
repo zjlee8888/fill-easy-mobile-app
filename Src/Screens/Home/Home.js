@@ -15,6 +15,7 @@ import { Header } from "./Component/header";
 import Swiper from "react-native-swiper";
 import { useNavigation } from "@react-navigation/native";
 import { useSelector, useDispatch } from "react-redux";
+import moment from 'moment'
 
 import { Backgroundcolor, Bordercolor, Textcolor } from "../../Utility/Colors";
 import { TEXT } from "../../Component/Text";
@@ -28,6 +29,9 @@ import { API } from '../../Utility/Apiservice'
 import { formfill } from '../../Helper/FormFilling'
 
 import { Allblogpost } from '../../Helper/Blogpost'
+import {getdataActivity} from '../../Helper/Activity'
+
+
 const data = [
   {
     id: 1,
@@ -136,41 +140,8 @@ const Swipe = [
   },
 ];
 
-const Blog = [
-  {
-    title: "Bathroom Cleaning",
-    desc: "Free Fan Cleaning & More",
-    image: require("../../../assets/Image/blog.png"),
-  },
-  {
-    title: "Bathroom Cleaning",
-    desc: "Free Fan Cleaning & More",
-    image: require("../../../assets/Image/blog.png"),
-  },
-];
 
-const Activity = [
-  {
-    title: "AIA",
-    desc: "Activities record content",
-    time: "2 hours",
-  },
-  {
-    title: "AIA",
-    desc: "Activities record content",
-    time: "2 hours",
-  },
-  {
-    title: "AIA",
-    desc: "Activities record content",
-    time: "2 hours",
-  },
-  {
-    title: "AIA",
-    desc: "Activities record content",
-    time: "2 hours",
-  },
-];
+
 
 const Home = () => {
   const navigation = useNavigation();
@@ -193,7 +164,9 @@ const Home = () => {
 
 
   const Blogs = useSelector((state) => state.blogReducer.all_blogs)
+  const Activity = useSelector((state) => state.activityReducer.all_activity);
 
+ console.log("*****************",Activity)
 
   const MyStatusBar = ({ backgroundColor, ...props }) => (
     <View style={{ flex: 1 }}>
@@ -328,7 +301,7 @@ const Home = () => {
 
             <ScrollView style={{ flexDirection: "row" }} horizontal={true}>
               {Blogs && Blogs.map((item, i) => {
-                console.log("@@@@@@@@" , item)
+          
                 const res = item
                 const id = res.blog_id
 
@@ -396,19 +369,21 @@ const Home = () => {
               }}
             >
               {Activity.map((item, i) => {
+                  const time = item.Time
+                  const converttime = moment(time, "'YYYYM'MDD").fromNow()
                 return (
                   <View style={styles.activity}>
                     <Circle />
                     <View style={{ marginLeft: 15 }}>
                       <TEXT
-                        title={item.title}
+                        title={item.Compname}
                         size={15}
                         color={Textcolor.darkshadetext}
                         style={{ opacity: 0.6899999976158142 }}
                         family="Roboto-Black"
                       />
                       <TEXT
-                        title={`(${item.desc})`}
+                        title={`(${item.Service_Line})`}
                         size={12}
                         color={Textcolor.grayoptext}
                         family="Roboto-Regular"
@@ -423,7 +398,7 @@ const Home = () => {
                       }}
                     >
                       <TEXT
-                        title={item.time}
+                        title={converttime}
                         size={11}
                         color={Textcolor.darkshadetext}
                         style={{ opacity: 0.38999998569488525 }}
