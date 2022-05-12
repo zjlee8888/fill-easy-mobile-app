@@ -9,6 +9,8 @@ import {
   Pressable,
   ScrollView,
 } from "react-native";
+import moment from 'moment'
+import Moment from 'react-moment';
 import { Textcolor } from "../../Utility/Colors";
 import { Backgroundcolor } from "../../Utility/Colors";
 import { Header } from "../Home/Component/Screeheader";
@@ -16,8 +18,10 @@ import { Header } from "../Home/Component/Screeheader";
 import { Bordercolor } from "../../Utility/Colors";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import { TEXT } from "../../Component/Text";
+import { getdataActivity } from '../../Helper/Activity'
 
 import { Circle } from "../../Component/Circle";
+
 
 const Activity = [
   {
@@ -63,6 +67,34 @@ const ActivityRecord = (props) => {
     "Form-Download",
     "Activity-Address",
   ]);
+
+  const getdata = async () => {
+    const res = await getdataActivity()
+
+    console.log("@@@@@@@@@@@@@@@aCTIVITY", res)
+  }
+
+  const data = [
+    {
+      "ID": "1",
+      "Service_Line": "Change of Personal Particulars",
+      "Note": "temp",
+      "Time": "2022-03-06 10:35:06pm",
+      "Compname": "HONGKONG & SHANGHAI BANKING CORPORATION LIMITED (THE)"
+    },
+
+    {
+      "ID": "2",
+      "Service_Line": "Change of Personal Particulars",
+      "Note": "temp",
+      "Time": "2022-03-06 10:35:06pm",
+      "Compname": "FUBON BANK (HONG KONG) LIMITED"
+    },
+
+  ]
+  useEffect(() => {
+    getdata()
+  }, [])
 
   const [modalVisible, setModalVisible] = useState(false);
   return (
@@ -178,30 +210,36 @@ const ActivityRecord = (props) => {
               paddingTop: 0,
             }}
           >
-            {Activity.map((item, i) => {
+            {data.map((item, i) => {
+              const time = item.Time
+              const converttime = moment(time, "YYYYMMDD").fromNow()
+              // console.log("++++++++",)
               return (
                 <View
                   style={{
                     flexDirection: "row",
-                    paddingHorizontal: 20,
+                    width: "100%",
+                    //  paddingHorizontal: 20,
                     padding: 15,
                     alignItems: "center",
                     borderBottomWidth: 1,
                     borderBottomColor: Bordercolor.darkgrayopborder,
-                   
+
                   }}
                 >
-                  <Circle />
-                  <View style={{ marginLeft: 15 }}>
+                  <View style={{ width: "10%", alignItems: "center" }}>
+                    <Circle />
+                  </View>
+                  <View style={{ marginLeft: 15, width: "70%" }}>
                     <TEXT
-                      title={item.title}
+                      title={item.Compname}
                       size={15}
                       color={Textcolor.darkshadetext}
                       style={{ opacity: 0.6899999976158142 }}
                       family="Roboto-Black"
                     />
                     <TEXT
-                      title={`(${item.desc})`}
+                      title={`(${item.Service_Line})`}
                       size={12}
                       color={Textcolor.grayoptext}
                       family="Roboto-Regular"
@@ -209,10 +247,10 @@ const ActivityRecord = (props) => {
                   </View>
 
                   <View
-                    style={{ flex: 1, marginRight: 0, alignItems: "flex-end" }}
+                    style={{ flex: 1, marginRight: 0, alignItems: "flex-end", width: "20%" }}
                   >
                     <TEXT
-                      title={item.time}
+                      title={converttime}
                       size={11}
                       color={Textcolor.darkshadetext}
                       style={{ opacity: 0.6899999976158142 }}
@@ -246,29 +284,33 @@ const ActivityRecord = (props) => {
               paddingTop: 0,
             }}
           >
-            {Activity2.map((item, i) => {
+            {data.map((item, i) => {
+              const time = item.Time
+              const converttime = moment(time, "YYYYMMDD").fromNow()
               return (
                 <View
                   style={{
                     flexDirection: "row",
-                    paddingHorizontal: 20,
+                    // paddingHorizontal: 20,
                     padding: 15,
                     alignItems: "center",
                     borderBottomWidth: 1,
                     borderBottomColor: Bordercolor.darkgrayopborder,
                   }}
                 >
-                  <Circle />
-                  <View style={{ marginLeft: 15 }}>
+                  <View style={{ width: "10%", alignItems: "center" }}>
+                    <Circle />
+                  </View>
+                  <View style={{ marginLeft: 15, width: "70%" }}>
                     <TEXT
-                      title={item.title}
+                      title={item.Compname}
                       size={15}
                       color={Textcolor.darkshadetext}
                       style={{ opacity: 0.6899999976158142 }}
                       family="Roboto-Black"
                     />
                     <TEXT
-                      title={`(${item.desc})`}
+                      title={`(${item.Service_Line})`}
                       size={12}
                       color={Textcolor.grayoptext}
                       family="Roboto-Regular"
@@ -278,8 +320,11 @@ const ActivityRecord = (props) => {
                   <View
                     style={{ flex: 1, marginRight: 0, alignItems: "flex-end" }}
                   >
+
+
+                    {/* <Moment element={Text} >{time1}</Moment> */}
                     <TEXT
-                      title={item.time}
+                      title={converttime}
                       size={11}
                       color={Textcolor.darkshadetext}
                       style={{ opacity: 0.6899999976158142 }}

@@ -1,4 +1,4 @@
-import { Colors } from "react-native/Libraries/NewAppScreen"
+
 
 const Color = {
     Primarycolor:"#fed200",

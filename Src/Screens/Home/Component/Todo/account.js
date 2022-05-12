@@ -61,18 +61,16 @@ export const FillAccount = (props) => {
   const [Adress, setAdress] = useState(false);
   const [addressfill, setAddressfill] = useState("Change Residential Address");
 
+
   const [number, setNumber] = useState();
-    const [formData,setFormData]=useState([]);
-  const dynamicformGenrate = useSelector(
-    (state) => state.userInfo.dynamicFormGenrate
-  );
-  console.log("state==>", dynamicformGenrate);
+  const [formData, setFormData] = useState([]);
+  const dynamicformGenrate = useSelector((state) => state.formReducer.dynamicFormGenrate);
+
 
   useEffect(() => {
     convertData();
   }, []);
   const convertData = () => {
-
 
     if (Object.keys(dynamicformGenrate).length === 0) {
     } else {
@@ -91,14 +89,14 @@ export const FillAccount = (props) => {
         );
 
         return {
-            type: Values[1][0],
-            fieldName: fieldName[0],
-            placeholder: Values[0]["placeholder"],
-            sentence_description: Values[0]["sentence_description"],
-          }
+          type: Values[1][0],
+          fieldName: fieldName[0],
+          placeholder: Values[0]["placeholder"],
+          sentence_description: Values[0]["sentence_description"],
+        }
 
       });
-      console.log("updatedArray",updatedArray)
+
       setFormData(updatedArray);
     }
   };
@@ -112,7 +110,7 @@ export const FillAccount = (props) => {
         style={{ padding: "4%" }}
       >
         <View style={{ flex: 1 }}>
-          {formData.map((item)=><View
+          {formData.map((item) => <View
             style={{
               padding: 20,
               borderWidth: 1,
@@ -134,7 +132,7 @@ export const FillAccount = (props) => {
               size={9}
               color={"#A4A4A4"}
               family="Roboto-Regular"
-              // weight={'bold'}
+            // weight={'bold'}
             />
 
             <TEXT

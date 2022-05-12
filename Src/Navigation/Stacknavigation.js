@@ -16,6 +16,7 @@ import Setting from "../Screens/Setting/SettingScreen";
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import Loader from "../Screens/Loader/Loader";
+import { Allblogpost } from '../Helper/Blogpost'
 
 const Preauth = () => {
   return (
@@ -51,7 +52,7 @@ const Postauth = () => {
 export default function Stacknavigation() {
   const [isLoading, setIsLoading] = useState(true);
 
-  // console.log("loder",isLoading)
+
 
   useEffect(() => {
     setTimeout(() => {
@@ -60,7 +61,7 @@ export default function Stacknavigation() {
   },[isLoading]);
 
   const LoaderScreen = () => {
-    // console.log("lodding screen")
+
     return (
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
         <ActivityIndicator />
@@ -69,7 +70,7 @@ export default function Stacknavigation() {
   };
 
 
-  const token = useSelector((state) => state.userInfo.userToken);
+  const token = useSelector((state) => state.userReducer.userToken);
 
   const dispatch = useDispatch();
 
@@ -81,6 +82,10 @@ export default function Stacknavigation() {
           type: "SET_TOKEN",
           payload: accessToken,
         });
+
+        Allblogpost(dispatch , token)
+        
+       
       }
     } catch (e) {
       console.log("Error", e);

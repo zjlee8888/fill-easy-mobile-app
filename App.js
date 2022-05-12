@@ -15,21 +15,17 @@
    Platform,
    Image,
  } from "react-native";
- import { NavigationContainer } from "@react-navigation/native";
- import { createNativeStackNavigator } from "@react-navigation/native-stack";
- import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+
  
  //Screens
- import LoginScreen from "./Src/Screens/Login/Login";
- import OtpVerification from "./Src/Screens/Login/OtpVerification";
- import Home from "./Src/Screens/Home/Home";
+
  import Stacknavigation from "./Src/Navigation/Stacknavigation";
  
  import { createStore } from "redux";
  import { Provider } from "react-redux";
- import rootReducer from "./Src/Redux/store/Reducers/rootReducer";
+ import store from "./Src/Redux/store/index";
  
- const store = createStore(rootReducer);
+ //const store = createStore(rootReducer);
  
  const Splash = () => {
    return (

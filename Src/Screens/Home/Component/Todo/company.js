@@ -23,15 +23,13 @@ import { Bottom } from "../Todo/buttoncontainer";
 
 export const Company = (props) => {
   const dispatch = useDispatch();
-  const {  cfId,setCfId } = props;
+  const { cfId, setCfId } = props;
   const [otherCompanies, setOtherCompanies] = useState("");
   const [keysdata, setKeys] = useState([]);
   const [keysForMap, setKeysForMap] = useState([]);
 
-
-
   const [, updateState] = React.useState();
-const forceUpdate = React.useCallback(() => updateState({}), []);
+  const forceUpdate = React.useCallback(() => updateState({}), []);
 
   useEffect(() => {
     function fetchData() {
@@ -52,7 +50,7 @@ const forceUpdate = React.useCallback(() => updateState({}), []);
   const [checkvalue, setCheckvalue] = useState([]);
 
   const [isKeyboardVisible, setKeyboardVisible] = useState(false);
-  
+
 
   const handleSearch = (queryText) => {
     {
@@ -84,7 +82,7 @@ const forceUpdate = React.useCallback(() => updateState({}), []);
   const filterData = (itemData) => {
     setModalVisible(!modalVisible);
     var key = Object.keys(otherCompanies).filter((item) => item == itemData);
-    console.log("keysfilter", key);
+
     setKeys(key);
   };
 
@@ -102,7 +100,7 @@ const forceUpdate = React.useCallback(() => updateState({}), []);
     } else {
       arr.splice(arr.indexOf(id), 1); //deleting
     }
-    console.log("arr=>",arr)
+
 
     // dispatch({
     //   type: "FORMID",
@@ -112,14 +110,14 @@ const forceUpdate = React.useCallback(() => updateState({}), []);
     setCheckvalue(arr)
     // setCfId(id)
     // props.setCfId(checkvalue);
-      forceUpdate()
+    forceUpdate()
   };
 
 
 
   const BankOptionUI = (props) => {
     const { item } = props;
-  
+
     return (
       <View
         style={{
@@ -142,8 +140,8 @@ const forceUpdate = React.useCallback(() => updateState({}), []);
               width: 24,
             }}
             onPress={() => {
-              console.log(item?.FormID)
-              setCfId([ ...cfId , item?.FormID])
+          
+              setCfId([...cfId, item?.FormID])
               selectedvalue(item?.CompNameFrontend, item?.FormID);
             }}
           >

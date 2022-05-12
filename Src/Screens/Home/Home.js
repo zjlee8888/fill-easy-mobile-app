@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   View,
   Text,
@@ -14,16 +14,20 @@ import {
 import { Header } from "./Component/header";
 import Swiper from "react-native-swiper";
 import { useNavigation } from "@react-navigation/native";
+import { useSelector, useDispatch } from "react-redux";
 
 import { Backgroundcolor, Bordercolor, Textcolor } from "../../Utility/Colors";
 import { TEXT } from "../../Component/Text";
 import { Circle } from "../../Component/Circle";
-import { Icon } from "react-native-elements";
+
 
 import { Card } from "../../Component/Card";
 import { request } from "react-native-permissions";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { API } from '../../Utility/Apiservice'
+import { formfill } from '../../Helper/FormFilling'
 
+import { Allblogpost } from '../../Helper/Blogpost'
 const data = [
   {
     id: 1,
@@ -170,35 +174,26 @@ const Activity = [
 
 const Home = () => {
   const navigation = useNavigation();
+  const [loader , setLoder] = useState(false)
   const [selected, setSelected] = useState("Name & ID");
-  //  AsyncStorage.removeItem("accessToken")
+  const list = useSelector(state => state.formReducer.companylist)
+  const dispatch = useDispatch()
 
 
   const Companies = async (data) => {
     setSelected(data);
     // navigation.navigate("TodoScreen");
-  
+
     const token = await AsyncStorage.getItem("accessToken");
 
-    var requestOptions = {
-      Servicelinecheckbox: data,
-      jwt: token,
-    };
+    const res = await formfill(dispatch, data, token)
 
-    await fetch(
-      "https://fill-easy.com/serviceline/formsubmitted-choosecompany",
-      {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(requestOptions),
-      }
-    )
-      .then((response) => response.json())
-      .then((result) => {navigation.navigate("TodoScreen",{companiesData:result,selected:data})});
+    navigation.navigate("TodoScreen", { companiesData: res });
   };
+
+
+  const Blogs = useSelector((state) => state.blogReducer.all_blogs)
+
 
   const MyStatusBar = ({ backgroundColor, ...props }) => (
     <View style={{ flex: 1 }}>
@@ -332,23 +327,30 @@ const Home = () => {
             </View>
 
             <ScrollView style={{ flexDirection: "row" }} horizontal={true}>
-              {Blog.map((item, i) => {
+              {Blogs && Blogs.map((item, i) => {
+                console.log("@@@@@@@@" , item)
+                const res = item
+                const id = res.blog_id
+
+                const uri = `https://fill-easy.com${res.blog_imageLink}`
+                const finaluri = uri.replaceAll('\\', '/')
+                if(i <= 4){
                 return (
                   <View style={{ marginRight: 15, alignItems: "center" }}>
                     <Image
-                      source={item.image}
+                      source={{ uri: finaluri }}
                       style={{ width: 263, height: 140, borderRadius: 10 }}
                     />
 
                     <TEXT
-                      title={item.title}
+                      title={item.blog_author}
                       size={13}
                       color={Textcolor.blacktext}
                       style={{ marginTop: 5 }}
                       family="Poppins-Bold"
                     />
                     <TEXT
-                      title={item.desc}
+                      title={item.blog_title}
                       size={11}
                       color={Textcolor.lightblack}
                       style={{ marginTop: -2, opacity: 0.6200000047683716 }}
@@ -356,6 +358,7 @@ const Home = () => {
                     />
                   </View>
                 );
+              }
               })}
             </ScrollView>
           </View>

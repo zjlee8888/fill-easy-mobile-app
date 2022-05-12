@@ -48,9 +48,11 @@ const TodoScreen = (props) => {
   const [formField, setformField] = useState("");
   const navigation = useNavigation();
 
-  const { selected } = props?.route?.params;
+  const  selected  = props?.route?.params;
   const dispatch = useDispatch();
+  const list = useSelector(state => state.formReducer.companylist)
 
+  console.log("!!!!!!!!",selected)
   const GenerateFormEndpoint = () => {
     console.log("cfID 888888=>", cfId);
     var obj = cfId?.reduce(function (obj, v) {
@@ -78,6 +80,7 @@ const TodoScreen = (props) => {
     fetch("https://fill-easy.com/serviceline/formfields", requestOptions)
       .then((response) => response.json())
       .then((result) => {
+        console.log("@@@@@@@@@@@@", result)
         dispatch({
           type: "DYNAMIC_FORM_GENRATE",
           payload: result,
@@ -87,10 +90,12 @@ const TodoScreen = (props) => {
       .catch((error) => console.log("error", error));
   };
   useEffect(() => {
-    if (props?.route?.params?.companiesData) {
-      setCompanies(props?.route?.params?.companiesData);
+    if (list !== undefined || list !== []) {
+      setCompanies(list);
     }
   });
+
+
 
   const handlebutton = (type) => {
     switch (type) {
@@ -101,7 +106,7 @@ const TodoScreen = (props) => {
         setStep(1);
         setStepcolor("25%");
         setHtitle2(" Basic Information");
-        console.log("company");
+
         GenerateFormEndpoint();
         break;
 
@@ -135,7 +140,7 @@ const TodoScreen = (props) => {
           setHtitle2(" Send Forms");
           setColor("98%");
         }
-        console.log("Account", formField);
+  
         break;
       case "acc2finish":
         setOpen("Finished!");
@@ -276,9 +281,9 @@ const TodoScreen = (props) => {
             cfId={cfId}
             setCfId={setCfId}
 
-            // setCfId={(data) => {
-            //   GenerateFormEndpoint(data);
-            // }}
+          // setCfId={(data) => {
+          //   GenerateFormEndpoint(data);
+          // }}
           />
         </View>
       )}

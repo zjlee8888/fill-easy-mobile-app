@@ -100,7 +100,7 @@ const LoginScreen = () => {
     } else {
       if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(remail)) {
         const data = await userRegistration(remail, username, rpass);
-        console.log("data==>", data);
+  
         if (data.username != undefined) {
           setModalVisible(true);
           return setalertmsg("Username  already registered!");

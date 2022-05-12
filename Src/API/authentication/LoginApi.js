@@ -16,10 +16,10 @@ export  const  Login  = async(email,password)=>{
       .then((response) => response.text())
       .then((result) => {
          parsedData =  JSON.parse(result);
-        //  console.log("old token",parsedData)
+ 
       })
      .catch((error) => console.log("error", error));
-    // console.log("parse data::", parsedData)
+
     return parsedData;
 }
 
@@ -41,7 +41,7 @@ const validEmail = (token) => {
         return response.json();
       })
       .then((data) => {
-        // console.log("data:::", data);
+
       })
       .catch((error) => console.log("error", error));
   };
@@ -64,7 +64,7 @@ export const userRegistration = async(remail,username,rpass)=>{
             return response.json();
           })
           .then((data) => {
-              console.log("data",data)
+       
               responseSend = data;
               validEmail(data);
           });

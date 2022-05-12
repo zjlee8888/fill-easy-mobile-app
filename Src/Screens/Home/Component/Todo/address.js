@@ -43,22 +43,22 @@ export const FillinAddress = (props) => {
   const [formFilledData, setformFieldData] = useState("");
   const [formData, setFormData] = useState([]);
   const [idtype, setIdtype] = useState({});
-  const [inputs, setInputs] = useState({});
+  //const [inputs, setInputs] = useState({});
 
   const { selected } = props;
   const dynamicformGenrate = useSelector(
-    (state) => state.userInfo.dynamicFormGenrate
+    (state) => state.formReducer.dynamicFormGenrate
   );
-  console.log("state",inputs)
 
+
+  console.log("!!!!!!!!!!!!!!!!!",selected)
   useEffect(() => {
     convertData();
   }, [formFilledData]);
 
-  const onchangeHandle =(text,item)=>{
-  
-    setInputs(state => ({...state,[item]:text}))
-  }
+  // const onchangeHandle =(text,item)=>{
+  //   setInputs(state => ({...state,[item]:text}))
+  // }
 
   const selectionValue= (item2,index,fieldName)=>{
     setIdtype(state=>({...state,[fieldName]:item2}))
@@ -68,13 +68,16 @@ export const FillinAddress = (props) => {
     let obj = dynamicformGenrate;
     let option = {};
     let covertdataobject = [];
-    // console.log("obj",obj)
+
+
+  
     if (obj.length === 0) {
-      console.log("false");
+
     } else {
+      console.log("******",typeof obj)
       const arr = Object.values(obj["formfields"][selected]);
 
-      // console.log("arr", arr);
+     
       const updatedArr = arr.map((el, index) => {
         const fieldName = Object.keys(el);
         const Values = Object.values(el);

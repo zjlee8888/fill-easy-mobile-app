@@ -27,13 +27,15 @@ export const Header = (props) => {
     <View style={styles.mainContainer}>
       <View style={styles.logoTitle}>
         <TEXT
-          title="Fill"
+         // title="Fill"
+          title="Demo"
           size={39}
           color={Textcolor.whitetext}
           family="Poppins-Bold"
         />
         <TEXT
-          title=" Easy"
+         // title=" Easy"
+          title="Project"
           size={39}
           color={Textcolor.blacktext}
           family="Poppins-Bold"
@@ -101,6 +103,9 @@ export const Header = (props) => {
         <ScrollView style={{ width: "100%" }} horizontal={true}>
           <View style={{ flexDirection: "row" }}>
             {data.map((item, i) => {
+             
+              Name = item.title
+       
               return (
                 <View
                   style={{
@@ -137,7 +142,7 @@ export const Header = (props) => {
                     />
                   </TouchableOpacity>
                   <TEXT
-                    title={item.title}
+                    title={ Name.length > 10 ? `${Name.substring(0,10)} ...` : Name}
                     size={11}
                     color={
                       selected == item.title

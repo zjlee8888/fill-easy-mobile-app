@@ -40,12 +40,7 @@ export const Fillin = (props) => {
 
 
 
-  const dynamicformGenrate = useSelector((state) => state.userInfo.dynamicFormGenrate);
-
-
-  // console.log("state",inputs)
-  console.log("state==>",idtype["ID Document Type"])
-  
+  const dynamicformGenrate = useSelector((state) => state.formReducer.dynamicFormGenrate);
 
   useEffect(() => {
     convertData();
@@ -61,10 +56,10 @@ const onchangeHandle =(text,item)=>{
     let covertdataobject = [];
     if(obj.length===0)
     {
-      console.log("true")
+    
     }
     else{
-      console.log("false")
+ 
     const arr = Object.values(obj["formfields"]["Basic Information"]);
     const updatedArr = arr.map((el, index) => {
       const fieldName = Object.keys(el);
@@ -116,7 +111,7 @@ const onchangeHandle =(text,item)=>{
 
   const DateValidation = (text, field) => {
     if (field == "Date") {
-      console.log("text", text);
+     
       setDate(
         text
           .replace(/^(\d\d)(\d)$/g, "$1/$2")
