@@ -263,7 +263,10 @@ const ActivityRecord = (props) => {
           >
             {Activity.map((item, i) => {
               const time = item.Time
-              const converttime = moment(time, "'YYYYM'MDD").fromNow()
+
+              const converttime = moment(time, "dd").toDate()
+            // const converttime2 =moment(time).format('MM/DD/YYYY')
+            //  console.log("$$$$$$$$$",converttime)
               return (
                 <View
                   style={{
@@ -287,7 +290,7 @@ const ActivityRecord = (props) => {
                       family="Roboto-Black"
                     />
                     <TEXT
-                      title={`(${item.Service_Line})`}
+                      title={`${item.Service_Line}`}
                       size={12}
                       color={Textcolor.grayoptext}
                       family="Roboto-Regular"

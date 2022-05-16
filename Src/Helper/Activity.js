@@ -1,5 +1,5 @@
-export const getdataActivity = async (dispatch) =>{
-  const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjgyIiwidXNlcm5hbWUiOiJJbW8iLCJlbWFpbCI6ImxtbzE1OTQ3QG16aWNvLmNvbSIsInZlcmlmaWVkIjoxLCJtZXNzYWdlIjoiWW91IGFyZSBsb2dnZWQgaW4hIiwibG9naW5fbWVzc2FnZSI6IlBhc3NlZCIsImlhdCI6MTY1MjM1NTUzNSwiZXhwIjoxNjUyMzU5MTM1fQ.x9mR2cUcv8pTkLUXLM-hI0OwINAbCOfqpYxym-dwOYY"
+export const getdataActivity = async (dispatch , token) =>{
+  //const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjciLCJ1c2VybmFtZSI6ImJibTIiLCJlbWFpbCI6Im1hdHRoZXdsZWVAZmlsbC1lYXN5LmNvbSIsInZlcmlmaWVkIjoxLCJtZXNzYWdlIjoiWW91IGFyZSBsb2dnZWQgaW4hIiwibG9naW5fbWVzc2FnZSI6IlBhc3NlZCIsImlhdCI6MTY1MjY5MzUwOCwiZXhwIjoxNjUyNjk3MTA4fQ.5wtjkezjot5LQvlY4bjMczRYxLxBDN-xMSBgxsQFOUc"
     var requestOptions = {
       jwt: token,
       };
@@ -34,15 +34,5 @@ export const getdataActivity = async (dispatch) =>{
             })
           }
         })
-        // .then((result) => 
-        // {
-    
-
-        //   dispatch({
-        //     type : "GET_ACTIVITY",
-        //     payload : result
-        //   })
-        // });
-
-       // return res
+      
 }

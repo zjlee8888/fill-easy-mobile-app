@@ -29,7 +29,7 @@ import { API } from '../../Utility/Apiservice'
 import { formfill } from '../../Helper/FormFilling'
 
 import { Allblogpost } from '../../Helper/Blogpost'
-import {getdataActivity} from '../../Helper/Activity'
+import { getdataActivity } from '../../Helper/Activity'
 
 
 const data = [
@@ -145,7 +145,7 @@ const Swipe = [
 
 const Home = () => {
   const navigation = useNavigation();
-  const [loader , setLoder] = useState(false)
+  const [loader, setLoder] = useState(false)
   const [selected, setSelected] = useState("Name & ID");
   const list = useSelector(state => state.formReducer.companylist)
   const dispatch = useDispatch()
@@ -154,19 +154,42 @@ const Home = () => {
   const Companies = async (data) => {
     setSelected(data);
     // navigation.navigate("TodoScreen");
-
+  
     const token = await AsyncStorage.getItem("accessToken");
 
-    const res = await formfill(dispatch, data, token)
+    var requestOptions = {
+      Servicelinecheckbox: data,
+      jwt: token,
+    };
 
-    navigation.navigate("TodoScreen", { companiesData: res });
+    await fetch(
+      "https://fill-easy.com/serviceline/formsubmitted-choosecompany",
+      {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(requestOptions),
+      }
+    )
+      .then((response) => response.json())
+      .then((result) => {navigation.navigate("TodoScreen",{companiesData:result,selected:data})});
+    // setSelected(data);
+    // // navigation.navigate("TodoScreen");
+
+    // const token = await AsyncStorage.getItem("accessToken");
+
+    // const res = await formfill(dispatch, data, token)
+
+    // navigation.navigate("TodoScreen", { companiesData: res, selected: data });
   };
 
 
   const Blogs = useSelector((state) => state.blogReducer.all_blogs)
   const Activity = useSelector((state) => state.activityReducer.all_activity);
 
- console.log("*****************",Activity)
+  console.log("*****************", Activity)
 
   const MyStatusBar = ({ backgroundColor, ...props }) => (
     <View style={{ flex: 1 }}>
@@ -301,37 +324,37 @@ const Home = () => {
 
             <ScrollView style={{ flexDirection: "row" }} horizontal={true}>
               {Blogs && Blogs.map((item, i) => {
-          
+
                 const res = item
                 const id = res.blog_id
 
                 const uri = `https://fill-easy.com${res.blog_imageLink}`
                 const finaluri = uri.replaceAll('\\', '/')
-                if(i <= 4){
-                return (
-                  <View style={{ marginRight: 15, alignItems: "center" }}>
-                    <Image
-                      source={{ uri: finaluri }}
-                      style={{ width: 263, height: 140, borderRadius: 10 }}
-                    />
+                if (i <= 4) {
+                  return (
+                    <View style={{ marginRight: 15, alignItems: "center" }}>
+                      <Image
+                        source={{ uri: finaluri }}
+                        style={{ width: 263, height: 140, borderRadius: 10 }}
+                      />
 
-                    <TEXT
-                      title={item.blog_author}
-                      size={13}
-                      color={Textcolor.blacktext}
-                      style={{ marginTop: 5 }}
-                      family="Poppins-Bold"
-                    />
-                    <TEXT
-                      title={item.blog_title}
-                      size={11}
-                      color={Textcolor.lightblack}
-                      style={{ marginTop: -2, opacity: 0.6200000047683716 }}
-                      family="Poppins-Medium"
-                    />
-                  </View>
-                );
-              }
+                      <TEXT
+                        title={item.blog_author}
+                        size={13}
+                        color={Textcolor.blacktext}
+                        style={{ marginTop: 5 }}
+                        family="Poppins-Bold"
+                      />
+                      <TEXT
+                        title={item.blog_title}
+                        size={11}
+                        color={Textcolor.lightblack}
+                        style={{ marginTop: -2, opacity: 0.6200000047683716 }}
+                        family="Poppins-Medium"
+                      />
+                    </View>
+                  );
+                }
               })}
             </ScrollView>
           </View>
@@ -369,8 +392,8 @@ const Home = () => {
               }}
             >
               {Activity.map((item, i) => {
-                  const time = item.Time
-                  const converttime = moment(time, "'YYYYM'MDD").fromNow()
+                const time = item.Time
+                const converttime = moment(time, "'YYYYM'MDD").fromNow()
                 return (
                   <View style={styles.activity}>
                     <Circle />
@@ -383,7 +406,7 @@ const Home = () => {
                         family="Roboto-Black"
                       />
                       <TEXT
-                        title={`(${item.Service_Line})`}
+                        title={`${item.Service_Line}`}
                         size={12}
                         color={Textcolor.grayoptext}
                         family="Roboto-Regular"

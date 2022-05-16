@@ -82,7 +82,7 @@ export default function Stacknavigation() {
         });
 
         Allblogpost(dispatch , token)
-        getdataActivity(dispatch)
+        getdataActivity(dispatch . token)
 
        
       }

@@ -48,10 +48,8 @@ const TodoScreen = (props) => {
   const [formField, setformField] = useState("");
   const navigation = useNavigation();
 
-  const  selected  = props?.route?.params;
+  const { selected } = props?.route?.params;
   const dispatch = useDispatch();
-  const list = useSelector(state => state.formReducer.companylist)
-
 
   const GenerateFormEndpoint = () => {
     console.log("cfID 888888=>", cfId);
@@ -60,7 +58,7 @@ const TodoScreen = (props) => {
       return obj;
     }, {});
     obj["csrf_test_name"] = "b9ceea154bfbc8cdd3528da8c6a6120c";
- 
+    console.log("$$$$$$$$", obj);
     var raw = JSON.stringify({
       lang: "en",
       user_hash: "0f86e23331a27b3761f70408cfa85699f08ce9f5e6b8c2ad",
@@ -80,7 +78,6 @@ const TodoScreen = (props) => {
     fetch("https://fill-easy.com/serviceline/formfields", requestOptions)
       .then((response) => response.json())
       .then((result) => {
-       
         dispatch({
           type: "DYNAMIC_FORM_GENRATE",
           payload: result,
@@ -90,12 +87,10 @@ const TodoScreen = (props) => {
       .catch((error) => console.log("error", error));
   };
   useEffect(() => {
-    if (list !== undefined || list !== []) {
-      setCompanies(list);
+    if (props?.route?.params?.companiesData) {
+      setCompanies(props?.route?.params?.companiesData);
     }
   });
-
-
 
   const handlebutton = (type) => {
     switch (type) {
@@ -106,7 +101,7 @@ const TodoScreen = (props) => {
         setStep(1);
         setStepcolor("25%");
         setHtitle2(" Basic Information");
-
+        console.log("company");
         GenerateFormEndpoint();
         break;
 
@@ -140,7 +135,7 @@ const TodoScreen = (props) => {
           setHtitle2(" Send Forms");
           setColor("98%");
         }
-  
+        console.log("Account", formField);
         break;
       case "acc2finish":
         setOpen("Finished!");
@@ -281,9 +276,9 @@ const TodoScreen = (props) => {
             cfId={cfId}
             setCfId={setCfId}
 
-          // setCfId={(data) => {
-          //   GenerateFormEndpoint(data);
-          // }}
+            // setCfId={(data) => {
+            //   GenerateFormEndpoint(data);
+            // }}
           />
         </View>
       )}
