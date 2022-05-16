@@ -27,15 +27,15 @@ export const Header = (props) => {
     <View style={styles.mainContainer}>
       <View style={styles.logoTitle}>
         <TEXT
-         // title="Fill"
-          title="Demo"
+          title="Fill"
+       //   title="Demo"
           size={39}
           color={Textcolor.whitetext}
           family="Poppins-Bold"
         />
         <TEXT
-         // title=" Easy"
-          title="Project"
+          title=" Easy"
+        //  title="Project"
           size={39}
           color={Textcolor.blacktext}
           family="Poppins-Bold"

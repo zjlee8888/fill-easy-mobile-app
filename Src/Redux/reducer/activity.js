@@ -1,8 +1,6 @@
 import Type from '../constant'
 const initialState = {
     all_activity : {},
-  
-
 };
 
 function activityReducer(state = initialState, action) {

@@ -1,7 +1,8 @@
-export const getdataActivity = async (dispatch , token) =>{
-  //const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjciLCJ1c2VybmFtZSI6ImJibTIiLCJlbWFpbCI6Im1hdHRoZXdsZWVAZmlsbC1lYXN5LmNvbSIsInZlcmlmaWVkIjoxLCJtZXNzYWdlIjoiWW91IGFyZSBsb2dnZWQgaW4hIiwibG9naW5fbWVzc2FnZSI6IlBhc3NlZCIsImlhdCI6MTY1MjY5MzUwOCwiZXhwIjoxNjUyNjk3MTA4fQ.5wtjkezjot5LQvlY4bjMczRYxLxBDN-xMSBgxsQFOUc"
+
+export const getdataActivity = async ( token , dispatch) =>{
+  const token1 = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjgyIiwidXNlcm5hbWUiOiJJbW8iLCJlbWFpbCI6ImxtbzE1OTQ3QG16aWNvLmNvbSIsInZlcmlmaWVkIjoxLCJtZXNzYWdlIjoiWW91IGFyZSBsb2dnZWQgaW4hIiwibG9naW5fbWVzc2FnZSI6IlBhc3NlZCIsImlhdCI6MTY1MjY5OTQ0MywiZXhwIjoxNjUyNzAzMDQzfQ.ww8QdVaXprI6IV49iuPMJqWp2MOYWVjrN4jb3_WxA8Q"
     var requestOptions = {
-      jwt: token,
+      jwt: token1,
       };
   
      const res =  await fetch(
@@ -17,10 +18,11 @@ export const getdataActivity = async (dispatch , token) =>{
         }
       )
         .then((response) => {
+          
           if (response.status == 200) {
             const result = response.json()
             .then((res)=>{
-    
+              console.log("^^^^^^^^^^^",res)
               dispatch({
                 type : "GET_ACTIVITY",
                 payload: res

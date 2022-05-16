@@ -189,7 +189,7 @@ const Home = () => {
   const Blogs = useSelector((state) => state.blogReducer.all_blogs)
   const Activity = useSelector((state) => state.activityReducer.all_activity);
 
-  console.log("*****************", Activity)
+  console.log("*****************",Activity)
 
   const MyStatusBar = ({ backgroundColor, ...props }) => (
     <View style={{ flex: 1 }}>
@@ -393,7 +393,9 @@ const Home = () => {
             >
               {Activity.map((item, i) => {
                 const time = item.Time
-                const converttime = moment(time, "'YYYYM'MDD").fromNow()
+                const converttime = moment(time, "'YYYYM'MDD").format()
+                const hour = converttime
+                console.log("@@@@@@@@@@@@%",moment(hour , "mm").fromNow())
                 return (
                   <View style={styles.activity}>
                     <Circle />
@@ -421,7 +423,7 @@ const Home = () => {
                       }}
                     >
                       <TEXT
-                        title={converttime}
+                        title={moment(hour , "mm").fromNow()}
                         size={11}
                         color={Textcolor.darkshadetext}
                         style={{ opacity: 0.38999998569488525 }}
