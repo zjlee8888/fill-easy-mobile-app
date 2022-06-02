@@ -15,6 +15,10 @@ import TodoScreen from "../Screens/Home/Todo";
 import BlogPosts from "../Screens/Home/BlogPosts";
 import EditProfile from "../Screens/Profile/EditProfile";
 import Setting from "../Screens/Setting/SettingScreen";
+    // Settingd
+import Language from "../Screens/Setting/Language";
+import Appsetting from "../Screens/Setting/AppSetting.js";
+import Notification from '../Screens/Setting/Notification'
 
 //Helper 
 import { Allblogpost } from '../Helper/Blogpost'
@@ -45,6 +49,9 @@ const Postauth = () => {
       <Stack.Screen name="BlogPosts" component={BlogPosts} />
       <Stack.Screen name="Setting" component={Setting} />
       <Stack.Screen name="EditProfile" component={EditProfile} />
+      <Stack.Screen name="Appsetting" component={Appsetting} />
+      <Stack.Screen name="Language" component={Language} />
+      <Stack.Screen name="Notification" component={Notification} />
     </Stack.Navigator>
   );
 };

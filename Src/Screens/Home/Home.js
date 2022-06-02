@@ -15,22 +15,20 @@ import { Header } from "./Component/header";
 import Swiper from "react-native-swiper";
 import { useNavigation } from "@react-navigation/native";
 import { useSelector, useDispatch } from "react-redux";
-import moment from 'moment'
+import moment from "moment";
 
 import { Backgroundcolor, Bordercolor, Textcolor } from "../../Utility/Colors";
 import { TEXT } from "../../Component/Text";
 import { Circle } from "../../Component/Circle";
 
-
 import { Card } from "../../Component/Card";
 import { request } from "react-native-permissions";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { API } from '../../Utility/Apiservice'
-import { formfill } from '../../Helper/FormFilling'
+import { API } from "../../Utility/Apiservice";
+import { formfill } from "../../Helper/FormFilling";
 
-import { Allblogpost } from '../../Helper/Blogpost'
-import { getdataActivity } from '../../Helper/Activity'
-
+import { Allblogpost } from "../../Helper/Blogpost";
+import { getdataActivity } from "../../Helper/Activity";
 
 const data = [
   {
@@ -140,21 +138,17 @@ const Swipe = [
   },
 ];
 
-
-
-
 const Home = () => {
   const navigation = useNavigation();
-  const [loader, setLoder] = useState(false)
+  const [loader, setLoder] = useState(false);
   const [selected, setSelected] = useState("Name & ID");
-  const list = useSelector(state => state.formReducer.companylist)
-  const dispatch = useDispatch()
-
+  const list = useSelector((state) => state.formReducer.companylist);
+  const dispatch = useDispatch();
 
   const Companies = async (data) => {
     setSelected(data);
     // navigation.navigate("TodoScreen");
-  
+
     const token = await AsyncStorage.getItem("accessToken");
 
     var requestOptions = {
@@ -174,7 +168,12 @@ const Home = () => {
       }
     )
       .then((response) => response.json())
-      .then((result) => {navigation.navigate("TodoScreen",{companiesData:result,selected:data})});
+      .then((result) => {
+        navigation.navigate("TodoScreen", {
+          companiesData: result,
+          selected: data,
+        });
+      });
     // setSelected(data);
     // // navigation.navigate("TodoScreen");
 
@@ -185,11 +184,11 @@ const Home = () => {
     // navigation.navigate("TodoScreen", { companiesData: res, selected: data });
   };
 
+  const Blogs = useSelector((state) => state.blogReducer.all_blogs) ?? [];
+  const Activity =
+    useSelector((state) => state.activityReducer.all_activity) ?? [];
 
-  const Blogs = useSelector((state) => state.blogReducer.all_blogs)
-  const Activity = useSelector((state) => state.activityReducer.all_activity);
-
-  console.log("*****************",Activity)
+  console.log("*****************", Blogs);
 
   const MyStatusBar = ({ backgroundColor, ...props }) => (
     <View style={{ flex: 1 }}>
@@ -322,41 +321,56 @@ const Home = () => {
               </TouchableOpacity>
             </View>
 
-            <ScrollView style={{ flexDirection: "row" }} horizontal={true}>
-              {Blogs && Blogs.map((item, i) => {
+            {/* <ScrollView style={{ flexDirection: "row" }} horizontal={true}>
+              {Blogs == undefined || Blogs == {} ? (
+                <Text>Couldn't fetch data</Text>
+              ) : (
+                <>
+                  {Blogs &&
+                    Blogs.map((item, i) => {
+                      const res = item;
+                      const id = res.blog_id;
 
-                const res = item
-                const id = res.blog_id
+                      const uri = `https://fill-easy.com${res.blog_imageLink}`;
+                      const finaluri = uri.replaceAll("\\", "/");
+                      if (i <= 4) {
+                        return (
+                          <View
+                            style={{ marginRight: 15, alignItems: "center" }}
+                          >
+                            <Image
+                              source={{ uri: finaluri }}
+                              style={{
+                                width: 263,
+                                height: 140,
+                                borderRadius: 10,
+                              }}
+                            />
 
-                const uri = `https://fill-easy.com${res.blog_imageLink}`
-                const finaluri = uri.replaceAll('\\', '/')
-                if (i <= 4) {
-                  return (
-                    <View style={{ marginRight: 15, alignItems: "center" }}>
-                      <Image
-                        source={{ uri: finaluri }}
-                        style={{ width: 263, height: 140, borderRadius: 10 }}
-                      />
-
-                      <TEXT
-                        title={item.blog_author}
-                        size={13}
-                        color={Textcolor.blacktext}
-                        style={{ marginTop: 5 }}
-                        family="Poppins-Bold"
-                      />
-                      <TEXT
-                        title={item.blog_title}
-                        size={11}
-                        color={Textcolor.lightblack}
-                        style={{ marginTop: -2, opacity: 0.6200000047683716 }}
-                        family="Poppins-Medium"
-                      />
-                    </View>
-                  );
-                }
-              })}
-            </ScrollView>
+                            <TEXT
+                              title={item.blog_author}
+                              size={13}
+                              color={Textcolor.blacktext}
+                              style={{ marginTop: 5 }}
+                              family="Poppins-Bold"
+                            />
+                            <TEXT
+                              title={item.blog_title}
+                              size={11}
+                              color={Textcolor.lightblack}
+                              style={{
+                                marginTop: -2,
+                                opacity: 0.6200000047683716,
+                              }}
+                              family="Poppins-Medium"
+                            />
+                          </View>
+                        );
+                      }
+                    })}
+                </>
+              )}
+            </ScrollView> */}
           </View>
 
           <View style={{}}>
@@ -391,11 +405,11 @@ const Home = () => {
                 paddingTop: 10,
               }}
             >
-              {Activity.map((item, i) => {
-                const time = item.Time
-                const converttime = moment(time, "'YYYYM'MDD").format()
-                const hour = converttime
-                console.log("@@@@@@@@@@@@%",moment(hour , "mm").fromNow())
+              {/* {Activity.map((item, i) => {
+                const time = item.Time;
+                const converttime = moment(time, "'YYYYM'MDD").format();
+                const hour = converttime;
+                console.log("@@@@@@@@@@@@%", moment(hour, "mm").fromNow());
                 return (
                   <View style={styles.activity}>
                     <Circle />
@@ -423,7 +437,7 @@ const Home = () => {
                       }}
                     >
                       <TEXT
-                        title={moment(hour , "mm").fromNow()}
+                        title={moment(hour, "mm").fromNow()}
                         size={11}
                         color={Textcolor.darkshadetext}
                         style={{ opacity: 0.38999998569488525 }}
@@ -432,7 +446,7 @@ const Home = () => {
                     </View>
                   </View>
                 );
-              })}
+              })} */}
             </View>
           </View>
         </View>
