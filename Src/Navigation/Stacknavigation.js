@@ -15,14 +15,19 @@ import TodoScreen from "../Screens/Home/Todo";
 import BlogPosts from "../Screens/Home/BlogPosts";
 import EditProfile from "../Screens/Profile/EditProfile";
 import Setting from "../Screens/Setting/SettingScreen";
+
     // Settingd
 import Language from "../Screens/Setting/Language";
 import Appsetting from "../Screens/Setting/AppSetting.js";
-import Notification from '../Screens/Setting/Notification'
+import Notification from '../Screens/Setting/Notification';
+import Contact from '../Screens/Setting/Contactus'
+import Needhelp from "../Screens/Setting/Needhelp";
 
 //Helper 
 import { Allblogpost } from '../Helper/Blogpost'
 import {getdataActivity} from '../Helper/Activity'
+
+
 
 const Stack = createNativeStackNavigator();
 
@@ -52,6 +57,8 @@ const Postauth = () => {
       <Stack.Screen name="Appsetting" component={Appsetting} />
       <Stack.Screen name="Language" component={Language} />
       <Stack.Screen name="Notification" component={Notification} />
+      <Stack.Screen name="Contact" component={Contact} />
+      <Stack.Screen name="Needhelp" component={Needhelp} />
     </Stack.Navigator>
   );
 };

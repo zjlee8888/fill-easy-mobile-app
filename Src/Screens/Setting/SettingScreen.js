@@ -38,12 +38,12 @@ const Setting = () => {
     {
       id: 4,
       name: "Need Help?",
-      nav: "Appsetting",
+      nav: "Needhelp",
     },
     {
       id: 5,
       name: "Contact Us",
-      nav: "Appsetting",
+      nav: "Contact",
     },
   ];
   return (
