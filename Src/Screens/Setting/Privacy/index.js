@@ -15,8 +15,9 @@ const Privacy = () => {
     const title7 = "7.1 We will provide maintenance and technical support at our discretion. We are not obligated to provide you with any maintenance, technical or other support for the Fill Easy service. You agree to abide by any support rules and policies that we provide to you in order to receive such support."
    const title8 = "8.1 You expressly acknowledge and agree that, to the extent permitted by applicable law, all use of our Service is at your sole risk and that the entire risk as to satisfactory quality, performance accuracy and effort is with you. We are providing all information to your solely on an “as is” basis and without any warranty of any kind, whether express or implied, including without limitation. The implied warranties of merchantability, non-infringement, accuracy, completeness, performance and fitness for a particular purpose."
    return (
-        <View style={{ flex: 1, alignItems: "center", width: "100%" }}>
-            <Header title3={"Privacy, Terms & Conditions"} />
+        <View style={{ flex: 1, alignItems: "center", width: "100%" , backgroundColor:"#FFFFFF" }}>
+            <Header title3={"Privacy, Terms & Conditions"}
+                    styleView={{paddingHorizontal : 25}} />
         {/* <Text style={{lineHeight}}></Text> */}
            <ScrollView style={{ padding: 25, width: "100%", marginTop: 20, }}>
                 <TEXT
@@ -32,7 +33,7 @@ const Privacy = () => {
                     size={16}
                     color={"rgba(10, 10, 10, 1)"}
                     family="Roboto-Regular"
-                    style={{ textDecorationLine: "underline", marginTop: 20 }}
+                    style={{ textDecorationLine: "underline", marginTop: 20 , lineHeight:21 }}
                 />
 
                 <TEXT

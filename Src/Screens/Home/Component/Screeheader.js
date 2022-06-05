@@ -20,6 +20,7 @@ export const Header = (props) => {
             alignItems: "flex-end",
             padding: 20,
             justifyContent: "space-between",
+            ...props.styleView
 
         }}>
             <View style={{ flexDirection: "row",alignItems:"center" }}>

@@ -68,13 +68,15 @@ const EditProfile = (props) => {
         flex: 1,
       }}
     >
-      <Header title3={Htitle5} />
+      <Header title3={Htitle5}
+              styleView = {{paddingHorizontal:"8%"}} />
       <ScrollView>
         <Pressable onPress={() => Keyboard.dismiss()}>
           <KeyboardAvoidingView style={{
             flex: 1,
             width: "100%",
-            height: "100%"
+            height: "100%",
+            
           }} keyboardVerticalOffset={100} behavior={(Platform.OS === 'ios') ? 'padding' : null}>
             <View
               style={{
@@ -82,10 +84,11 @@ const EditProfile = (props) => {
                 alignSelf: 'center',
                 margin: '4%',
                 width: "90%",
-                borderWidth: 1,
-                padding: "3%",
+                borderWidth: 0.6,
+                padding:"6%",
+               // padding: "3%",
                 alignItems: "center",
-                borderColor: "rgba(226, 226, 226, 1)",
+                borderColor: "#E2E2E2",
                 borderRadius: 22,
                 backgroundColor: "rgba(255, 255, 255, 1)",
                 shadowColor: "rgba(0, 0, 0, 0.05)",
@@ -159,7 +162,7 @@ const EditProfile = (props) => {
                   <View
                     style={{
                       flexDirection: "row",
-                      marginTop: "5%",
+                      marginTop: 15,
                       marginBottom: "4%",
                     }}
                   >
@@ -201,7 +204,7 @@ const EditProfile = (props) => {
                     ))}
                   </View>
                 </View>
-                <View style={{ flexDirection: "row" }}>
+                <View style={{ flexDirection: "row" ,marginTop:8}}>
                   <View style={{ width: "50%" }}>
                     <TEXT
                       title="ID Document No."
@@ -244,7 +247,7 @@ const EditProfile = (props) => {
                 </View>
               </View>
               <View style={{ ...styles.textcontainer }}>
-                <View style={{ width: "100%" }}>
+                <View style={{ width: "100%" ,marginTop:15}}>
                   <TEXT
                     title="Date of birth"
                     size={14}
@@ -270,7 +273,7 @@ const EditProfile = (props) => {
               </View>
 
               <View style={{ ...styles.textcontainer }}>
-                <View style={{ width: "100%" }}>
+                <View style={{ width: "100%" , marginTop:15 }}>
                   <TEXT
                     title="Email"
                     size={14}
@@ -321,9 +324,10 @@ const styles = StyleSheet.create({
     width: "100%",
     borderBottomWidth: 1,
     borderColor: "#dddddd",
-    marginBottom: 2,
-    marginTop: 8,
+    paddingBottom:12
+   // marginBottom: 2,
+   // marginTop: 8,
     // paddingVertical:10,
-    paddingVertical: Platform.OS == "android" ? 0 : 15,
+   // paddingVertical: Platform.OS == "android" ? 0 : 15,
   },
 });

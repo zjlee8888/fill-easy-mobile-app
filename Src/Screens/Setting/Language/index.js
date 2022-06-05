@@ -24,8 +24,9 @@ const lang = [
 const Language = () => {
   const [current, setCurrent] = useState("English");
   return (
-    <View style={{ flex: 1 }}>
-      <Header title3={"Language"} />
+    <View style={{ flex: 1 , backgroundColor:"#FFFFFF" }}>
+      <Header title3={"Language"}
+      styleView={{paddingHorizontal : 30}} />
 
       <View style={{ flex: 1, marginTop: 15 }}>
         {lang.map((item, i) => {
@@ -33,7 +34,7 @@ const Language = () => {
             <TouchableOpacity
               style={{
                 flexDirection: "row",
-                marginLeft: 25,
+                marginLeft: 30,
                 borderBottomWidth: 1,
                 paddingVertical: 15,
                 borderColor: Bordercolor.darkgrayopborder,
@@ -44,15 +45,16 @@ const Language = () => {
                 <Text
                   style={{
                     fontSize: 16,
-                    color: Textcolor.blacktext,
+                    color: "#0A0A0A",
                     fontFamily: "Roboto-Regular",
+                    letterSpacing:0.39
                   }}
                 >
                   {item.name}
                 </Text>
               </View>
               {item.name == current && (
-                <View style={{ marginRight: 25 }}>
+                <View style={{ marginRight: 30 }}>
                   <Icon
                     name="check"
                     type="antdesign"

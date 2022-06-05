@@ -31,7 +31,8 @@ const Notification = () => {
   const toggleEmail = () => setEmailEnabled(previousState => !previousState);
   const toggleNotify= () => setNotifyEnabled(previousState => !previousState);  return (
     <View style={{ flex: 1 }}>
-      <Header title3={"Notifications"} />
+      <Header title3={"Notifications"}
+      styleView={{paddingHorizontal : 30}} />
 
       <View style={{ flex: 1, marginTop: 15 }}>
         <View style={styles.viewContain}>
@@ -42,9 +43,9 @@ const Notification = () => {
               APP Notifications
             </Text>
           </View>
-          <View style={{ marginRight: 25 }}>
+          <View style={{ marginRight: 30 }}>
             <Switch
-              trackColor={{ false: "#4F4F4F", true: "rgb(255, 246, 204)" }}
+              trackColor={{ false: "#4F4F4F", true: "#FFF6CC" }}
               thumbColor={appEnabled ? "#FED200" : "#FFFFFF"}
               ios_backgroundColor="#3e3e3e"
               onValueChange={toggleApp}
@@ -56,7 +57,7 @@ const Notification = () => {
         <Text style={{fontSize:12 , color:"rgba(56, 56, 56, 0.62)" , marginLeft:25,marginVertical:15}}>Latest updates 2022-02-08 16:15:42</Text>
 
 
-        <View style={styles.viewContain}>
+        <View style={{...styles.viewContain , borderBottomWidth:0, marginTop:15}}>
           <View style={{ flex: 1 }}>
             <Text
               style={styles.textview}
@@ -64,9 +65,9 @@ const Notification = () => {
               Receive Email
             </Text>
           </View>
-          <View style={{ marginRight: 25 }}>
+          <View style={{ marginRight: 30 }}>
             <Switch
-              trackColor={{ false: "#4F4F4F", true: "rgb(255, 246, 204)" }}
+              trackColor={{ false: "#4F4F4F", true: "#FFF6CC" }}
               thumbColor={emailEnabled ? "#FED200" : "#FFFFFF"}
               ios_backgroundColor="#3e3e3e"
               onValueChange={toggleEmail}
@@ -75,7 +76,7 @@ const Notification = () => {
           </View>
         </View>
 
-        <View style={styles.viewContain}>
+        <View style={{...styles.viewContain,  borderBottomWidth:0}}>
           <View style={{ flex: 1 }}>
             <Text
               style={styles.textview}
@@ -83,9 +84,9 @@ const Notification = () => {
              Receive Notifications
             </Text>
           </View>
-          <View style={{ marginRight: 25 }}>
+          <View style={{ marginRight: 30 }}>
             <Switch
-              trackColor={{ false: "#4F4F4F", true: "rgb(255, 246, 204)" }}
+              trackColor={{ false: "#4F4F4F", true: "#FFF6CC" }}
               thumbColor={notifyEnabled ? "#FED200" : "#FFFFFF"}
               ios_backgroundColor="#3e3e3e"
               onValueChange={toggleNotify}
@@ -146,7 +147,7 @@ const Notification = () => {
 const styles = StyleSheet.create({
   viewContain: {
     flexDirection: "row",
-    marginLeft: 25,
+    marginLeft: 30,
     borderBottomWidth: 1,
     paddingVertical: 15,
     borderColor: Bordercolor.darkgrayopborder,
@@ -155,6 +156,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: "#0A0A0A",
     fontFamily: "Roboto-Regular",
+    letterSpacing:0.39
   },
 
 })
