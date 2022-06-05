@@ -33,7 +33,7 @@ const Setting = () => {
     {
       id: 3,
       name: "Privacy, Terms & Conditions",
-      nav: "Appsetting",
+      nav: "Privacy",
     },
     {
       id: 4,

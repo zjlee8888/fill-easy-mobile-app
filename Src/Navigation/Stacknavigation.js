@@ -15,6 +15,7 @@ import TodoScreen from "../Screens/Home/Todo";
 import BlogPosts from "../Screens/Home/BlogPosts";
 import EditProfile from "../Screens/Profile/EditProfile";
 import Setting from "../Screens/Setting/SettingScreen";
+import Privacy from "../Screens/Setting/Privacy";
 
     // Settingd
 import Language from "../Screens/Setting/Language";
@@ -59,6 +60,7 @@ const Postauth = () => {
       <Stack.Screen name="Notification" component={Notification} />
       <Stack.Screen name="Contact" component={Contact} />
       <Stack.Screen name="Needhelp" component={Needhelp} />
+      <Stack.Screen name="Privacy" component={Privacy} />
     </Stack.Navigator>
   );
 };

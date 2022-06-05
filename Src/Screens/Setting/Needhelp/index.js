@@ -88,18 +88,18 @@ const Needhelp = () => {
       <ScrollView style={{ flex: 1, width: "100%" }}>
         <TEXT
           title={"FAQ"}
-          size={25}
-          color={"#0A0A0A"}
-          family="Roboto-Bold"
-          style={{ marginTop: 25, margin: "8%" }}
+          size={27}
+          color={"rgba(10, 10, 10, 1)"}
+          family="Roboto-Black"
+          style={{ marginTop: 25, margin: "8%",marginBottom : 0 }}
         />
 
         <TEXT
           title={"General Questions"}
-          size={15}
-          color={Textcolor.bluetext}
-          family="Roboto-Bold"
-          style={{  marginBottom: 10, margin: "8%",marginTop:0 }}
+          size={16}
+          color={"#0A0A0A"}
+          family="Roboto-Regular"
+          style={{ textDecorationLine: "underline",  marginBottom: 10, margin: "8%",marginTop:20 }}
         />
         {faq.map((item, i) => {
           if (item.type == "General Questions")
