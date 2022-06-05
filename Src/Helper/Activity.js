@@ -1,6 +1,6 @@
 
 export const getdataActivity = async ( token , dispatch) =>{
-  const token1 = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjgyIiwidXNlcm5hbWUiOiJJbW8iLCJlbWFpbCI6ImxtbzE1OTQ3QG16aWNvLmNvbSIsInZlcmlmaWVkIjoxLCJtZXNzYWdlIjoiWW91IGFyZSBsb2dnZWQgaW4hIiwibG9naW5fbWVzc2FnZSI6IlBhc3NlZCIsImlhdCI6MTY1MjY5OTQ0MywiZXhwIjoxNjUyNzAzMDQzfQ.ww8QdVaXprI6IV49iuPMJqWp2MOYWVjrN4jb3_WxA8Q"
+  const token1 = token
     var requestOptions = {
       jwt: token1,
       };

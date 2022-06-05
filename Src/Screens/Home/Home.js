@@ -9,6 +9,7 @@ import {
   StatusBar,
   SafeAreaView,
   Alert,
+  FlatList,
 } from "react-native";
 
 import { Header } from "./Component/header";
@@ -154,7 +155,7 @@ const Home = () => {
   const Companies = async (data) => {
     setSelected(data);
     // navigation.navigate("TodoScreen");
-  
+
     const token = await AsyncStorage.getItem("accessToken");
 
     var requestOptions = {
@@ -174,7 +175,7 @@ const Home = () => {
       }
     )
       .then((response) => response.json())
-      .then((result) => {navigation.navigate("TodoScreen",{companiesData:result,selected:data})});
+      .then((result) => { navigation.navigate("TodoScreen", { companiesData: result, selected: data }) });
     // setSelected(data);
     // // navigation.navigate("TodoScreen");
 
@@ -189,7 +190,7 @@ const Home = () => {
   const Blogs = useSelector((state) => state.blogReducer.all_blogs)
   const Activity = useSelector((state) => state.activityReducer.all_activity);
 
-  console.log("*****************",Activity)
+  console.log("%%%%%%%%%%%", Activity)
 
   const MyStatusBar = ({ backgroundColor, ...props }) => (
     <View style={{ flex: 1 }}>
@@ -322,44 +323,61 @@ const Home = () => {
               </TouchableOpacity>
             </View>
 
-            <ScrollView style={{ flexDirection: "row" }} horizontal={true}>
-              {Blogs && Blogs.map((item, i) => {
+          
+              {Blogs[0] === "error" || Blogs === {} || Blogs === undefined ? (
+                <View>
+                  <Text>can't fetch data</Text>
+                </View>
 
-                const res = item
-                const id = res.blog_id
+              ) : (
+                <>
+                  <FlatList data={Blogs}
+                    style={{ flexDirection: "row" }}
+                    horizontal={true}
+                    renderItem={(items, i) => {
 
-                const uri = `https://fill-easy.com${res.blog_imageLink}`
-                const finaluri = uri.replaceAll('\\', '/')
-                if (i <= 4) {
-                  return (
-                    <View style={{ marginRight: 15, alignItems: "center" }}>
-                      <Image
-                        source={{ uri: finaluri }}
-                        style={{ width: 263, height: 140, borderRadius: 10 }}
-                      />
+                      const item = items.item
 
-                      <TEXT
-                        title={item.blog_author}
-                        size={13}
-                        color={Textcolor.blacktext}
-                        style={{ marginTop: 5 }}
-                        family="Poppins-Bold"
-                      />
-                      <TEXT
-                        title={item.blog_title}
-                        size={11}
-                        color={Textcolor.lightblack}
-                        style={{ marginTop: -2, opacity: 0.6200000047683716 }}
-                        family="Poppins-Medium"
-                      />
-                    </View>
-                  );
-                }
-              })}
-            </ScrollView>
+                      const res = item
+                      const id = res.blog_id
+
+                      const uri = `https://fill-easy.com${res.blog_imageLink}`
+                      console.log("item is==========+>", typeof uri)
+                      const finaluri = uri.replace('\\', '/')
+
+                      return (
+                        <View style={{ marginRight: 15, alignItems: "center" }}>
+                          <Image
+                            source={{ uri: finaluri }}
+                            style={{ width: 263, height: 140, borderRadius: 10 }}
+                          />
+
+                          <TEXT
+                            title={item.blog_author}
+                            size={13}
+                            color={Textcolor.blacktext}
+                            style={{ marginTop: 5 }}
+                            family="Poppins-Bold"
+                          />
+                          <TEXT
+                            title={item.blog_title}
+                            size={11}
+                            color={Textcolor.lightblack}
+                            style={{ marginTop: -2, opacity: 0.6200000047683716 }}
+                            family="Poppins-Medium"
+                          />
+                        </View>
+                      );
+                    }}
+                  />
+
+                </>
+
+              )}
+           
           </View>
 
-          <View style={{}}>
+          <View style={{width:"100%",paddingHorizontal:0}}>
             <View
               style={{
                 flexDirection: "row",
@@ -389,50 +407,117 @@ const Home = () => {
               style={{
                 backgroundColor: Backgroundcolor.whiteback,
                 paddingTop: 10,
+                width: "100%",
+                paddingHorizontal:2
               }}
             >
-              {Activity.map((item, i) => {
-                const time = item.Time
-                const converttime = moment(time, "'YYYYM'MDD").format()
-                const hour = converttime
-                console.log("@@@@@@@@@@@@%",moment(hour , "mm").fromNow())
-                return (
-                  <View style={styles.activity}>
-                    <Circle />
-                    <View style={{ marginLeft: 15 }}>
-                      <TEXT
-                        title={item.Compname}
-                        size={15}
-                        color={Textcolor.darkshadetext}
-                        style={{ opacity: 0.6899999976158142 }}
-                        family="Roboto-Black"
-                      />
-                      <TEXT
-                        title={`${item.Service_Line}`}
-                        size={12}
-                        color={Textcolor.grayoptext}
-                        family="Roboto-Regular"
-                      />
-                    </View>
+              {Activity[0] == "error" || Activity === {} || Activity == undefined ? (
+                <View style={{alignItems:"center"}}>
+                  <Text>can't fetch data</Text>
+                </View>
+              ) : (
+                <View style={{ width: "100%" }}>
+                  <FlatList data={Activity}
+                    style={{ flexDirection: "row", width: "100%" }}
 
-                    <View
-                      style={{
-                        flex: 1,
-                        marginRight: 0,
-                        alignItems: "flex-end",
-                      }}
-                    >
-                      <TEXT
-                        title={moment(hour , "mm").fromNow()}
-                        size={11}
-                        color={Textcolor.darkshadetext}
-                        style={{ opacity: 0.38999998569488525 }}
-                        family="Roboto-Bold"
-                      />
-                    </View>
-                  </View>
-                );
-              })}
+                    renderItem={(items, i) => {
+       
+                      const item = items.item
+                      const time = item.Time
+                      const converttime = moment(time, "'YYYYM'MDD").format()
+                      const hour = moment(converttime, "mm").fromNow()
+
+                      return (
+                        <View
+                          style={{
+                            flexDirection: "row",
+                            width:"100%",
+                            padding: 15,
+                            alignItems: "center",
+                            borderBottomWidth: 1,
+                            borderBottomColor: Bordercolor.darkgrayopborder,
+                          }}
+                        >
+                          <View style={{ width: "10%", alignItems: "center" }}>
+                            <Circle />
+                          </View>
+                          <View style={{ width: "35%" }}>
+                            <TEXT
+                              title={item.Compname}
+                              size={15}
+                              color={Textcolor.darkshadetext}
+                              style={{ opacity: 0.6899999976158142 }}
+                              family="Roboto-Black"
+                            />
+                            <TEXT
+                              title={`${item.Service_Line}`}
+                              size={12}
+                              color={Textcolor.grayoptext}
+                              family="Roboto-Regular"
+                            />
+                          </View>
+
+                          <View
+                            style={{width:"10%" }}
+                          >
+                            <TEXT
+                              title={hour}
+                              size={11}
+                              color={Textcolor.darkshadetext}
+                              style={{ opacity: 0.6899999976158142 }}
+                              family="Roboto-Bold"
+                            />
+                          </View>
+                        </View>
+
+                      );
+                    }}
+                  />
+
+                  {/* {Activity.map((item, i) => {
+                    const time = item.Time
+                    const converttime = moment(time, "'YYYYM'MDD").format()
+                    const hour = converttime
+                    console.log("@@@@@@@@@@@@%", moment(hour, "mm").fromNow())
+                    return (
+                      <View style={styles.activity}>
+                        <Circle />
+                        <View style={{ marginLeft: 15 }}>
+                          <TEXT
+                            title={item.Compname}
+                            size={15}
+                            color={Textcolor.darkshadetext}
+                            style={{ opacity: 0.6899999976158142 }}
+                            family="Roboto-Black"
+                          />
+                          <TEXT
+                            title={`${item.Service_Line}`}
+                            size={12}
+                            color={Textcolor.grayoptext}
+                            family="Roboto-Regular"
+                          />
+                        </View>
+
+                        <View
+                          style={{
+                            flex: 1,
+                            marginRight: 0,
+                            alignItems: "flex-end",
+                          }}
+                        >
+                          <TEXT
+                            title={moment(hour, "mm").fromNow()}
+                            size={11}
+                            color={Textcolor.darkshadetext}
+                            style={{ opacity: 0.38999998569488525 }}
+                            family="Roboto-Bold"
+                          />
+                        </View>
+                      </View>
+                    );
+                  })} */}
+                </View>
+              )}
             </View>
           </View>
         </View>
@@ -451,11 +536,12 @@ const styles = StyleSheet.create({
   },
   activity: {
     flexDirection: "row",
-    paddingHorizontal: 20,
+    //paddingHorizontal: 20,
     paddingBottom: 15,
     padding: 15,
     alignItems: "center",
     borderBottomWidth: 1,
+    width: "100%",
     borderBottomColor: Bordercolor.darkgrayopborder,
   },
 });

@@ -272,20 +272,13 @@ const ActivityRecord = (props) => {
                 }else{
                   curr_month = `${a.charAt(0)}${a.charAt(1)}`
                 }
-            // let date = `${current_month}`
-                // let current_month = ""
-                // if (a.toString.length == 1) {
-                //   current_month = `0${a}`
-                // } else {
-                //   current_month = a
-                // }
-              
+         
                 const data_date1 = time.charAt(8)
                 const data_date2 = time.charAt(9)
                 const final_date = `${data_date1}${data_date2}`
-                //  const converttime = moment(time, "dd").toDate()
-                // const converttime2 =moment(time).format('MM/DD/YYYY')
-                //  console.log("$$$$$$$$$",converttime)
+
+                      const converttime = moment(time, "'YYYYM'MDD").format()
+                      const hour = moment(converttime, "mm").fromNow()
 
                 if(final_date == curr_month){
                 return (
@@ -324,13 +317,13 @@ const ActivityRecord = (props) => {
 
 
                       {/* <Moment element={Text} >{time1}</Moment> */}
-                      {/* <TEXT
-                      title={converttime}
+                      <TEXT
+                      title={hour}
                       size={11}
                       color={Textcolor.darkshadetext}
                       style={{ opacity: 0.6899999976158142 }}
                       family="Roboto-Bold"
-                    /> */}
+                    />
                     </View>
                   </View>
                 );

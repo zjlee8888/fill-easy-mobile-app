@@ -22,6 +22,10 @@ import { Backgroundcolor } from "../../Utility/Colors";
 import { useDispatch } from "react-redux";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Login, userRegistration } from "../../API/authentication/LoginApi";
+
+import { Allblogpost } from '../../Helper/Blogpost'
+import {getdataActivity} from '../../Helper/Activity'
+
 const LoginScreen = () => {
   const emailRef = useRef();
   const passwordRef = useRef();
@@ -53,6 +57,7 @@ const LoginScreen = () => {
   );
 
   const signin = async () => {
+    
     if (email == "" && password == "") {
       setModalVisible(true);
       setalertmsg("Please Enter Email and Password!");
@@ -63,21 +68,30 @@ const LoginScreen = () => {
       setModalVisible(true);
       setalertmsg("Please Password!");
     } else if (email.length > 0) {
+    
       const parsedData = await Login(email, password);
+      
       if (parsedData.email != undefined) {
+        console.log("!!!!!!!!!!!!!!1")
         setModalVisible(true);
         return setalertmsg("Email is  not-verified!");
       }
       if (parsedData.login_message != undefined) {
+        console.log("!!!!!!!!!!!!!!2")
         setModalVisible(true);
         return setalertmsg("User does not exist!");
       }
       if (parsedData.email == undefined) {
+        console.log("!!!!!!!!!!!!!!3")
+        let token = parsedData.token
+        // const blo = await Allblogpost(dispatch , token)
+        // const atc = await getdataActivity(token , dispatch)
         dispatch({
           type: "SET_TOKEN",
           payload: parsedData.token,
         });
         setToken(parsedData.token);
+        console.log("$$$$$$") 
        AsyncStorage.setItem("accessToken", parsedData.token);
       }
     }

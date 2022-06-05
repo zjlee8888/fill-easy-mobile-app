@@ -3,7 +3,7 @@ import { API } from '../Utility/Apiservice'
 import Type from '../Redux/constant'
 
 export const Allblogpost = async (dispatch, token) => {
-
+ // console.log("###############",blog)
   const res = await fetch(
     API.BLOGPOST_GET,
     {
@@ -25,6 +25,7 @@ export const Allblogpost = async (dispatch, token) => {
           dispatch({
             type: Type.SET_ALL_BLOGS,
             payload: res.posts
+
           })
         })
         

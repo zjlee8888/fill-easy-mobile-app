@@ -31,6 +31,7 @@ const Preauth = () => {
 };
 
 const Postauth = () => {
+  console.log("HElllo post")
   return (
     <Stack.Navigator
       screenOptions={{ headerShown: false }}
@@ -70,9 +71,11 @@ export default function Stacknavigation() {
 
   const token = useSelector((state) => state.userReducer.userToken);
 
+  console.log("***************",token)
   const dispatch = useDispatch();
 
   const AuthChecker = async () => {
+   
     try {
       let accessToken = await AsyncStorage.getItem("accessToken");
       if (accessToken !== null) {
@@ -80,11 +83,8 @@ export default function Stacknavigation() {
           type: "SET_TOKEN",
           payload: accessToken,
         });
-
         Allblogpost(dispatch , token)
         getdataActivity(token , dispatch)
-
-       
       }
     } catch (e) {
       console.log("Error", e);

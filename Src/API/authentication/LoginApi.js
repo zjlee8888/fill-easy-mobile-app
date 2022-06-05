@@ -1,11 +1,12 @@
 export  const  Login  = async(email,password)=>{
+
     var raw = JSON.stringify({
         username: email,
         password: password,
         device: "mobile",
         lang: "en",
       });
-    await  fetch("https://fill-easy.com/login-post", {
+  const parsedData =   await  fetch("https://fill-easy.com/login-post", {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -15,7 +16,8 @@ export  const  Login  = async(email,password)=>{
       })
       .then((response) => response.text())
       .then((result) => {
-         parsedData =  JSON.parse(result);
+         let data =  JSON.parse(result);
+        return data
  
       })
      .catch((error) => console.log("error", error));
