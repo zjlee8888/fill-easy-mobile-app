@@ -10,15 +10,15 @@ import { Icon } from "react-native-elements";
 const lang = [
   {
     name: "English",
-    nav: "Appsetting",
+   
   },
   {
-    name: "French",
-    nav: "Appsetting",
+    name: "繁體",
+  
   },
   {
-    name: "Korian",
-    nav: "Appsetting",
+    name: "简体",
+   
   },
 ];
 const Language = () => {
@@ -38,12 +38,12 @@ const Language = () => {
                 paddingVertical: 15,
                 borderColor: Bordercolor.darkgrayopborder,
               }}
-              onPress={() => navigation.navigate(item.nav)}
+              onPress={() => setCurrent(item.name)}
             >
               <View style={{ flex: 1 }}>
                 <Text
                   style={{
-                    fontSize: 14,
+                    fontSize: 16,
                     color: Textcolor.blacktext,
                     fontFamily: "Roboto-Regular",
                   }}

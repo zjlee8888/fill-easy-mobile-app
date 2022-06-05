@@ -1,5 +1,5 @@
-import React from "react";
-import { View, Text, TouchableOpacity } from "react-native";
+import React  , {useState}from "react";
+import { View, Text, TouchableOpacity , Switch } from "react-native";
 import { Header } from "../../Home/Component/Screeheader";
 import { useNavigation } from '@react-navigation/native';
 
@@ -30,6 +30,8 @@ const appsetting = [
 ];
 const Appsetting = () => {
     const navigation = useNavigation()
+    const [isEnabled, setIsEnabled] = useState(false);
+    const toggleSwitch = () => setIsEnabled(previousState => !previousState);
 
   return (
     <View style={{ flex: 1 }}>
@@ -51,7 +53,7 @@ const Appsetting = () => {
               <View style={{ flex: 1 }}>
                 <Text
                   style={{
-                    fontSize: 14,
+                    fontSize: 16,
                     color: Textcolor.blacktext,
                     fontFamily: "Roboto-Regular",
                   }}
@@ -60,7 +62,24 @@ const Appsetting = () => {
                 </Text>
               </View>
               <View style={{ marginRight: 25 }}>
-                <Icon name="right" type="antdesign" size={20} />
+                {item.name == "Face ID" ? 
+                <Switch
+                trackColor={{ false: "#4F4F4F", true: "rgb(255, 246, 204)" }}
+                thumbColor={isEnabled ? "#FED200" : "#FFFFFF"}
+                ios_backgroundColor="#3e3e3e"
+                onValueChange={toggleSwitch}
+                value={isEnabled}
+              />
+                 :
+                 <>
+                 {item.name == "Update Version" ? 
+                  <Icon name="reload1" type="antdesign" size={20}  />
+                  :
+                
+               <Icon name="right" type="antdesign" size={20} />
+              }
+                 </>
+              }
               </View>
             </TouchableOpacity>
           );
